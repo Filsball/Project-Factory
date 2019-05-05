@@ -5,6 +5,8 @@ using UnityEngine;
 public class ZahnradAufsatz : MonoBehaviour
 {
     public Zahnrad zahnrad;
+    public bool spinning = true;
+    public float spinningSpeed = 100f;
     public bool imUZSdrehen = true;
 
     private float angle = 0;
@@ -18,14 +20,14 @@ public class ZahnradAufsatz : MonoBehaviour
     void Update()
     {
         positionZahnrad();
-        transform.Rotate(Vector3.up, (imUZSdrehen ? 1 : -1) * 100f * Time.deltaTime);
+        if(spinning)
+            transform.Rotate(Vector3.up, (imUZSdrehen ? 1 : -1) * spinningSpeed * Time.deltaTime);
     }
 
     void positionZahnrad()
     {
         if(zahnrad == null) { return; }
-
-        zahnrad.transform.position = transform.position + new Vector3(0, transform.localScale.y - zahnrad.transform.localScale.y/2, 0);
+        zahnrad.transform.position = transform.position + Vector3.up * (transform.localScale.y - (1.5f * zahnrad.transform.localScale.y));
         zahnrad.transform.rotation = transform.rotation;
     }
 }
