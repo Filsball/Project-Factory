@@ -13,10 +13,12 @@ public class Zahnrad_Manager : MonoBehaviour
         int i = 0;
         foreach (Transform child in transform)
         {
-            if (child.GetComponent<ZahnradAufsatz>() != null)
+            ZahnradAufsatz za = child.GetComponent<ZahnradAufsatz>();
+            if (za != null)
             {
-                aufsaetze.Add(child.GetComponent<ZahnradAufsatz>());
-                if(i++ % 2 == 0)
+                aufsaetze.Add(za);
+                za.imUZSdrehen = i++ % 2 == 0;
+                if (za.imUZSdrehen)
                 {
                     child.transform.Rotate(Vector3.up, 45);
                 }
@@ -28,10 +30,12 @@ public class Zahnrad_Manager : MonoBehaviour
     void Update()
     {
         bool nextOneSpinning = running;
+        int i = 0;
         foreach(ZahnradAufsatz aufsatz in aufsaetze)
         {
-            aufsatz.spinning = nextOneSpinning;
+            aufsatz.spinning = nextOneSpinning && (aufsatz.zahnrad != null || i==0);
             nextOneSpinning = aufsatz.zahnrad != null && aufsatz.spinning;
+            i++;
         }
     }
 }
