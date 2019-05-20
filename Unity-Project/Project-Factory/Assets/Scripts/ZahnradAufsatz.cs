@@ -9,7 +9,7 @@ public class ZahnradAufsatz : MonoBehaviour
     public float spinningSpeed = 100f;
     public bool imUZSdrehen = true;
 
-    private float angle = 0;
+    private readonly float angle = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,15 +19,16 @@ public class ZahnradAufsatz : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        positionZahnrad();
+        PositionZahnrad();
         if(spinning)
             transform.Rotate(Vector3.up, (imUZSdrehen ? 1 : -1) * spinningSpeed * Time.deltaTime);
     }
 
-    void positionZahnrad()
+    void PositionZahnrad()
     {
         if(zahnrad == null) { return; }
-        zahnrad.transform.position = transform.position + Vector3.up * (transform.localScale.y - (1.5f * zahnrad.transform.localScale.y));
-        zahnrad.transform.rotation = transform.rotation;
+
+        zahnrad.transform.position = transform.position + transform.up * (transform.localScale.y - (1.5f * zahnrad.transform.localScale.y));
+        zahnrad.transform.localRotation = transform.rotation;
     }
 }

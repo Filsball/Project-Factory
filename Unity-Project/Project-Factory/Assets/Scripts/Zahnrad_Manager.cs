@@ -5,6 +5,7 @@ using UnityEngine;
 public class Zahnrad_Manager : MonoBehaviour
 {
     public bool running = true;
+    public bool solved = false;
     private List<ZahnradAufsatz> aufsaetze = new List<ZahnradAufsatz>();
 
     // Start is called before the first frame update
@@ -20,7 +21,7 @@ public class Zahnrad_Manager : MonoBehaviour
                 za.imUZSdrehen = i++ % 2 == 0;
                 if (za.imUZSdrehen)
                 {
-                    child.transform.Rotate(Vector3.up, 45);
+                    child.transform.Rotate(transform.up, 45);
                 }
             }
         }
@@ -30,12 +31,23 @@ public class Zahnrad_Manager : MonoBehaviour
     void Update()
     {
         bool nextOneSpinning = running;
-        int i = 0;
-        foreach(ZahnradAufsatz aufsatz in aufsaetze)
+        for (int i= 0; i < aufsaetze.Count; i++)
         {
-            aufsatz.spinning = nextOneSpinning && (aufsatz.zahnrad != null || i==0);
+            ZahnradAufsatz aufsatz = aufsaetze[i];
+            aufsatz.spinning = nextOneSpinning && (aufsatz.zahnrad != null || i == 0);
             nextOneSpinning = aufsatz.zahnrad != null && aufsatz.spinning;
             i++;
         }
+        solved = aufsaetze[aufsaetze.Count - 1].spinning; // last one spinns = puzzle solved
+    }
+
+    void StartRotating()
+    {
+        running = true;
+    }
+
+    void StopRotating()
+    {
+        running = false;
     }
 }
