@@ -28,7 +28,7 @@ public class ZahnradAufsatz : MonoBehaviour
     {
         if(zahnrad == null) { return; }
 
-        zahnrad.transform.position = transform.position + transform.up * (transform.localScale.y - (1.5f * zahnrad.transform.localScale.y));
+        zahnrad.transform.position = transform.position + transform.up * (-transform.localScale.y + (1.5f * zahnrad.transform.localScale.y));
         zahnrad.transform.localRotation = transform.rotation;
     }
 }

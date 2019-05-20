@@ -36,7 +36,6 @@ public class Zahnrad_Manager : MonoBehaviour
             ZahnradAufsatz aufsatz = aufsaetze[i];
             aufsatz.spinning = nextOneSpinning && (aufsatz.zahnrad != null || i == 0);
             nextOneSpinning = aufsatz.zahnrad != null && aufsatz.spinning;
-            i++;
         }
         solved = aufsaetze[aufsaetze.Count - 1].spinning; // last one spinns = puzzle solved
     }
