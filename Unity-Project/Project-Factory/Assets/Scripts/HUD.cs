@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,9 @@ public class HUD : MonoBehaviour
     public Inventory inventory;
 
     public GameObject MsgPanel;
+
+    public GameObject InventoryPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,5 +46,15 @@ public class HUD : MonoBehaviour
     public void CloseMsgPanel()
     {
         MsgPanel.SetActive(false);
+    }
+
+    internal void OpenInventory()
+    {
+        InventoryPanel.SetActive(true);
+    }
+
+    internal void CloseInventory()
+    {
+        InventoryPanel.SetActive(false);
     }
 }
