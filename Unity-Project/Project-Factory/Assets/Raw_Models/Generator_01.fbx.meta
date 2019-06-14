@@ -1,101 +1,93 @@
 fileFormatVersion: 2
-guid: 8c3d41bee803a494fb64a25e98a9d7a7
+guid: 71dc4aaba7113574492f6d85e2925f80
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: antennas.005
-    100002: button_panel.005
-    100004: buttons.005
-    100006: buttons_socket.005
-    100008: casing.005
-    100010: door_holders_left.005
-    100012: door_holders_right.005
-    100014: door_left.005
-    100016: door_right.005
-    100018: electric-motor_inner.000
-    100020: electric-motor_outer.000
-    100022: electric_motor_ axis_rings.001
-    100024: electric_motor_axis.001
-    100026: //RootNode
-    100028: generator_body.004
-    400000: antennas.005
-    400002: button_panel.005
-    400004: buttons.005
-    400006: buttons_socket.005
-    400008: casing.005
-    400010: door_holders_left.005
-    400012: door_holders_right.005
-    400014: door_left.005
-    400016: door_right.005
-    400018: electric-motor_inner.000
-    400020: electric-motor_outer.000
-    400022: electric_motor_ axis_rings.001
-    400024: electric_motor_axis.001
-    400026: //RootNode
-    400028: generator_body.004
-    2100000: generator_casing
-    2100002: Buttons_panel_plate_mat
-    2100004: No Name
-    2100006: rust
-    2100008: electric-motor_axis_mat
-    2100010: electric-motor_inner_mat
-    2100012: electric-motor_outer_mat
-    2300000: antennas.005
-    2300002: button_panel.005
-    2300004: buttons.005
-    2300006: buttons_socket.005
-    2300008: casing.005
-    2300010: door_holders_left.005
-    2300012: door_holders_right.005
-    2300014: door_left.005
-    2300016: door_right.005
-    2300018: electric-motor_inner.000
-    2300020: electric-motor_outer.000
-    2300022: electric_motor_ axis_rings.001
-    2300024: electric_motor_axis.001
-    2300026: generator_body.004
-    3300000: antennas.005
-    3300002: button_panel.005
-    3300004: buttons.005
-    3300006: buttons_socket.005
-    3300008: casing.005
-    3300010: door_holders_left.005
-    3300012: door_holders_right.005
-    3300014: door_left.005
-    3300016: door_right.005
-    3300018: electric-motor_inner.000
-    3300020: electric-motor_outer.000
-    3300022: electric_motor_ axis_rings.001
-    3300024: electric_motor_axis.001
-    3300026: generator_body.004
-    4300000: generator_body.004
-    4300002: button_panel.005
-    4300004: buttons.005
-    4300006: buttons_socket.005
-    4300008: door_right.005
-    4300010: door_holders_right.005
-    4300012: door_left.005
-    4300014: door_holders_left.005
-    4300016: antennas.005
-    4300018: electric-motor_inner.000
-    4300020: electric-motor_outer.000
-    4300022: casing.005
-    4300024: electric_motor_axis.001
-    4300026: electric_motor_ axis_rings.001
-    6400000: antennas.005
-    6400002: button_panel.005
-    6400004: buttons.005
-    6400006: buttons_socket.005
-    6400008: casing.005
-    6400010: door_holders_left.005
-    6400012: door_holders_right.005
-    6400014: door_left.005
-    6400016: door_right.005
-    6400018: electric-motor_inner.000
-    6400020: electric-motor_outer.000
-    6400022: electric_motor_ axis_rings.001
-    6400024: electric_motor_axis.001
-    6400026: generator_body.004
+    100000: antennas.000
+    100002: button_01
+    100004: button_02
+    100006: button_03
+    100008: button_04
+    100010: button_panel
+    100012: buttons_sockets
+    100014: casing_small.002
+    100016: door_holders_left.000
+    100018: door_holders_right.000
+    100020: door_left.000
+    100022: door_right.000
+    100024: electric motor inner.000
+    100026: electric motor outer.000
+    100028: 'electric-motor_axis '
+    100030: //RootNode
+    100032: generator_body
+    400000: antennas.000
+    400002: button_01
+    400004: button_02
+    400006: button_03
+    400008: button_04
+    400010: button_panel
+    400012: buttons_sockets
+    400014: casing_small.002
+    400016: door_holders_left.000
+    400018: door_holders_right.000
+    400020: door_left.000
+    400022: door_right.000
+    400024: electric motor inner.000
+    400026: electric motor outer.000
+    400028: 'electric-motor_axis '
+    400030: //RootNode
+    400032: generator_body
+    2100000: Material.001
+    2100002: antennas_mat.002
+    2100004: Material
+    2300000: antennas.000
+    2300002: button_01
+    2300004: button_02
+    2300006: button_03
+    2300008: button_04
+    2300010: button_panel
+    2300012: buttons_sockets
+    2300014: casing_small.002
+    2300016: door_holders_left.000
+    2300018: door_holders_right.000
+    2300020: door_left.000
+    2300022: door_right.000
+    2300024: electric motor inner.000
+    2300026: electric motor outer.000
+    2300028: 'electric-motor_axis '
+    2300030: generator_body
+    3300000: antennas.000
+    3300002: button_01
+    3300004: button_02
+    3300006: button_03
+    3300008: button_04
+    3300010: button_panel
+    3300012: buttons_sockets
+    3300014: casing_small.002
+    3300016: door_holders_left.000
+    3300018: door_holders_right.000
+    3300020: door_left.000
+    3300022: door_right.000
+    3300024: electric motor inner.000
+    3300026: electric motor outer.000
+    3300028: 'electric-motor_axis '
+    3300030: generator_body
+    4300000: generator_body
+    4300002: antennas.000
+    4300004: door_holders_left.000
+    4300006: door_holders_right.000
+    4300008: door_left.000
+    4300010: door_right.000
+    4300012: button_panel
+    4300014: button_04
+    4300016: buttons_sockets
+    4300018: button_01
+    4300020: button_02
+    4300022: button_03
+    4300024: electric motor inner.000
+    4300026: electric motor outer.000
+    4300028: casing_small.002
+    4300030: 'electric-motor_axis '
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -129,13 +121,13 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 1
+    meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

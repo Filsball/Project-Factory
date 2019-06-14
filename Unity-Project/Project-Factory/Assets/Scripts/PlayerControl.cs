@@ -54,7 +54,7 @@ public class PlayerControl : MonoBehaviour
 
     private void dropItem()
     {
-        inventory.RemoveItem(0);
+        //inventory.RemoveItem(0);
     }
 
     private void inventarVerwalten()
