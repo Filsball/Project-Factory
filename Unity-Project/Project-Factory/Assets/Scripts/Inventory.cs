@@ -5,11 +5,13 @@ using System;
 
 public class Inventory : MonoBehaviour {
 
-    private int Slots = 7;
+    private int Slots = 4;
 
     private List<InventoryItem> ItemList = new List<InventoryItem>();
 
     public EventHandler<InventoryEventArgs> ItemAdded;
+
+    public EventHandler<InventoryEventArgs> ItemDeleted;
 
     public void addItem(InventoryItem item)
     {
@@ -27,6 +29,9 @@ public class Inventory : MonoBehaviour {
                 ItemAdded(this, new InventoryEventArgs(item));
             }
         }
+    }
+    public void RemoveItem(InventoryItem item) {
+        
     }
 }
 

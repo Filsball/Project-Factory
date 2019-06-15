@@ -8,6 +8,7 @@ public interface InventoryItem
     string Name { get; }
     Sprite Image { get; }
     void OnPickUp();
+    void OnDrop();
 }
 
 public class InventoryEventArgs : EventArgs

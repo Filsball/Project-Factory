@@ -1,18 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerControl : MonoBehaviour
 {
     private CharacterController characterController;
 
- //   public float speed = 5.0f;
+    //   public float speed = 5.0f;
 
-//    public float rotationspeed = 240.0f;
+    //    public float rotationspeed = 240.0f;
 
-//   private float gravity = 20.0f;
+    //   private float gravity = 20.0f;
 
-//    private Vector3 moveDir = Vector3.zero;
+    //    private Vector3 moveDir = Vector3.zero;
 
     public HUD hud;
 
@@ -20,7 +22,11 @@ public class PlayerControl : MonoBehaviour
 
     private InventoryItem itemPickUp = null;
 
-    private bool mLockPickUp;
+   // private bool mLockPickUp;
+
+    private bool InvOpen;
+
+   // private MouseLook mouseLock;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +37,8 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (itemPickUp != null && Input.GetKeyDown(KeyCode.F)) {
+        if (itemPickUp != null && Input.GetKeyDown(KeyCode.F))
+        {
             inventory.addItem(itemPickUp);
             itemPickUp.OnPickUp();
             itemPickUp = null;
@@ -39,29 +46,33 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.I))
-        {
-            // close Inventory here
+            inventarVerwalten();
+
+        if (Input.GetKeyDown(KeyCode.G))
+            dropItem();
+    }
+
+    private void dropItem()
+    {
+        //inventory.RemoveItem(0);
+    }
+
+    private void inventarVerwalten()
+    {
+
+        if (InvOpen) {
+            hud.CloseInventory();
+            //GetComponent<FirstPersonController>().enabled = true;
         }
-
-    /*    float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-
-        if (v < 0)
-            v = 0;
-
-        transform.Rotate(0, h * rotationspeed * Time.deltaTime, 0);
-
-        if (characterController.isGrounded)
+        else
         {
-            bool move = (v > 0 || (h != 0));
-            moveDir = Vector3.forward * v;
-            moveDir = transform.TransformDirection(moveDir);
-            moveDir *= speed;
+            hud.OpenInventory();
+            //GetComponent<FirstPersonController>().enabled = false;
+            //mouseLock.SetCursorLock(false);
         }
-        moveDir.y -= gravity * Time.deltaTime;
-
-        characterController.Move(moveDir * Time.deltaTime);
-    */
+        InvOpen = !InvOpen;
+        
+        
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -69,12 +80,12 @@ public class PlayerControl : MonoBehaviour
          InventoryItem inventoryItem = collider.GetComponent<InventoryItem>();
          if (inventoryItem != null)
          {
-             if (mLockPickUp)
-                 return;
+         //    if (mLockPickUp)
+         //        return;
 
              itemPickUp = inventoryItem;
              hud.OpenMsgPanel("");
-       }
+         }
        
 
     }
@@ -86,6 +97,5 @@ public class PlayerControl : MonoBehaviour
             hud.CloseMsgPanel();
             itemPickUp = null;
         }
-
     }
 }
