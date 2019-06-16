@@ -6467,21 +6467,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Hintergrund(1)
+  - name: Hintergrund
     clip: {fileID: 8300000, guid: bf6658df0b88d844aa05ae40070fe407, type: 3}
     volume: 0
     pitch: 1
     spatialBlend: 0
     loop: 1
     source: {fileID: 0}
-  - name: InDunkelheit(2)
-    clip: {fileID: 8300000, guid: 85773a247c31a2345bf2e544ce063dd6, type: 3}
+  - name: InDunkelheit
+    clip: {fileID: 8300000, guid: fc94c95b668c4f14c9b368be32f7991b, type: 3}
     volume: 0
     pitch: 1
     spatialBlend: 0
     loop: 0
     source: {fileID: 0}
-  - name: Saferoom(1)
+  - name: Saferoom
     clip: {fileID: 8300000, guid: 110039fa04c98394890c25dd42fac32d, type: 3}
     volume: 0
     pitch: 1
@@ -6496,20 +6496,28 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: GeneratorLaufend
-    clip: {fileID: 8300000, guid: 07e82477f50347943a4007a33bb436a7, type: 3}
+    clip: {fileID: 8300000, guid: 169e2e66ac7524d4e8e15a61610a9b91, type: 3}
     volume: 0
     pitch: 1
     spatialBlend: 1
     loop: 1
     source: {fileID: 0}
   - name: GeneratorStartend
-    clip: {fileID: 8300000, guid: 809fd7a93ecba2548afa0ec42e322f4e, type: 3}
+    clip: {fileID: 8300000, guid: 76a755bb840a90d4983cf9291549d941, type: 3}
     volume: 0
     pitch: 1
     spatialBlend: 1
     loop: 0
     source: {fileID: 0}
+  - name: Atmung
+    clip: {fileID: 8300000, guid: bd91513f4d4af0a44bdad7f967637bc3, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
   generatorStarted: 0
+  pPB: {fileID: 0}
 --- !u!4 &1101529874
 Transform:
   m_ObjectHideFlags: 0
@@ -12855,6 +12863,21 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 1714171026}
+    - target: {fileID: 5144952667811613986, guid: d1bb63386fcad194f93ac374dd3c45cd,
+        type: 3}
+      propertyPath: m_RenderingPath
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144952667811613986, guid: d1bb63386fcad194f93ac374dd3c45cd,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144952667811613986, guid: d1bb63386fcad194f93ac374dd3c45cd,
+        type: 3}
+      propertyPath: m_HDR
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1bb63386fcad194f93ac374dd3c45cd, type: 3}
 --- !u!1001 &5521551518831023135

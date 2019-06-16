@@ -1,5 +1,4 @@
-﻿using UnityEngine.Audio;
-using System;
+﻿using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.PostProcessing;
@@ -16,6 +15,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     [HideInInspector]
     public bool generatorStarted = false;
+    public PostProcessingBehaviour pPB;
 
     // Start is called before the first frame update
     void Awake()
@@ -42,11 +42,28 @@ public class AudioManager : MonoBehaviour
     
     void Start()
     {
-        hintergrund = Array.Find(sounds, sound => sound.name == "Hintergrund(1)").source;
-        dunkelheit = Array.Find(sounds, sound => sound.name == "InDunkelheit(2)").source;
-        saferoom = Array.Find(sounds, sound => sound.name == "Saferoom(1)").source;
+        pPB = FindObjectOfType<PostProcessingBehaviour>();
+        MotionBlurModel.Settings MBS = pPB.profile.motionBlur.settings;
+        MBS.frameBlending = 0;
+        ColorGradingModel.Settings CGS = pPB.profile.colorGrading.settings;
+        CGS.basic.contrast = 1;
+        CGS.basic.saturation = 1;
+        VignetteModel.Settings VS = pPB.profile.vignette.settings;
+        VS.opacity = 0;
+        ChromaticAberrationModel.Settings CAS = pPB.profile.chromaticAberration.settings;
+        CAS.intensity = 0;
+        pPB.profile.motionBlur.settings = MBS;
+        pPB.profile.colorGrading.settings = CGS;
+        pPB.profile.vignette.settings = VS;
+        pPB.profile.chromaticAberration.settings = CAS;
+
+
+
+        hintergrund = Array.Find(sounds, sound => sound.name == "Hintergrund").source;
+        dunkelheit = Array.Find(sounds, sound => sound.name == "InDunkelheit").source;
+        saferoom = Array.Find(sounds, sound => sound.name == "Saferoom").source;
         generatorStartend = Array.Find(sounds, sound => sound.name == "GeneratorStartend").source;
-        Play("Hintergrund(1)", 0.7f);
+        Play("Hintergrund", 0.7f);
     }
 
     
@@ -54,13 +71,14 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        
         if (Input.GetKeyDown("b")) // Placeholder fuer event: 5 Sekunden in Dunkelheit
         {
             
             if (hintergrund.volume > 0.01)
             {
                 instance.StopAllCoroutines();
-                FadeCallerMitPP(dunkelheit, hintergrund, 0.9f, 3f, true);
+                FadeCallerMitPP(dunkelheit, hintergrund, 0.9f, 3f, true, pPB);
             }
 
 
@@ -74,7 +92,7 @@ public class AudioManager : MonoBehaviour
                     if (dunkelheit.volume > 0.01)
                     {
                         StopAllCoroutines();
-                        FadeCaller(saferoom, hintergrund, dunkelheit, 0.7f, 3f, false);
+                        FadeCallerMitPPBackwards(saferoom, hintergrund, dunkelheit, 0.7f, 3f, false, pPB);
                     }
                     else
                     {
@@ -87,7 +105,7 @@ public class AudioManager : MonoBehaviour
                     if (dunkelheit.volume > 0.01)
                     {
                         StopAllCoroutines();
-                        FadeCaller(saferoom, dunkelheit, hintergrund, 0.7f, 3f, false);
+                        FadeCallerMitPPBackwards(saferoom, dunkelheit, hintergrund, 0.7f, 3f, false, pPB);
                     }
                     else
                     {
@@ -103,7 +121,7 @@ public class AudioManager : MonoBehaviour
                     if (dunkelheit.volume > 0.01)
                     {
                         StopAllCoroutines();
-                        FadeCaller(saferoom, hintergrund, dunkelheit, 0.7f, 3f, false);
+                        FadeCallerMitPPBackwards(saferoom, hintergrund, dunkelheit, 0.7f, 3f, false, pPB);
                     }
                     else
                     {
@@ -116,7 +134,8 @@ public class AudioManager : MonoBehaviour
                     if (dunkelheit.volume > 0.01)
                     {
                         StopAllCoroutines();
-                        FadeCaller(saferoom, dunkelheit, 0.7f, 3f, false);
+                        FadeCallerMitPPBackwards(saferoom, dunkelheit, 0.7f, 1.5f, false, pPB);
+                        Play("Atmung", 0.2f);
                     }
                     else
                     {
@@ -131,7 +150,7 @@ public class AudioManager : MonoBehaviour
             if(dunkelheit.volume > 0.01)
             {
                 instance.StopAllCoroutines();
-                FadeCaller(hintergrund, dunkelheit, 0.7f, 3f, false);
+                FadeCallerMitPPBackwards(hintergrund, dunkelheit, 0.7f, 3f, false, pPB);
             }
             else if(saferoom.volume > 0.01)
             {
@@ -156,26 +175,30 @@ public class AudioManager : MonoBehaviour
     {
         instance.StartCoroutine(fadeIn(toFadeIn, maxVolume, time, startNew));
     }
-
     public static void FadeOutCaller(AudioSource toFadeOut, float time)
     {
         instance.StartCoroutine(fadeOut(toFadeOut, time));
     }
-
     public static void FadeCaller(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew)
     {
         instance.StartCoroutine(fadeSounds(toFadeIn, toFadeOut, maxVolume, time, startNew));
     }
-    public static void FadeCallerMitPP(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew)
-    {
-        instance.StartCoroutine(fadeSoundsMitPP(toFadeIn, toFadeOut, maxVolume, time, startNew));
-    }
-
     public static void FadeCaller(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew)
     {
         instance.StartCoroutine(fadeSounds(toFadeIn, toFadeOut, toFadeOut2, maxVolume, time, startNew));
     }
-
+    public static void FadeCallerMitPP(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
+    {
+        instance.StartCoroutine(fadeSoundsMitPP(toFadeIn, toFadeOut, maxVolume, time, startNew, pPB));
+    }
+    public static void FadeCallerMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
+    {
+        instance.StartCoroutine(fadeSoundsMitPPBackwards(toFadeIn, toFadeOut, maxVolume, time, startNew, pPB));
+    }
+    public static void FadeCallerMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
+    {
+        instance.StartCoroutine(fadeSoundsMitPPBackwards( toFadeIn,  toFadeOut,  toFadeOut2,  maxVolume,  time,  startNew,  pPB));
+    }
     static IEnumerator fadeIn(AudioSource toFadeIn, float maxVolume, float time, Boolean startNew)
     {
         keepFadingIn = true;
@@ -188,7 +211,6 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
     }
-
     static IEnumerator fadeOut(AudioSource toFadeOut, float time)
     {
         keepFadingIn = false;
@@ -204,7 +226,6 @@ public class AudioManager : MonoBehaviour
         toFadeOut.Stop();
 
     }
-
     static IEnumerator fadeSounds(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew)
     {
         if (startNew || !toFadeIn.isPlaying) toFadeIn.Play();
@@ -217,11 +238,16 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
     }
-
-    static IEnumerator fadeSoundsMitPP(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew)
+    static IEnumerator fadeSoundsMitPP(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {
         if (startNew || !toFadeIn.isPlaying) toFadeIn.Play();
         float startVolume = toFadeOut.volume;
+        PostProcessingProfile profile = pPB.profile;
+        float pufferzeit = 10f;
+        float wartezeit = 10f;
+        float wartezeitStartwert = wartezeit;
+        float PPFadeZeit = 20f;
+       
 
         while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0)
         {
@@ -229,8 +255,74 @@ public class AudioManager : MonoBehaviour
             toFadeOut.volume -= startVolume * Time.deltaTime / time;
             yield return null;
         }
+        while (pufferzeit > 0)
+        {
+            pufferzeit -= wartezeitStartwert * Time.deltaTime / wartezeit;
+            yield return null;
+        }
+        while (profile.motionBlur.settings.frameBlending < 1)
+        {
+            PPMotionBlur(pPB, profile, PPFadeZeit, true);
+            PPColorGrading(pPB, profile, PPFadeZeit, true);
+            PPVignette(pPB, profile, PPFadeZeit, true);
+            PPChromaticAberration(pPB, profile, PPFadeZeit, true);
+            yield return null;
+        }
     }
+    static IEnumerator fadeSoundsMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
+    {
+        if (startNew || !toFadeIn.isPlaying) toFadeIn.Play();
+        float startVolume = toFadeOut.volume;
+        PostProcessingProfile profile = pPB.profile;
+        float PPFadeZeit = 1.5f;
 
+
+        while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0 || profile.motionBlur.settings.frameBlending > 0.05)
+        {
+            if (toFadeIn.volume < maxVolume) toFadeIn.volume += Time.deltaTime / time;
+            toFadeOut.volume -= startVolume * Time.deltaTime / time;
+            PPMotionBlur(pPB, profile, PPFadeZeit, false);
+            PPColorGrading(pPB, profile, PPFadeZeit, false);
+            PPVignette(pPB, profile, PPFadeZeit, false);
+            PPChromaticAberration(pPB, profile, PPFadeZeit, false);
+            yield return null;
+
+        }
+        MotionBlurModel.Settings moBlurSettings = profile.motionBlur.settings;
+        moBlurSettings.frameBlending = 0;
+        profile.motionBlur.settings = moBlurSettings;
+        ChromaticAberrationModel.Settings chromaticAberrationSettings = profile.chromaticAberration.settings;
+        chromaticAberrationSettings.intensity = 0;
+        profile.chromaticAberration.settings = chromaticAberrationSettings;
+        VignetteModel.Settings vignetteSettings = profile.vignette.settings;
+        vignetteSettings.opacity = 0;
+        profile.vignette.settings = vignetteSettings;
+
+    }
+    static IEnumerator fadeSoundsMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
+    {
+        if (startNew || !toFadeIn.isPlaying) toFadeIn.Play();
+        float startVolume = toFadeOut.volume;
+        float startVolume2 = toFadeOut2.volume;
+        PostProcessingProfile profile = pPB.profile;
+        float PPFadeZeit = 1.5f;
+
+
+        while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0 || profile.motionBlur.settings.frameBlending > 0.05)
+        {
+            if (toFadeIn.volume < maxVolume) toFadeIn.volume += Time.deltaTime / time;
+            toFadeOut.volume -= startVolume * Time.deltaTime / time;
+            toFadeOut2.volume -= startVolume2 * Time.deltaTime / time;
+            PPMotionBlur(pPB, profile, PPFadeZeit, false);
+            PPColorGrading(pPB, profile, PPFadeZeit, false);
+            PPVignette(pPB, profile, PPFadeZeit, false);
+            PPChromaticAberration(pPB, profile, PPFadeZeit, false);
+            yield return null;
+        }
+        MotionBlurModel.Settings moBlurSettings = profile.motionBlur.settings;
+        moBlurSettings.frameBlending = 0;
+        profile.motionBlur.settings = moBlurSettings;
+    }
     static IEnumerator fadeSounds(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew)
     {
         if (startNew || !toFadeIn.isPlaying) toFadeIn.Play();
@@ -245,12 +337,10 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
     }
-
     public void ClipCaller(String startend, String laufend, float volume, Vector3 position)
     {
         instance.StartCoroutine(ClipMitUebergang(startend, laufend, volume, position));
     }
-
     public IEnumerator ClipMitUebergang(String startend, String laufend, float volume, Vector3 position)
     {
         float time = getTime(startend);
@@ -265,9 +355,6 @@ public class AudioManager : MonoBehaviour
         }
         Play(laufend, volume, position);
     }
-
-    
-
     public void Play(string name, float volume, Vector3 position)
     {
         AudioSource s = Array.Find(sounds, sound => sound.name == name).source;
@@ -280,7 +367,6 @@ public class AudioManager : MonoBehaviour
         s.volume = volume;
         s.Play();
     }
-
     public void Play(string name, float volume)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -289,10 +375,9 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        s.source.volume = 0.7f;
+        s.source.volume = volume;
         s.source.Play();
     }
-
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -303,21 +388,93 @@ public class AudioManager : MonoBehaviour
         }
         s.source.Play();
     }
-
     public float getTime(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         return s.source.clip.length;
     }
-
     public void setPosition(string name, Vector3 position)
     {
         AudioSource s = Array.Find(sounds, sound => sound.name == name).source;
         s.transform.position = position;
     }
-
-    static IEnumerator postProcess()
+    public static void PPMotionBlur(PostProcessingBehaviour pPB, PostProcessingProfile profile, float time, Boolean forward)
     {
-        yield return null;
+        MotionBlurModel.Settings moBlurSettings = profile.motionBlur.settings;
+        float startwert = moBlurSettings.frameBlending;
+        if (forward)
+        {
+            moBlurSettings.frameBlending += Time.deltaTime / time;
+            profile.motionBlur.settings = moBlurSettings;
+        }
+        else
+        {
+            moBlurSettings.frameBlending -= startwert * Time.deltaTime / time;
+            profile.motionBlur.settings = moBlurSettings;
+        }
+            
+    }
+    public static void PPColorGrading(PostProcessingBehaviour pPB, PostProcessingProfile profile, float time, Boolean forward)
+    {
+        ColorGradingModel.Settings colorGradingSettings = profile.colorGrading.settings;
+        float saturationStartwert = colorGradingSettings.basic.saturation;
+        float contrastStartwert = colorGradingSettings.basic.contrast;
+        if (forward)
+        {
+            if(colorGradingSettings.basic.contrast < 1.7f)
+            {
+                colorGradingSettings.basic.contrast += Time.deltaTime / time;
+            }
+            if (colorGradingSettings.basic.saturation > 0.5f)
+            {
+                colorGradingSettings.basic.saturation -= saturationStartwert * Time.deltaTime / time;
+            }
+            profile.colorGrading.settings = colorGradingSettings;
+        }
+        else
+        {
+            if(colorGradingSettings.basic.contrast > 1f)
+            {
+                colorGradingSettings.basic.contrast -= contrastStartwert * Time.deltaTime / time;
+            }
+            if(colorGradingSettings.basic.saturation < 1f)
+            {
+                colorGradingSettings.basic.saturation += Time.deltaTime / time;
+            }
+            profile.colorGrading.settings = colorGradingSettings;
+        }
+        
+    }
+    public static void PPVignette(PostProcessingBehaviour pPB, PostProcessingProfile profile, float time, Boolean forward)
+    {
+        VignetteModel.Settings vignetteSettings = profile.vignette.settings;
+        float startwert = vignetteSettings.opacity;
+        if (forward)
+        {
+            vignetteSettings.opacity += Time.deltaTime / time;
+            profile.vignette.settings = vignetteSettings;
+        }
+        else
+        {
+            vignetteSettings.opacity -= startwert * Time.deltaTime / time;
+            profile.vignette.settings = vignetteSettings;
+        }
+        
+    }
+    public static void PPChromaticAberration(PostProcessingBehaviour pPB, PostProcessingProfile profile, float time, Boolean forward)
+    {
+        ChromaticAberrationModel.Settings chromaticAberrationSettings = profile.chromaticAberration.settings;
+        float startwert = chromaticAberrationSettings.intensity;
+        if (forward)
+        {
+            chromaticAberrationSettings.intensity += Time.deltaTime / time;
+            profile.chromaticAberration.settings = chromaticAberrationSettings;
+        }
+        else
+        {
+            chromaticAberrationSettings.intensity -= startwert * Time.deltaTime / time;
+            profile.chromaticAberration.settings = chromaticAberrationSettings;
+        }
+
     }
 }
