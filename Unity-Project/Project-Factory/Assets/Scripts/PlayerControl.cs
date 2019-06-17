@@ -10,8 +10,11 @@ public class PlayerControl : MonoBehaviour
     private Transform head;
     private Interactable lookedAtObject;
     private InventoryItem itemPickUp = null;
+    private Camera headCamera;
+    private Camera activeCamera;
+    FirstPersonController fpc;
+    private bool isInRiddle = false;
 
-    
 
     public HUD hud;
 
@@ -25,35 +28,79 @@ public class PlayerControl : MonoBehaviour
 
    // private MouseLook mouseLock;
 
+
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         head = transform.GetComponentInChildren<Camera>().transform;
+        headCamera = GetComponentInChildren<Camera>(); 
+        fpc = GetComponent<FirstPersonController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (lookedAtObject != null)
+        if (!isInRiddle)
         {
-            lookedAtObject.Selected = false;
-        }
+            if (lookedAtObject != null)
+            {
+                lookedAtObject.Selected = false;
+            }
 
-        DeterminLookedAtObject();
+            DeterminLookedAtObject();
 
-        if(lookedAtObject != null)
-        {
-            lookedAtObject.Selected = true;
-            hud.OpenMsgPanel(lookedAtObject.ToolTip);
+            if (lookedAtObject != null)
+            {
+                lookedAtObject.Selected = true;
+                hud.OpenMsgPanel(lookedAtObject.ToolTip);
+            }
+            else
+            {
+                hud.CloseMsgPanel();
+            }
         }
         else
         {
-            hud.CloseMsgPanel();
+
         }
 
-
         HandleInput();
+    }
+
+    public void SwapBackToPlayer()
+    {
+        isInRiddle = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        headCamera.gameObject.SetActive(true);
+        fpc.enabled = true;
+        if (activeCamera != null)
+        {
+            activeCamera.gameObject.SetActive(false);
+        }
+
+        hud.CloseInventory();
+        hud.OpenCrossHairPanel();
+    }
+
+    public void SwapToCamera(Camera c)
+    {
+        isInRiddle = true;
+        headCamera.gameObject.SetActive(false);
+        fpc.enabled = false;
+        if (c != null)
+        {
+            activeCamera = c;
+            c.gameObject.SetActive(true);
+        }
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        hud.OpenInventory();
+        hud.CloseMsgPanel();
+        hud.CloseCrossHairPanel();
     }
 
     private void DeterminLookedAtObject()
@@ -76,18 +123,39 @@ public class PlayerControl : MonoBehaviour
 
     private void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-            inventarVerwalten();
-
-        if (Input.GetKeyDown(KeyCode.G))
-            dropItem();
-
-        if (itemPickUp != null && Input.GetKeyDown(KeyCode.F))
+        if (!isInRiddle)
         {
-            inventory.addItem(itemPickUp);
-            itemPickUp.OnPickUp();
-            itemPickUp = null;
-            hud.CloseMsgPanel();
+            if (Input.GetKeyDown(KeyCode.I))
+                inventarVerwalten();
+
+            if (Input.GetKeyDown(KeyCode.G))
+                dropItem();
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (itemPickUp != null)
+                {
+                    inventory.addItem(itemPickUp);
+                    itemPickUp.OnPickUp();
+                    itemPickUp = null;
+                    hud.CloseMsgPanel();
+                }
+
+                if (lookedAtObject != null)
+                {
+                    lookedAtObject.Interact();
+                }
+            }
+        }
+        else
+        {
+            // Escape Riddle
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                SwapBackToPlayer();
+                hud.CloseInventory();
+            }
+
         }
     }
 
@@ -99,17 +167,18 @@ public class PlayerControl : MonoBehaviour
     private void inventarVerwalten()
     {
 
-        if (InvOpen) {
-            hud.CloseInventory();
-            //GetComponent<FirstPersonController>().enabled = true;
-        }
-        else
+        InvOpen = !InvOpen;
+        if (InvOpen)
         {
             hud.OpenInventory();
             //GetComponent<FirstPersonController>().enabled = false;
             //mouseLock.SetCursorLock(false);
         }
-        InvOpen = !InvOpen;
+        else
+        {
+            hud.CloseInventory();
+            //GetComponent<FirstPersonController>().enabled = true;
+        }
         
         
     }

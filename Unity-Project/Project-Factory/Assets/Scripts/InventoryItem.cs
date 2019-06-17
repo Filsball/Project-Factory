@@ -10,9 +10,9 @@ public abstract class InventoryItem : InteractableObject, Inventoriable
     public abstract void OnDrop();
     public abstract void OnPickUp();
 
-    public void Start()
+    new public void Start()
     {
-        Init();
+        base.Start();
         _name = "Basic inventory item";
         _toolTip = Name + ": Drücke F zum aufheben";
     }

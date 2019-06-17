@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent (typeof (Collider))]
-public class Zahnrad_Manager : MonoBehaviour
+public class Zahnrad_Manager : InteractableObject
 {
+        
+    
     public GameObject zahnradPrefab;
     public GameObject aufsatzPrefab;
     public BoxCollider boxCollider;
@@ -17,12 +19,16 @@ public class Zahnrad_Manager : MonoBehaviour
     public bool solved = false;
     public bool instantiateGears = false;
 
+    public Camera riddleCam;
+
     private Vector3 size;
     private List<ZahnradAufsatz> aufsaetze = new List<ZahnradAufsatz>();
 
     // Start is called before the first frame update
-    void Start()
+    new public void Start()
     {
+        base.Start();
+        _toolTip = "Drück F um näher zu treten";
         audioManager = FindObjectOfType<AudioManager>();
         boxCollider = GetComponent<BoxCollider>();
         size = boxCollider.size;
@@ -107,8 +113,9 @@ public class Zahnrad_Manager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    new public void Update()
     {
+        base.Update();
         //return;
         bool nextOneSpinning = running;
         if(nextOneSpinning && aufsaetze[0].zahnrad != null) {
@@ -146,5 +153,10 @@ public class Zahnrad_Manager : MonoBehaviour
     void StopRotating()
     {
         running = false;
+    }
+
+    public override void Interact()
+    {
+        GameObject.Find("FPSController").GetComponent<PlayerControl>().SwapToCamera(riddleCam);
     }
 }

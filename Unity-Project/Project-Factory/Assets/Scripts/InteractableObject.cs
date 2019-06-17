@@ -18,10 +18,13 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
     private float glow = 0.5f;
     private int fadeDirection = 1;
 
+    protected Collider col;
+
     public abstract void Interact();
 
-    protected void Init()
+    public void Start()
     {
+        col = GetComponent<Collider>();
         mat = GetComponent<Renderer>().material;
         _toolTip = Name + ":\n drücke F zum interagieren";
     }
@@ -54,7 +57,7 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
         }
     }
 
-    void Update()
+    public void Update()
     {
         if (_selected)
         {
