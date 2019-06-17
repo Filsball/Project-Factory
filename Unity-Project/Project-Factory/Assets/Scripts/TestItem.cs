@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestItem : MonoBehaviour, InventoryItem
+public class TestItem : InventoryItem
 {
-    public string Name { get { return "TestItem"; } }
 
-    public Sprite _Image = null;
-
-    public Sprite Image { get { return _Image; } }
-
-    public void OnPickUp() {
+    override public void OnPickUp()
+    {
         gameObject.SetActive(false);
         //modify here
     }
 
-    public void OnDrop()
+    override public void OnDrop()
     {
-        gameObject.SetActive(true);
+        RaycastHit hit = new RaycastHit();
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit, 1000))
+        {
+            gameObject.SetActive(true);
+            gameObject.transform.position = hit.point;
+        }
     }
 }

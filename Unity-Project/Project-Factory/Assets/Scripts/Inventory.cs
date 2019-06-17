@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour {
 
     public EventHandler<InventoryEventArgs> ItemAdded;
 
-    public EventHandler<InventoryEventArgs> ItemDeleted;
+    public EventHandler<InventoryEventArgs> ItemRemoved;
 
     public void addItem(InventoryItem item)
     {
@@ -30,8 +30,17 @@ public class Inventory : MonoBehaviour {
             }
         }
     }
-    public void RemoveItem(InventoryItem item) {
-        
+
+    public void removeItem(InventoryItem item) {
+        if (ItemList.Contains(item)) {
+            ItemList.Remove(item);
+            item.OnDrop();
+        }
+        Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
+        if (collider != null)
+            collider.enabled = true;
+        ItemRemoved?.Invoke(this, new InventoryEventArgs(item));
     }
+    
 }
 
