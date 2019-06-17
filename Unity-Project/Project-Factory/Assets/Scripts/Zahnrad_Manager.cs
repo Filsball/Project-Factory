@@ -6,6 +6,9 @@ public class Zahnrad_Manager : MonoBehaviour
 {
     public GameObject zahnradPrefab;
     public GameObject aufsatzPrefab;
+    public BoxCollider boxCollider;
+    public AudioManager audioManager;
+    private bool playingAudio = false;
 
     public List<float> zahnradSizes;
     private float zrScaleRadius;
@@ -20,7 +23,9 @@ public class Zahnrad_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        size = GetComponent<BoxCollider>().size;
+        audioManager = FindObjectOfType<AudioManager>();
+        boxCollider = GetComponent<BoxCollider>();
+        size = boxCollider.size;
         if (zahnradPrefab == null)
         {
             print("WARNING: ZahnradPrefab of ZahnradManager " + this + " is null. Setting Zahnrad-Boundaries to (1, 1, 1)");
@@ -84,6 +89,7 @@ public class Zahnrad_Manager : MonoBehaviour
                 gear.name = zahnradSizes[i] + "er Zahnrad";
             }
         }
+        audioManager.setPosition("Zahnraeder", position: boxCollider.center + transform.position);
         //int i = 0
         //foreach (Transform child in transform)
         //{
@@ -105,9 +111,19 @@ public class Zahnrad_Manager : MonoBehaviour
     {
         //return;
         bool nextOneSpinning = running;
+        if(nextOneSpinning && aufsaetze[0].zahnrad != null) {
+            if (!playingAudio)
+            {
+                audioManager.generatorStarted = true;
+                audioManager.Play("Zahnraeder", 0.1f, audioManager.transform.position);
+                audioManager.Play("GeneratorStartend", 1.0f, audioManager.transform.position - new Vector3(2f, 2f, 2f));
+                playingAudio = true;
+            }
+        }
         for (int i= 0; i < aufsaetze.Count; i++)
         {
             ZahnradAufsatz aufsatz = aufsaetze[i];
+
             aufsatz.spinning = nextOneSpinning && (aufsatz.zahnrad != null && aufsatz.zahnrad.transform.localScale.x == zahnradSizes[i]);
             if(i > 0)
             {
