@@ -30,6 +30,7 @@ public class Inventory : MonoBehaviour {
             }
         }
     }
+
     public void removeItem(InventoryItem item) {
         if (ItemList.Contains(item)) {
             ItemList.Remove(item);
