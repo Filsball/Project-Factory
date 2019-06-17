@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryItem : InteractableObject, Inventoriable
+public abstract class InventoryItem : InteractableObject, Inventoriable
 {
     public Sprite _Image = null;
     public Sprite Image { get { return _Image; } }
+
+    public abstract void OnDrop();
+    public abstract void OnPickUp();
 
     public void Start()
     {
@@ -13,17 +16,9 @@ public class InventoryItem : InteractableObject, Inventoriable
         _name = "Basic inventory item";
         _toolTip = Name + ": Drücke F zum aufheben";
     }
-    public override void Interact()
-    {
-        // nothing to do here
-    }
-    public void OnPickUp() {
-        gameObject.SetActive(false);
-        //modify here
-    }
 
-    public void OnDrop()
+    override public void Interact()
     {
-        gameObject.SetActive(true);
+        // Interacting with Inventory Object is realized in OnPickUp/OnDrop
     }
 }
