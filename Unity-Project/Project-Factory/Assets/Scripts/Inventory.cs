@@ -30,6 +30,7 @@ public class Inventory : MonoBehaviour {
             }
         }
     }
+
     public void removeItem(InventoryItem item) {
         if (ItemList.Contains(item)) {
             ItemList.Remove(item);
@@ -38,8 +39,7 @@ public class Inventory : MonoBehaviour {
         Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
         if (collider != null)
             collider.enabled = true;
-        if (ItemRemoved != null)
-            ItemRemoved(this, new InventoryEventArgs(item));
+        ItemRemoved?.Invoke(this, new InventoryEventArgs(item));
     }
     
 }
