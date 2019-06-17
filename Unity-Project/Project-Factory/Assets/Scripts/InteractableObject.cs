@@ -17,8 +17,9 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
     private Material mat;
     private float glow = 0.5f;
     private int fadeDirection = 1;
-    
-    
+
+    public abstract void Interact();
+
     protected void Init()
     {
         mat = GetComponent<Renderer>().material;
@@ -65,5 +66,4 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
         }
     }
 
-    public abstract void Interact();
 }

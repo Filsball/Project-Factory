@@ -11,13 +11,7 @@ public class PlayerControl : MonoBehaviour
     private Interactable lookedAtObject;
     private InventoryItem itemPickUp = null;
 
-    //   public float speed = 5.0f;
-
-    //    public float rotationspeed = 240.0f;
-
-    //   private float gravity = 20.0f;
-
-    //    private Vector3 moveDir = Vector3.zero;
+    
 
     public HUD hud;
 

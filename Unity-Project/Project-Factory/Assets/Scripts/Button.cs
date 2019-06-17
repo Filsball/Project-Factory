@@ -6,19 +6,15 @@ public class Button : InteractableObject
 {
     public override void Interact()
     {
-        Interact();
     }
+
+
 
     // Start is called before the first frame update
     public void Start()
     {
+        Name = "Knopf";
         Init();
-        _name = "Knopf";
     }
-
-    // Update is called once per frame
-    public void Update()
-    {
-        //base.Update();
-    }
+    
 }

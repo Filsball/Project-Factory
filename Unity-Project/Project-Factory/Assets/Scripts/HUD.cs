@@ -31,10 +31,15 @@ public class HUD : MonoBehaviour
         Transform inventoryPanel = transform.Find("Inventory");
 
         foreach(Transform Slot in inventoryPanel){
-            Image img = Slot.GetChild(0).GetChild(0).GetComponent<Image>();
+
+            Transform imageTransform = Slot.GetChild(0).GetChild(0);
+            Image img = imageTransform.GetComponent<Image>();
+            ItemDragHandler itemDragHandler = imageTransform.GetComponent<ItemDragHandler>();
+
             if (!img.enabled) {
                 img.enabled = true;
                 img.sprite = e.Item.Image;
+                itemDragHandler.Item = e.Item;
                 break;
             }
         }
@@ -50,7 +55,7 @@ public class HUD : MonoBehaviour
             Image img = imageTransform.GetComponent<Image>();
             ItemDragHandler itemDragHandler = imageTransform.GetComponent<ItemDragHandler>();
 
-            if (itemDragHandler.item.Equals(e.Item))
+            if (itemDragHandler.Item.Equals(e.Item))
             {
                 img.enabled = false;
                 img.sprite = null;
