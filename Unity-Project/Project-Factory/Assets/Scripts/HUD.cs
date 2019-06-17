@@ -40,14 +40,11 @@ public class HUD : MonoBehaviour
 
     public void OpenMsgPanel(string text)
     {
-        //Debug.Log("SHOWING: " + text);
-        MsgPanel.GetComponentInChildren<Text>().text = text;
         MsgPanel.SetActive(true);
     }
 
     public void CloseMsgPanel()
     {
-        MsgPanel.GetComponentInChildren<Text>().text = "INFORMATIONS PANEL";
         MsgPanel.SetActive(false);
     }
 

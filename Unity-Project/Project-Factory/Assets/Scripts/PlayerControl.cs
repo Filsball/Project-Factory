@@ -7,9 +7,6 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class PlayerControl : MonoBehaviour
 {
     private CharacterController characterController;
-    private Transform head;
-    private Interactable lookedAtObject;
-    private InventoryItem itemPickUp = null;
 
     //   public float speed = 5.0f;
 
@@ -23,11 +20,11 @@ public class PlayerControl : MonoBehaviour
 
     public Inventory inventory;
 
+    private InventoryItem itemPickUp = null;
 
    // private bool mLockPickUp;
 
     private bool InvOpen;
-    private Color enteredColor;
 
    // private MouseLook mouseLock;
 
@@ -35,59 +32,11 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        head = transform.GetComponentInChildren<Camera>().transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (lookedAtObject != null)
-        {
-            lookedAtObject.Selected = false;
-        }
-
-        DeterminLookedAtObject();
-
-        if(lookedAtObject != null)
-        {
-            lookedAtObject.Selected = true;
-            hud.OpenMsgPanel(lookedAtObject.ToolTip);
-        }
-        else
-        {
-            hud.CloseMsgPanel();
-        }
-
-
-        HandleInput();
-    }
-
-    private void DeterminLookedAtObject()
-    {
-
-        Vector3 headLook = head.TransformDirection(Vector3.forward);
-        Ray interactionRay = new Ray(head.position + (headLook * 0.25f), headLook);
-        RaycastHit hit;
-
-        if (Physics.Raycast(interactionRay, out hit, Mathf.Infinity))
-        {
-            Debug.DrawRay(interactionRay.origin, interactionRay.direction * hit.distance, Color.red);
-            lookedAtObject = hit.collider.transform.GetComponent<Interactable>();
-        }
-        else
-        {
-            Debug.DrawRay(head.position, head.TransformDirection(Vector3.forward) * 100000, Color.red);
-        }
-    }
-
-    private void HandleInput()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-            inventarVerwalten();
-
-        if (Input.GetKeyDown(KeyCode.G))
-            dropItem();
-
         if (itemPickUp != null && Input.GetKeyDown(KeyCode.F))
         {
             inventory.addItem(itemPickUp);
@@ -95,6 +44,12 @@ public class PlayerControl : MonoBehaviour
             itemPickUp = null;
             hud.CloseMsgPanel();
         }
+
+        if (Input.GetKeyDown(KeyCode.I))
+            inventarVerwalten();
+
+        if (Input.GetKeyDown(KeyCode.G))
+            dropItem();
     }
 
     private void dropItem()
@@ -122,27 +77,25 @@ public class PlayerControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-         //InventoryItem inventoryItem = collider.GetComponent<InventoryItem>();
-         //if (inventoryItem != null)
-         //{
-         //   //    if (mLockPickUp)
-         //   //        return;
+         InventoryItem inventoryItem = collider.GetComponent<InventoryItem>();
+         if (inventoryItem != null)
+         {
+         //    if (mLockPickUp)
+         //        return;
 
-         //   inventoryItem.Selected = true;
-         //   itemPickUp = inventoryItem;
-         //    hud.OpenMsgPanel("");
-         //}
+             itemPickUp = inventoryItem;
+             hud.OpenMsgPanel("");
+         }
        
 
     }
     private void OnTriggerExit(Collider collider)
     {
-        //InventoryItem inventoryItem = collider.GetComponent<InventoryItem>();
-        //if (inventoryItem != null)
-        //{
-        //    inventoryItem.Selected = false;
-        //    hud.CloseMsgPanel();
-        //    itemPickUp = null;
-        //}
+        InventoryItem inventoryItem = collider.GetComponent<InventoryItem>();
+        if (inventoryItem != null)
+        {
+            hud.CloseMsgPanel();
+            itemPickUp = null;
+        }
     }
 }
