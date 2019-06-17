@@ -1,27 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public interface InventoryItem
+public class InventoryItem : InteractableObject, Inventoriable
 {
-    string Name { get; }
-    Sprite Image { get; }
-    void OnPickUp();
-    void OnDrop();
-}
+    public Sprite _Image = null;
+    public Sprite Image { get { return _Image; } }
 
-public class InventoryEventArgs : EventArgs
-{
-    public InventoryItem Item;
-
-    public InventoryEventArgs(InventoryItem item)
+    public void Start()
     {
-        Item = item;
+        Init();
+        _name = "Basic inventory item";
+        _toolTip = Name + ": Drücke F zum aufheben";
+    }
+    public override void Interact()
+    {
+        // nothing to do here
+    }
+    public void OnPickUp() {
+        gameObject.SetActive(false);
+        //modify here
     }
 
-    public void InventoryEventsArgs(InventoryItem item)
+    public void OnDrop()
     {
-        Item = item;
+        gameObject.SetActive(true);
     }
 }
