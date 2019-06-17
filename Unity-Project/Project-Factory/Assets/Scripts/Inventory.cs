@@ -30,8 +30,6 @@ public class Inventory : MonoBehaviour {
             }
         }
     }
-    public void RemoveItem(InventoryItem) {
-        
-    }
+    
 }
 
