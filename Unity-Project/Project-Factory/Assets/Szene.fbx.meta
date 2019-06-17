@@ -1,0 +1,360 @@
+fileFormatVersion: 2
+guid: 1371e5d4b7948a0458fdd7c709d6da5d
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: antennas.000
+    100002: button_01
+    100004: button_02
+    100006: button_03
+    100008: button_04
+    100010: button_panel
+    100012: buttons_sockets
+    100014: casing_small.002
+    100016: desk_metal
+    100018: desk_metal_schublade_L1
+    100020: desk_metal_schublade_L2
+    100022: desk_metal_schublade_L3
+    100024: desk_metal_schublade_R1
+    100026: door_holders_left.000
+    100028: door_holders_right.000
+    100030: door_left.000
+    100032: door_right.000
+    100034: electric motor inner.000
+    100036: electric motor outer.000
+    100038: 'electric-motor_axis '
+    100040: Flur_Boden
+    100042: Flur_Decke
+    100044: Flur_Wand_Aussen_Zwischen_Generator-Kippschalter
+    100046: Flur_Wand_Aussen_Zwischen_Kippschalter-Schwarzlicht
+    100048: Flur_Wand_Aussen_Zwischen_Schwarzlicht-Safe
+    100050: Flur_Wand_Generator_01
+    100052: Flur_Wand_Generator_02
+    100054: Flur_Wand_Kippschalter_01
+    100056: Flur_Wand_Kippschalter_02
+    100058: Flur_Wand_Safe
+    100060: Flur_Wand_Schwarzlicht_01
+    100062: Flur_Wand_Schwarzlicht_02
+    100064: "Flur_Wand_St\xE4nder"
+    100066: generator_body
+    100068: Raum_Generator_Boden
+    100070: "Raum_Generator_T\xFCrrahmen"
+    100072: "Raum_Generator_W\xE4nde"
+    100074: Raum_Kippschalter_Boden
+    100076: Raum_Kippschalter_Decke
+    100078: "Raum_Kippschalter_T\xFCrrahmen"
+    100080: "Raum_Kippschalter_W\xE4nde"
+    100082: Raum_Safe_Boden
+    100084: Raum_Safe_Decke
+    100086: "Raum_Safe_W\xE4nde"
+    100088: Raum_Schwarzlicht_Boden
+    100090: Raum_Schwarzlicht_Decke
+    100092: "Raum_Schwarzlicht_T\xFCrrahmen"
+    100094: "Raum_Schwarzlicht_W\xE4nde"
+    100096: "Saferoom_T\xFCrrahmen"
+    100098: //RootNode
+    400000: antennas.000
+    400002: button_01
+    400004: button_02
+    400006: button_03
+    400008: button_04
+    400010: button_panel
+    400012: buttons_sockets
+    400014: casing_small.002
+    400016: desk_metal
+    400018: desk_metal_schublade_L1
+    400020: desk_metal_schublade_L2
+    400022: desk_metal_schublade_L3
+    400024: desk_metal_schublade_R1
+    400026: door_holders_left.000
+    400028: door_holders_right.000
+    400030: door_left.000
+    400032: door_right.000
+    400034: electric motor inner.000
+    400036: electric motor outer.000
+    400038: 'electric-motor_axis '
+    400040: Flur_Boden
+    400042: Flur_Decke
+    400044: Flur_Wand_Aussen_Zwischen_Generator-Kippschalter
+    400046: Flur_Wand_Aussen_Zwischen_Kippschalter-Schwarzlicht
+    400048: Flur_Wand_Aussen_Zwischen_Schwarzlicht-Safe
+    400050: Flur_Wand_Generator_01
+    400052: Flur_Wand_Generator_02
+    400054: Flur_Wand_Kippschalter_01
+    400056: Flur_Wand_Kippschalter_02
+    400058: Flur_Wand_Safe
+    400060: Flur_Wand_Schwarzlicht_01
+    400062: Flur_Wand_Schwarzlicht_02
+    400064: "Flur_Wand_St\xE4nder"
+    400066: generator_body
+    400068: Raum_Generator_Boden
+    400070: "Raum_Generator_T\xFCrrahmen"
+    400072: "Raum_Generator_W\xE4nde"
+    400074: Raum_Kippschalter_Boden
+    400076: Raum_Kippschalter_Decke
+    400078: "Raum_Kippschalter_T\xFCrrahmen"
+    400080: "Raum_Kippschalter_W\xE4nde"
+    400082: Raum_Safe_Boden
+    400084: Raum_Safe_Decke
+    400086: "Raum_Safe_W\xE4nde"
+    400088: Raum_Schwarzlicht_Boden
+    400090: Raum_Schwarzlicht_Decke
+    400092: "Raum_Schwarzlicht_T\xFCrrahmen"
+    400094: "Raum_Schwarzlicht_W\xE4nde"
+    400096: "Saferoom_T\xFCrrahmen"
+    400098: //RootNode
+    2100000: No Name
+    2100002: antennas_mat.003
+    2100004: Material.008
+    2100006: Material.005
+    2100008: Material.006
+    2100010: Wall2_cuts
+    2100012: Wall2_cuts.013
+    2100014: Wall2_cuts.006
+    2100016: Wall2_cuts.010
+    2100018: Wall2_cuts.014
+    2100020: Wall2_cuts.015
+    2100022: Wall2_cuts.019
+    2100024: Wall2_cuts.020
+    2100026: Wall2_cuts.022
+    2100028: Wall2_cuts.023
+    2100030: Wall2_cuts.018
+    2100032: Wall2_cuts.007
+    2100034: Wall2_cuts.021
+    2100036: Wall2_cuts.001
+    2100038: Wall2_cuts.024
+    2100040: Wall2_cuts.017
+    2300000: antennas.000
+    2300002: button_01
+    2300004: button_02
+    2300006: button_03
+    2300008: button_04
+    2300010: button_panel
+    2300012: buttons_sockets
+    2300014: casing_small.002
+    2300016: desk_metal
+    2300018: desk_metal_schublade_L1
+    2300020: desk_metal_schublade_L2
+    2300022: desk_metal_schublade_L3
+    2300024: desk_metal_schublade_R1
+    2300026: door_holders_left.000
+    2300028: door_holders_right.000
+    2300030: door_left.000
+    2300032: door_right.000
+    2300034: electric motor inner.000
+    2300036: electric motor outer.000
+    2300038: 'electric-motor_axis '
+    2300040: Flur_Boden
+    2300042: Flur_Decke
+    2300044: Flur_Wand_Aussen_Zwischen_Generator-Kippschalter
+    2300046: Flur_Wand_Aussen_Zwischen_Kippschalter-Schwarzlicht
+    2300048: Flur_Wand_Aussen_Zwischen_Schwarzlicht-Safe
+    2300050: Flur_Wand_Generator_01
+    2300052: Flur_Wand_Generator_02
+    2300054: Flur_Wand_Kippschalter_01
+    2300056: Flur_Wand_Kippschalter_02
+    2300058: Flur_Wand_Safe
+    2300060: Flur_Wand_Schwarzlicht_01
+    2300062: Flur_Wand_Schwarzlicht_02
+    2300064: "Flur_Wand_St\xE4nder"
+    2300066: generator_body
+    2300068: Raum_Generator_Boden
+    2300070: "Raum_Generator_T\xFCrrahmen"
+    2300072: "Raum_Generator_W\xE4nde"
+    2300074: Raum_Kippschalter_Boden
+    2300076: Raum_Kippschalter_Decke
+    2300078: "Raum_Kippschalter_T\xFCrrahmen"
+    2300080: "Raum_Kippschalter_W\xE4nde"
+    2300082: Raum_Safe_Boden
+    2300084: Raum_Safe_Decke
+    2300086: "Raum_Safe_W\xE4nde"
+    2300088: Raum_Schwarzlicht_Boden
+    2300090: Raum_Schwarzlicht_Decke
+    2300092: "Raum_Schwarzlicht_T\xFCrrahmen"
+    2300094: "Raum_Schwarzlicht_W\xE4nde"
+    2300096: "Saferoom_T\xFCrrahmen"
+    3300000: antennas.000
+    3300002: button_01
+    3300004: button_02
+    3300006: button_03
+    3300008: button_04
+    3300010: button_panel
+    3300012: buttons_sockets
+    3300014: casing_small.002
+    3300016: desk_metal
+    3300018: desk_metal_schublade_L1
+    3300020: desk_metal_schublade_L2
+    3300022: desk_metal_schublade_L3
+    3300024: desk_metal_schublade_R1
+    3300026: door_holders_left.000
+    3300028: door_holders_right.000
+    3300030: door_left.000
+    3300032: door_right.000
+    3300034: electric motor inner.000
+    3300036: electric motor outer.000
+    3300038: 'electric-motor_axis '
+    3300040: Flur_Boden
+    3300042: Flur_Decke
+    3300044: Flur_Wand_Aussen_Zwischen_Generator-Kippschalter
+    3300046: Flur_Wand_Aussen_Zwischen_Kippschalter-Schwarzlicht
+    3300048: Flur_Wand_Aussen_Zwischen_Schwarzlicht-Safe
+    3300050: Flur_Wand_Generator_01
+    3300052: Flur_Wand_Generator_02
+    3300054: Flur_Wand_Kippschalter_01
+    3300056: Flur_Wand_Kippschalter_02
+    3300058: Flur_Wand_Safe
+    3300060: Flur_Wand_Schwarzlicht_01
+    3300062: Flur_Wand_Schwarzlicht_02
+    3300064: "Flur_Wand_St\xE4nder"
+    3300066: generator_body
+    3300068: Raum_Generator_Boden
+    3300070: "Raum_Generator_T\xFCrrahmen"
+    3300072: "Raum_Generator_W\xE4nde"
+    3300074: Raum_Kippschalter_Boden
+    3300076: Raum_Kippschalter_Decke
+    3300078: "Raum_Kippschalter_T\xFCrrahmen"
+    3300080: "Raum_Kippschalter_W\xE4nde"
+    3300082: Raum_Safe_Boden
+    3300084: Raum_Safe_Decke
+    3300086: "Raum_Safe_W\xE4nde"
+    3300088: Raum_Schwarzlicht_Boden
+    3300090: Raum_Schwarzlicht_Decke
+    3300092: "Raum_Schwarzlicht_T\xFCrrahmen"
+    3300094: "Raum_Schwarzlicht_W\xE4nde"
+    3300096: "Saferoom_T\xFCrrahmen"
+    4300000: generator_body
+    4300002: antennas.000
+    4300004: door_holders_left.000
+    4300006: door_holders_right.000
+    4300008: door_left.000
+    4300010: door_right.000
+    4300012: button_panel
+    4300014: button_04
+    4300016: buttons_sockets
+    4300018: button_01
+    4300020: button_02
+    4300022: button_03
+    4300024: electric motor inner.000
+    4300026: electric motor outer.000
+    4300028: casing_small.002
+    4300030: 'electric-motor_axis '
+    4300032: desk_metal
+    4300034: desk_metal_schublade_L1
+    4300036: desk_metal_schublade_L2
+    4300038: desk_metal_schublade_L3
+    4300040: desk_metal_schublade_R1
+    4300042: "Raum_Generator_W\xE4nde"
+    4300044: "Raum_Generator_T\xFCrrahmen"
+    4300046: Raum_Generator_Boden
+    4300048: Flur_Wand_Aussen_Zwischen_Generator-Kippschalter
+    4300050: Flur_Wand_Aussen_Zwischen_Kippschalter-Schwarzlicht
+    4300052: Flur_Wand_Aussen_Zwischen_Schwarzlicht-Safe
+    4300054: "Flur_Wand_St\xE4nder"
+    4300056: Flur_Wand_Safe
+    4300058: Flur_Wand_Generator_01
+    4300060: Flur_Wand_Generator_02
+    4300062: Flur_Wand_Kippschalter_02
+    4300064: Flur_Wand_Kippschalter_01
+    4300066: Flur_Wand_Schwarzlicht_01
+    4300068: Flur_Wand_Schwarzlicht_02
+    4300070: Flur_Boden
+    4300072: Flur_Decke
+    4300074: "Raum_Kippschalter_T\xFCrrahmen"
+    4300076: "Raum_Kippschalter_W\xE4nde"
+    4300078: Raum_Kippschalter_Boden
+    4300080: Raum_Kippschalter_Decke
+    4300082: "Raum_Schwarzlicht_T\xFCrrahmen"
+    4300084: "Raum_Schwarzlicht_W\xE4nde"
+    4300086: Raum_Schwarzlicht_Boden
+    4300088: Raum_Schwarzlicht_Decke
+    4300090: "Saferoom_T\xFCrrahmen"
+    4300092: "Raum_Safe_W\xE4nde"
+    4300094: Raum_Safe_Boden
+    4300096: Raum_Safe_Decke
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

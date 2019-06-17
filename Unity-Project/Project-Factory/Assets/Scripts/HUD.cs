@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class HUD : MonoBehaviour
 {
     public Inventory inventory;
@@ -16,6 +17,7 @@ public class HUD : MonoBehaviour
     void Start()
     {
         inventory.ItemAdded += InventoryScript_ItemAdded;
+        inventory.ItemRemoved += InventoryItemRemoved;
     }
 
     // Update is called once per frame
@@ -38,13 +40,35 @@ public class HUD : MonoBehaviour
         }
     }
 
+    private void InventoryItemRemoved(object sender, InventoryEventArgs e)
+    {
+        Transform inventoryPanel = transform.Find("Inventory");
+
+        foreach (Transform Slot in inventoryPanel)
+        {
+            Transform imageTransform = Slot.GetChild(0).GetChild(0);
+            Image img = imageTransform.GetComponent<Image>();
+            ItemDragHandler itemDragHandler = imageTransform.GetComponent<ItemDragHandler>();
+
+            if (itemDragHandler.item.Equals(e.Item))
+            {
+                img.enabled = false;
+                img.sprite = null;
+                itemDragHandler = null;
+                break;
+            }
+        }
+    }
     public void OpenMsgPanel(string text)
     {
+        //Debug.Log("SHOWING: " + text);
+        MsgPanel.GetComponentInChildren<Text>().text = text;
         MsgPanel.SetActive(true);
     }
 
     public void CloseMsgPanel()
     {
+        MsgPanel.GetComponentInChildren<Text>().text = "INFORMATIONS PANEL";
         MsgPanel.SetActive(false);
     }
 
