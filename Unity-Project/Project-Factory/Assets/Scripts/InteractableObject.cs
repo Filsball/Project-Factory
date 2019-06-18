@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class InteractableObject : MonoBehaviour, Interactable
 {
+    public bool currentlyInteractable = true;
     protected string _toolTip = "";
     public string ToolTip { get => _toolTip; } // set => _toolTip = value; }
 

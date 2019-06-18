@@ -13,6 +13,7 @@ public class Button : InteractableObject
 
     public override void Interact()
     {
+        if (!currentlyInteractable) return;
         if (!pressed){
             translateTo = transform.position + new Vector3(-col.bounds.size.x / 2, 0, 0);
         }

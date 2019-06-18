@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
 {
     private CharacterController characterController;
     private Transform head;
-    private Interactable lookedAtObject;
+    private InteractableObject lookedAtObject;
     private InventoryItem itemPickUp = null;
     private Camera headCamera;
     private Camera activeCamera;
@@ -50,7 +50,7 @@ public class PlayerControl : MonoBehaviour
 
             DeterminLookedAtObject();
 
-            if (lookedAtObject != null)
+            if (lookedAtObject != null && lookedAtObject.currentlyInteractable)
             {
                 lookedAtObject.Selected = true;
                 hud.OpenMsgPanel(lookedAtObject.ToolTip);
@@ -113,7 +113,7 @@ public class PlayerControl : MonoBehaviour
         if (Physics.Raycast(interactionRay, out hit, Mathf.Infinity))
         {
             Debug.DrawRay(interactionRay.origin, interactionRay.direction * hit.distance, Color.red);
-            lookedAtObject = hit.collider.transform.GetComponent<Interactable>();
+            lookedAtObject = hit.collider.transform.GetComponent<InteractableObject>();
         }
         else
         {
