@@ -16,6 +16,7 @@ public class GeneratorManager : MonoBehaviour
     public float doorOpenSpeed = 2;
 
     private bool doorsHaveOpened = false;
+    [SerializeField]
     private bool doorsOpening = false;
    
     List<Button> buttonsPressed = new List<Button>();

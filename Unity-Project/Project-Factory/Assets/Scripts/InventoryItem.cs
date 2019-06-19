@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class InventoryItem : InteractableObject, Inventoriable
 {
-    public Sprite _Image = null;
+    public Sprite _Image= null;
     public Sprite Image { get { return _Image; } }
 
     public abstract void OnDrop();

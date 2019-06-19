@@ -134,17 +134,20 @@ public class PlayerControl : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (itemPickUp != null)
-                {
-                    inventory.addItem(itemPickUp);
-                    itemPickUp.OnPickUp();
-                    itemPickUp = null;
-                    hud.CloseMsgPanel();
-                }
-
                 if (lookedAtObject != null)
                 {
-                    lookedAtObject.Interact();
+                    if (lookedAtObject is InventoryItem)
+                    {
+                        itemPickUp = (InventoryItem)lookedAtObject;
+                        inventory.addItem(itemPickUp);
+                        itemPickUp = null;
+                        lookedAtObject = null;
+                        hud.CloseMsgPanel();
+                    }
+                    else
+                    {
+                        lookedAtObject.Interact();
+                    }
                 }
             }
         }

@@ -9,6 +9,7 @@ public class Zahnrad : InventoryItem
     {
         base.Start();
         _name = "Zahnrad";
+        
     }
     public override void OnDrop()
     {
