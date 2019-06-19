@@ -4,8 +4,6 @@ using UnityEngine;
 [RequireComponent (typeof (Collider))]
 public class Zahnrad_Manager : InteractableObject
 {
-        
-    
     public GameObject zahnradPrefab;
     public GameObject aufsatzPrefab;
     public BoxCollider boxCollider;
@@ -28,7 +26,7 @@ public class Zahnrad_Manager : InteractableObject
     new public void Start()
     {
         base.Start();
-        _toolTip = "Drück F um näher zu treten";
+        _interactionName = "näher zu treten";
         audioManager = FindObjectOfType<AudioManager>();
         boxCollider = GetComponent<BoxCollider>();
         size = boxCollider.size;

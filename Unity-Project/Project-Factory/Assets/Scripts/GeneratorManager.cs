@@ -12,6 +12,8 @@ public class GeneratorManager : MonoBehaviour
     public GameObject leftDoor;
     [Range(90, 180)]
     public int doorOpenAngle = 100;
+    [Range(0.5f, 5)]
+    public float doorOpenSpeed = 2;
 
     private bool doorsHaveOpened = false;
     private bool doorsOpening = false;
@@ -33,12 +35,12 @@ public class GeneratorManager : MonoBehaviour
 
         if ((int)(rightDoor.transform.rotation.eulerAngles.y) != 360 - doorOpenAngle)
         {
-            rightDoor.transform.Rotate(new Vector3(0, 0, -1));
+            rightDoor.transform.Rotate(new Vector3(0, 0, -doorOpenSpeed));
             doorsHaveOpened = false;
         }
-        if ((int)(leftDoor.transform.rotation.eulerAngles.y) != doorOpenAngle)
+        if ((int)(leftDoor.transform.rotation.eulerAngles.y) < doorOpenAngle)
         {
-            leftDoor.transform.Rotate(new Vector3(0, 0, 1));
+            leftDoor.transform.Rotate(new Vector3(0, 0, doorOpenSpeed));
             doorsHaveOpened = false;
         }
 

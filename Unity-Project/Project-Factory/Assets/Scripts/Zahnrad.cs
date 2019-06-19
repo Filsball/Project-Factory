@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent (typeof (Collider))]
-public class Zahnrad : MonoBehaviour
+public class Zahnrad : InventoryItem
 {
-
-    // Start is called before the first frame update
-    void Start()
+    new public void Start()
     {
-
+        base.Start();
+        _name = "Zahnrad";
+    }
+    public override void OnDrop()
+    {
+        gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnPickUp()
     {
-        
+        gameObject.SetActive(false);
     }
 }

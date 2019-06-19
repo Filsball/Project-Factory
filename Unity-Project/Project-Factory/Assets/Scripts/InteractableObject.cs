@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class InteractableObject : MonoBehaviour, Interactable
 {
     public bool currentlyInteractable = true;
-    protected string _toolTip = "";
-    public string ToolTip { get => _toolTip; } // set => _toolTip = value; }
+    protected string _interactionName = "interagieren";
+    public string ToolTip { get => Name + (Name != "" ? ":\n":"") + "Drücke F zum "+_interactionName; } // set => _toolTip = value; }
 
     protected bool _selected = false;
     public bool Selected { get => _selected; set => _selected = value; }
@@ -14,6 +14,7 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
     protected string _name = "";
     public string Name { get => _name; set => _name = value; }
 
+    new public Renderer renderer;
 
     private Material mat;
     private float glow = 0.5f;
@@ -25,9 +26,20 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
 
     public void Start()
     {
+        if (renderer == null)
+        {
+            renderer = GetComponent<Renderer>();
+            if(renderer == null)
+            {
+                renderer = GetComponentInChildren<Renderer>();
+                if(renderer == null)
+                {
+                    Debug.Log("Konnte bei " + Name + " kein Renderer finden.");
+                }
+            }
+        }
         col = GetComponent<Collider>();
-        mat = GetComponent<Renderer>().material;
-        _toolTip = Name + ":\n drücke F zum interagieren";
+        mat = renderer.material;
     }
 
     private void CycleHighlighting()

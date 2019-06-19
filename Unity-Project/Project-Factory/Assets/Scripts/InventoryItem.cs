@@ -14,7 +14,7 @@ public abstract class InventoryItem : InteractableObject, Inventoriable
     {
         base.Start();
         _name = "Basic inventory item";
-        _toolTip = Name + ": Drücke F zum aufheben";
+        _interactionName = "aufheben";
     }
 
     override public void Interact()

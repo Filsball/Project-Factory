@@ -6,6 +6,12 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerControl : MonoBehaviour
 {
+    [Range(1,10)]
+    public float maxInteractingDistance = 2.5f;
+    public HUD hud;
+    public Inventory inventory;
+
+
     private CharacterController characterController;
     private Transform head;
     private InteractableObject lookedAtObject;
@@ -14,12 +20,6 @@ public class PlayerControl : MonoBehaviour
     private Camera activeCamera;
     FirstPersonController fpc;
     private bool isInRiddle = false;
-
-
-    public HUD hud;
-
-    public Inventory inventory;
-
 
    // private bool mLockPickUp;
 
@@ -106,18 +106,19 @@ public class PlayerControl : MonoBehaviour
     private void DeterminLookedAtObject()
     {
 
-        Vector3 headLook = head.TransformDirection(Vector3.forward);
-        Ray interactionRay = new Ray(head.position + (headLook * 0.25f), headLook);
+        Vector3 lookingDirection = head.TransformDirection(Vector3.forward);
+        Ray interactionRay = new Ray(head.position + (lookingDirection * 0.25f), lookingDirection);
         RaycastHit hit;
 
-        if (Physics.Raycast(interactionRay, out hit, Mathf.Infinity))
+        if (Physics.Raycast(interactionRay, out hit, maxInteractingDistance))
         {
             Debug.DrawRay(interactionRay.origin, interactionRay.direction * hit.distance, Color.red);
             lookedAtObject = hit.collider.transform.GetComponent<InteractableObject>();
         }
         else
         {
-            Debug.DrawRay(head.position, head.TransformDirection(Vector3.forward) * 100000, Color.red);
+            lookedAtObject = null;
+            Debug.DrawRay(head.position, head.TransformDirection(Vector3.forward) * maxInteractingDistance, Color.red);
         }
     }
 
