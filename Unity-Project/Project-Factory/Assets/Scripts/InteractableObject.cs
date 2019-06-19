@@ -8,6 +8,7 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
     protected string _interactionName = "interagieren";
     public string ToolTip { get => Name + (Name != "" ? ":\n":"") + "Drücke F zum "+_interactionName; } // set => _toolTip = value; }
 
+    [SerializeField]
     protected bool _selected = false;
     public bool Selected { get => _selected; set => _selected = value; }
 
@@ -20,7 +21,7 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
     private float glow = 0.5f;
     private int fadeDirection = 1;
 
-    protected Collider col;
+    public Collider col;
 
     public abstract void Interact();
 

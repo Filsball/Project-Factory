@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
     private CharacterController characterController;
     private Transform head;
     private InteractableObject lookedAtObject;
+    private InteractableObject cameraFocusedOn; // e.g. Riddle
     private InventoryItem itemPickUp = null;
     private Camera headCamera;
     private Camera activeCamera;
@@ -38,16 +39,21 @@ public class PlayerControl : MonoBehaviour
         fpc = GetComponent<FirstPersonController>();
     }
 
+    public void ResetLookedAtObject()
+    {
+        if (lookedAtObject != null)
+        {
+            lookedAtObject.Selected = false;
+        }
+        lookedAtObject = null;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        ResetLookedAtObject();
         if (!isInRiddle)
         {
-            if (lookedAtObject != null)
-            {
-                lookedAtObject.Selected = false;
-            }
-
             DeterminLookedAtObject();
 
             if (lookedAtObject != null && lookedAtObject.currentlyInteractable)
@@ -70,6 +76,13 @@ public class PlayerControl : MonoBehaviour
 
     public void SwapBackToPlayer()
     {
+        cameraFocusedOn.col.enabled = true;
+        Collider parentCol = cameraFocusedOn.gameObject.transform.parent.GetComponent<Collider>();
+        if (parentCol != null)
+        {
+            parentCol.enabled = true;
+        }
+        cameraFocusedOn = null;
         isInRiddle = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -85,8 +98,15 @@ public class PlayerControl : MonoBehaviour
         hud.OpenCrossHairPanel();
     }
 
-    public void SwapToCamera(Camera c)
+    public void SwapToCamera(Camera c, InteractableObject swapTo)
     {
+        cameraFocusedOn = swapTo;
+        cameraFocusedOn.col.enabled = false;
+        Collider parentCol = cameraFocusedOn.gameObject.transform.parent.GetComponent<Collider>();
+        if (parentCol != null)
+        {
+            parentCol.enabled = false;
+        }
         isInRiddle = true;
         headCamera.gameObject.SetActive(false);
         fpc.enabled = false;

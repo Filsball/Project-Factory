@@ -129,7 +129,7 @@ public class Zahnrad_Manager : InteractableObject
         {
             ZahnradAufsatz aufsatz = aufsaetze[i];
 
-            aufsatz.spinning = nextOneSpinning && (aufsatz.zahnrad != null && aufsatz.zahnrad.transform.localScale.x == zahnradSizes[i]);
+            aufsatz.spinning = i == 0 || (nextOneSpinning && (aufsatz.zahnrad != null && aufsatz.zahnrad.transform.localScale.x == zahnradSizes[i]));
             if(i > 0)
             {
                 aufsatz.spinningSpeed = aufsaetze[i - 1].spinningSpeed *  zahnradSizes[i-1] / zahnradSizes[i];
@@ -155,6 +155,6 @@ public class Zahnrad_Manager : InteractableObject
 
     public override void Interact()
     {
-        GameObject.Find("FPSController").GetComponent<PlayerControl>().SwapToCamera(riddleCam);
+        GameObject.Find("FPSController").GetComponent<PlayerControl>().SwapToCamera(riddleCam,this);
     }
 }

@@ -12,7 +12,7 @@ public class Inventory : MonoBehaviour {
     public EventHandler<InventoryEventArgs> ItemAdded;
 
     public EventHandler<InventoryEventArgs> ItemRemoved;
-
+    
     public void addItem(InventoryItem item)
     {
         if (ItemList.Count < Slots)
@@ -20,9 +20,10 @@ public class Inventory : MonoBehaviour {
             Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
             if (collider.enabled)
             {
-                GetComponent<Collider>().enabled = false;
+                collider.enabled = false;
                 ItemList.Add(item);
                 item.OnPickUp();
+                item.Selected = false;
             }
             if (ItemAdded != null)
             {

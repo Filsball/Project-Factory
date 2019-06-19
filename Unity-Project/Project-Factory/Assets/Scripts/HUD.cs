@@ -40,7 +40,6 @@ public class HUD : MonoBehaviour
             if (!img.enabled) {
                 img.enabled = true;
                 img.sprite = e.Item.Image;
-                Debug.Log(e.Item.Image);
                 itemDragHandler.Item = e.Item;
                 break;
             }

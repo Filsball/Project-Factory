@@ -22,7 +22,10 @@ public class GeneratorManager : MonoBehaviour
     List<Button> buttonsPressed = new List<Button>();
     private bool buttonsSolved = false;
 
-
+    public void OnMouseDown()
+    {
+        Debug.Log("CLICKED ON: " + name);
+    }
 
     // Start is called before the first frame update
     void Start()

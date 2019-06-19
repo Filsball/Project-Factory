@@ -39,20 +39,32 @@ public class ZahnradAufsatz : MonoBehaviour
         }
     }
 
+
     public void SetZahnrad(Zahnrad z)
     {
         this.zahnrad = z;
+        if(z != null)
+        {
+            z.GetComponent<Rigidbody>().useGravity = false;
+            z.GetComponent<Rigidbody>().isKinematic = true;
+        }
     }
     private void OnMouseDown()
     {
         RemoveZR();
+
     }
     public void RemoveZR()
     {
         if (zahnrad != null)
         {
-            zahnrad.transform.position = new Vector3(0, 0, 0);
-            zahnrad.transform.rotation = new Quaternion(0, 0, 0, 0);
+            float zr_height = zahnrad.GetComponent<BoxCollider>().size.y / 2;
+            zahnrad.transform.position = transform.position + transform.up * ((zr_height * zahnrad.transform.localScale.y) + (transform.localScale.y));
+            zahnrad.GetComponent<Rigidbody>().useGravity = true;
+            zahnrad.GetComponent<Rigidbody>().isKinematic = false;
+
+            //zahnrad.GetComponent<Rigidbody>().AddForce(transform.TransformDirection(Vector3.up));
+            //zahnrad.transform.rotation = new Quaternion(0, 0, 0, 0);
             SetZahnrad(null);
         }
     }

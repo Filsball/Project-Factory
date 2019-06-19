@@ -20,4 +20,27 @@ public class Zahnrad : InventoryItem
     {
         gameObject.SetActive(false);
     }
+
+    override public int CheckDroppingOver(GameObject dropOverObject)
+    {
+        base.CheckDroppingOver(dropOverObject);
+        if (dropOverObject.GetComponent<ZahnradAufsatz>() != null)
+        {
+            
+            return CAN_DROP_OVER;
+        }
+        return ABORT_DROP_OVER;
+    }
+
+    public override int DropOver(GameObject dropOverObject)
+    {
+        base.DropOver(dropOverObject);
+
+        ZahnradAufsatz za = dropOverObject.GetComponent<ZahnradAufsatz>();
+        if (za == null) return ABORT_DROP_OVER;
+        if (za.zahnrad != null) return ABORT_DROP_OVER;
+        za.SetZahnrad(this);
+        GetComponent<Rigidbody>().useGravity = false;
+        return CAN_DROP_OVER;
+    }
 }
