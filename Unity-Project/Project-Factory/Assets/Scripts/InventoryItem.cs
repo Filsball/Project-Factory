@@ -23,7 +23,7 @@ public abstract class InventoryItem : InteractableObject, Inventoriable
 
     virtual public int CheckDroppingOver(GameObject dropOverObject) // virtual means, can be overritten by childs with "override"
     {
-        Debug.Log("Trying to drop :" + name + " on " + dropOverObject);
+        //Debug.Log("Trying to drop :" + name + " on " + dropOverObject);
         return DROP_ON_GROUND;
     }
 

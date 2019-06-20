@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent (typeof (Collider))]
 public class Zahnrad : InventoryItem
 {
+    public BoxCollider colOuter;
+    public BoxCollider colInner;
     new public void Start()
     {
         base.Start();
@@ -40,7 +42,6 @@ public class Zahnrad : InventoryItem
         if (za == null) return ABORT_DROP_OVER;
         if (za.zahnrad != null) return ABORT_DROP_OVER;
         za.SetZahnrad(this);
-        GetComponent<Rigidbody>().useGravity = false;
         return CAN_DROP_OVER;
     }
 }

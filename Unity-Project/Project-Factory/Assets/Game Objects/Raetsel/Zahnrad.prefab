@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2880191458710656333}
   - component: {fileID: 2880191458710656332}
   - component: {fileID: 2339810061159985340}
+  - component: {fileID: 2982604806053036900}
   - component: {fileID: 5875634416654944835}
   m_Layer: 0
   m_Name: Zahnrad
@@ -47,8 +48,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentlyInteractable: 1
+  _selected: 0
   renderer: {fileID: 0}
+  col: {fileID: 0}
   _Image: {fileID: 0}
+  colOuter: {fileID: 2339810061159985340}
+  colInner: {fileID: 2982604806053036900}
 --- !u!65 &2339810061159985340
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61,6 +66,19 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.035, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &2982604806053036900
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2880191458710656322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.18283175, y: 0.035, z: 0.1828317}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5875634416654944835
 Rigidbody:

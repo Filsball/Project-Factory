@@ -8,7 +8,6 @@ public class Zahnrad_Manager : InteractableObject
     public GameObject aufsatzPrefab;
     public BoxCollider boxCollider;
     public AudioManager audioManager;
-    private bool playingAudio = false;
 
     public List<float> zahnradSizes;
     private float zrScaleRadius;
@@ -20,6 +19,7 @@ public class Zahnrad_Manager : InteractableObject
     public Camera riddleCam;
 
     private Vector3 size;
+    private bool playingAudio = false;
     private List<ZahnradAufsatz> aufsaetze = new List<ZahnradAufsatz>();
 
     // Start is called before the first frame update
@@ -28,7 +28,7 @@ public class Zahnrad_Manager : InteractableObject
         base.Start();
         _interactionName = "näher zu treten";
         audioManager = FindObjectOfType<AudioManager>();
-        boxCollider = GetComponent<BoxCollider>();
+        boxCollider = (BoxCollider)col;
         size = boxCollider.size;
         if (zahnradPrefab == null)
         {
@@ -45,10 +45,8 @@ public class Zahnrad_Manager : InteractableObject
         {
             GameObject aufsatzObject = Instantiate(aufsatzPrefab, transform); // instantiate (crate) a new Aufsatz with me as parent
             float r = zrScaleRadius * zahnradSizes[i] / 2; // radius
-            //print("Radius: " + r);
             float x = r - size.x/2; // coordinates of current Aufsatz
             float z = 0;
-            //print("Initial (x | z) = (" + x + " | " + z + " )");
             if (i > 0)
             {
                 float dist = r + zrScaleRadius * zahnradSizes[i - 1]/2 - 0.01f; // distance to previous Aufsatz
@@ -57,26 +55,22 @@ public class Zahnrad_Manager : InteractableObject
                 //print("Distance: " + dist);
                 do
                 {
-                    if(++errorCounter > 50000)
+                    if (++errorCounter > 500000)
                     {
                         print("ERROR: Zahnraeder too big for ZahnradManager-Boundaries " + size +"! exiting ZahnradManager...");
                         return;
                     }
                     angle = 2 * Mathf.PI * (Random.Range(0.0f, 90.0f) - 45) / 360.0f;
+                    //angle = 2 * Mathf.PI * (Random.Range(0.0f, 75.0f) - 30) / 360.0f;
                     x = (Mathf.Cos(angle) * dist) + aufsaetze[i - 1].transform.localPosition.x;
                     z = (Mathf.Sin(angle) * dist) + aufsaetze[i - 1].transform.localPosition.z;
-                    //if (errorCounter % 1000 == 0)
-                    //{
-                    //    print("Temporary (x | z) = (" + x + " | " + z + " )");
-                    //}
                 } while ( // while out of bounds
-                    x + r >  size.x/2 ||
-                    x - r < -size.x/2 ||
-                    z + r >  size.z/2 || 
-                    z - r < -size.z/2
-                );
-            }
-            //print("Final (x | z) = (" + x + " | " + z + " )");
+                    x + r >  size.x / 2 ||
+                    x - r < -size.x / 2 ||
+                    z + r >  size.z / 2 ||
+                    z - r < -size.z / 2
+                ) ;
+        }
             Vector3 scale = aufsatzObject.transform.localScale;
             aufsatzObject.transform.localScale = new Vector3(scale.x, size.y/2, scale.z);
             aufsatzObject.transform.localPosition = new Vector3(x, 0, z);
@@ -93,30 +87,14 @@ public class Zahnrad_Manager : InteractableObject
                 gear.name = zahnradSizes[i] + "er Zahnrad";
             }
         }
-        audioManager.setPosition("Zahnraeder", position: boxCollider.center + transform.position);
-        //int i = 0
-        //foreach (Transform child in transform)
-        //{
-        //    ZahnradAufsatz za = child.GetComponent<ZahnradAufsatz>();
-        //    if (za != null)
-        //    {
-        //        aufsaetze.Add(za);
-        //        za.imUZSdrehen = i++ % 2 == 0;
-        //        if (za.imUZSdrehen)
-        //        {
-        //            //child.transform.Rotate(child.transform.up, 45);
-        //        }
-        //    }
-        //}
+        audioManager.setPosition("Zahnraeder", position: boxCollider.center + transform.position); // da Oberklasse InteractableObject schon Collider variable hat, braucht diese Kalsse nicht mehr boxCollider
     }
 
     // Update is called once per frame
     new public void Update()
     {
         base.Update();
-        //return;
-        bool nextOneSpinning = running;
-        if(nextOneSpinning && aufsaetze[0].zahnrad != null) {
+        if(solved) {
             if (!playingAudio)
             {
                 audioManager.generatorStarted = true;
@@ -127,20 +105,24 @@ public class Zahnrad_Manager : InteractableObject
         }
         for (int i= 0; i < aufsaetze.Count; i++)
         {
-            ZahnradAufsatz aufsatz = aufsaetze[i];
+            ZahnradAufsatz cur = aufsaetze[i];
 
-            aufsatz.spinning = i == 0 || (nextOneSpinning && (aufsatz.zahnrad != null && aufsatz.zahnrad.transform.localScale.x == zahnradSizes[i]));
+            //aufsatz.spinning = i == 0 || (nextOneSpinning && (aufsatz.zahnrad != null && aufsatz.zahnrad.transform.localScale.x == zahnradSizes[i]));
             if(i > 0)
             {
-                aufsatz.spinningSpeed = aufsaetze[i - 1].spinningSpeed *  zahnradSizes[i-1] / zahnradSizes[i];
+                ZahnradAufsatz pre = aufsaetze[i-1];
+
+                //cur.spinning = pre.spinning && pre.zahnrad != null && pre.zahnrad.transform.localScale.x == zahnradSizes[i - 1] && cur.zahnrad.transform.localScale.x == zahnradSizes[i];
+                float spaceBetweenOuter = ZahnradAufsatz.GetSpaceBetween(cur, pre)[1];
+                cur.spinning = (pre.spinning && pre.zahnrad != null && spaceBetweenOuter < 0.01f);
+                cur.spinningSpeed = aufsaetze[i - 1].spinningSpeed *  zahnradSizes[i-1] / zahnradSizes[i];
             }
-            nextOneSpinning = nextOneSpinning && aufsatz.spinning;
+            else
+            {
+                cur.spinning = true;
+            }
         }
         solved = aufsaetze.Count > 0 && aufsaetze[aufsaetze.Count - 1].spinning; // last one spinns = puzzle solved
-        if (Input.GetButton("Fire1"))
-        {
-            //aufsaetze[Random.Range(0,aufsaetze.Count)].RemoveZR();
-        }
     }
 
     void StartRotating()
@@ -156,5 +138,21 @@ public class Zahnrad_Manager : InteractableObject
     public override void Interact()
     {
         GameObject.Find("FPSController").GetComponent<PlayerControl>().SwapToCamera(riddleCam,this);
+    }
+
+    public List<ZahnradAufsatz> GetAdjacentAufsatz(ZahnradAufsatz za)
+    {
+        List<ZahnradAufsatz> neighbours = new List<ZahnradAufsatz>();
+        int index = aufsaetze.IndexOf(za);
+        if (index < 0) return neighbours;
+        if (index - 1 >= 0)
+        {
+            neighbours.Add(aufsaetze[index - 1]);
+        }
+        if (index + 1 < aufsaetze.Count)
+        {
+            neighbours.Add(aufsaetze[index + 1]);
+        }
+        return neighbours;
     }
 }
