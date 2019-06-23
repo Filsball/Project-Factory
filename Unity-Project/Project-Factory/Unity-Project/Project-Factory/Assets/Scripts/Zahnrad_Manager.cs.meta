@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bd9df52ad8503c147b22ff5afe970a21
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - zahnradPrefab: {instanceID: 0}
+  - coll: {fileID: 2880191458710656335, guid: 472330b4562c6d04cb5f89e0e3f6838e, type: 3}
+  - aufsatzPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
