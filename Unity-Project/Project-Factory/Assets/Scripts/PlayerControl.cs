@@ -22,6 +22,9 @@ public class PlayerControl : MonoBehaviour
     FirstPersonController fpc;
     private bool isInRiddle = false;
 
+    private static bool LightOn;
+    private static int Oil { get; set; }
+
    // private bool mLockPickUp;
 
     private bool InvOpen;
@@ -37,6 +40,8 @@ public class PlayerControl : MonoBehaviour
         head = transform.GetComponentInChildren<Camera>().transform;
         headCamera = GetComponentInChildren<Camera>(); 
         fpc = GetComponent<FirstPersonController>();
+        Oil = 100;
+        LightOn = false;
     }
 
     public void ResetLookedAtObject()
@@ -205,6 +210,28 @@ public class PlayerControl : MonoBehaviour
         }
         
         
+    }
+
+    private static void OilTimer() {
+
+        while (LightOn && Oil > 0) {
+            new WaitForSecondsRealtime(1.0f);
+            --Oil;
+        }
+        if (Oil == 0)
+        {
+            // Tod des Spielers oder Verlust von Lebenspunkten
+        }
+    }
+
+    public static void SwitchOilOn() {
+        if (Oil > 5)
+            Oil -= 5;
+        LightOn = true;
+        OilTimer();
+    }
+    public static void SwitchOilOf() {
+        LightOn = false;
     }
 
     private void OnTriggerEnter(Collider collider)
