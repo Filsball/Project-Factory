@@ -13,6 +13,7 @@ public class HUD : MonoBehaviour
 
     public GameObject InventoryPanel;
 
+    public GameObject CrossHiarPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +76,17 @@ public class HUD : MonoBehaviour
     {
         MsgPanel.GetComponentInChildren<Text>().text = "INFORMATIONS PANEL";
         MsgPanel.SetActive(false);
+    }
+
+
+    public void OpenCrossHairPanel()
+    {
+        CrossHiarPanel.SetActive(true);
+    }
+
+    public void CloseCrossHairPanel()
+    {
+        CrossHiarPanel.SetActive(false);
     }
 
     internal void OpenInventory()
