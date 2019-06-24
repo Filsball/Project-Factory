@@ -7,9 +7,12 @@ public class GeneratorManager : MonoBehaviour
     public bool running = true;
     public Button[] buttonOrder;
     public Zahnrad_Manager zrManager;
+    public float motorMaxSpeed = 100;
+    public float motorSpeed = 0;
 
     public GameObject rightDoor;
     public GameObject leftDoor;
+    public GameObject turbine;
     [Range(90, 180)]
     public int doorOpenAngle = 100;
     [Range(0.5f, 5)]
@@ -21,12 +24,7 @@ public class GeneratorManager : MonoBehaviour
    
     List<Button> buttonsPressed = new List<Button>();
     private bool buttonsSolved = false;
-
-    public void OnMouseDown()
-    {
-        Debug.Log("CLICKED ON: " + name);
-    }
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -37,12 +35,12 @@ public class GeneratorManager : MonoBehaviour
     {
         doorsHaveOpened = true;
 
-        if ((int)(rightDoor.transform.rotation.eulerAngles.y) != 360 - doorOpenAngle)
+        if ((int)(rightDoor.transform.localRotation.eulerAngles.y) != 360 - doorOpenAngle)
         {
             rightDoor.transform.Rotate(new Vector3(0, 0, -doorOpenSpeed));
             doorsHaveOpened = false;
         }
-        if ((int)(leftDoor.transform.rotation.eulerAngles.y) < doorOpenAngle)
+        if ((int)(leftDoor.transform.localRotation.eulerAngles.y) < doorOpenAngle)
         {
             leftDoor.transform.Rotate(new Vector3(0, 0, doorOpenSpeed));
             doorsHaveOpened = false;
@@ -108,5 +106,14 @@ public class GeneratorManager : MonoBehaviour
         }
 
         zrManager.running = running;
+        if (zrManager.solved)
+        {
+            turbine.transform.Rotate(new Vector3(0, 0, motorSpeed * Time.deltaTime));
+            if(motorSpeed < motorMaxSpeed)
+            {
+                motorSpeed+=0.25f;
+                motorSpeed *= 1.01f;
+            }
+        }
     }
 }

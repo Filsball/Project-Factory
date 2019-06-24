@@ -15,11 +15,11 @@ public class Button : InteractableObject
     {
         if (!currentlyInteractable) return;
         if (!pressed){
-            translateTo = transform.position + new Vector3(-col.bounds.size.x / 2, 0, 0);
+            translateTo = transform.localPosition + new Vector3(-col.bounds.size.x / 2, 0, 0);
         }
         else
         {
-            translateTo = transform.position + new Vector3(col.bounds.size.x / 2, 0, 0);
+            translateTo = transform.localPosition + new Vector3(col.bounds.size.x / 2, 0, 0);
         }
         pressed = !pressed;
         translating = true;
@@ -30,16 +30,16 @@ public class Button : InteractableObject
         base.Update();
         if (translating)
         {
-            float distance1 = Vector3.Distance(transform.position, translateTo);
+            float distance1 = Vector3.Distance(transform.localPosition, translateTo);
 
-            transform.Translate((translateTo - transform.position).normalized * translationSpeed/10 * Time.deltaTime);
+            transform.Translate((translateTo - transform.localPosition).normalized * translationSpeed/10 * Time.deltaTime);
 
-            float distance2 = Vector3.Distance(transform.position, translateTo);
+            float distance2 = Vector3.Distance(transform.localPosition, translateTo);
         
 
             if (distance1 <= distance2)
             {
-                transform.position = translateTo;
+                transform.localPosition = translateTo;
                 translating = false;
             }
             
