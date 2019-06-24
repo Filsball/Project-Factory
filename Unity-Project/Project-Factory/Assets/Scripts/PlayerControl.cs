@@ -155,13 +155,10 @@ public class PlayerControl : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.L))
             {
                 if (LightOn)
-                    SwitchOilOf();
+                    SwitchOillampOf();
                 else
-                    SwitchOilOn();
+                    SwitchOillampOn();
             }
-
-            if (Input.GetKeyDown(KeyCode.G))
-                dropItem();
 
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -194,11 +191,6 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void dropItem()
-    {
-        //inventory.RemoveItem(0);
-    }
-
     private void inventarVerwalten()
     {
 
@@ -218,7 +210,8 @@ public class PlayerControl : MonoBehaviour
         
     }
 
-    static IEnumerator LooseOil() {
+    IEnumerator LooseOil()
+    {
         Debug.Log("LooseOil Gestartet");
         while (LightOn && Oil > 0)
         {
@@ -228,12 +221,12 @@ public class PlayerControl : MonoBehaviour
         }
         if (Oil <= 0)
         {
-            Debug.Log("Spieler stirbt jetzt");
-            // hier Tod des Spielers einleiten
+            Debug.Log("Lampe Leer");
+            SwitchOillampOf();
         }
     }
 
-    public void SwitchOilOn() {
+    private void SwitchOillampOn() {
         if (Oil > 5)
             Oil -= 5;
         LightOn = true;
@@ -242,7 +235,7 @@ public class PlayerControl : MonoBehaviour
         StartCoroutine(LooseOil());
         Time.timeScale = 1;
     }
-    public void SwitchOilOf() {
+    private void SwitchOillampOf() {
         Debug.Log("Oellampe Deaktiviert");
         LightOn = false;
         Oillamp.enabled = false;
