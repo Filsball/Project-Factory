@@ -36,12 +36,20 @@ public class Inventory : MonoBehaviour {
         if (ItemList.Contains(item)) {
             ItemList.Remove(item);
             item.OnDrop();
+            Debug.Log("ItemRemoved");
         }
         Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
         if (collider != null)
             collider.enabled = true;
         ItemRemoved?.Invoke(this, new InventoryEventArgs(item));
     }
-    
+    public InventoryItem containsGluehbirne() {   // Es wird die erste Glühbirne im Inventar ausgegeben
+        for (int i = 0; i < ItemList.Count; ++i)
+        {
+            if (ItemList[i] is Gluehbirne)
+                return ItemList[i];
+        }
+        return null;
+    }
 }
 

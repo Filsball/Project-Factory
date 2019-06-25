@@ -4515,7 +4515,6 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   generatorStarted: 0
-  pPB: {fileID: 0}
 --- !u!4 &993351063
 Transform:
   m_ObjectHideFlags: 0
@@ -5826,7 +5825,12 @@ PrefabInstance:
     - target: {fileID: 2748446561743699556, guid: e92bf34467b95cd4c8e9d88c455658ec,
         type: 3}
       propertyPath: m_Name
-      value: LightBulb
+      value: Gluehbirne
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748446561743699556, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2748446561743699559, guid: e92bf34467b95cd4c8e9d88c455658ec,
         type: 3}

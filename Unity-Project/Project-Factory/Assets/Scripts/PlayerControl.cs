@@ -235,6 +235,7 @@ public class PlayerControl : MonoBehaviour
         StartCoroutine(LooseOil());
         Time.timeScale = 1;
     }
+
     private void SwitchOillampOf() {
         Debug.Log("Oellampe Deaktiviert");
         LightOn = false;
