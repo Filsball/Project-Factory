@@ -2,9 +2,11 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.PostProcessing;
+using UnityEngine.Experimental.UIElements;
 
 public class AudioManager : MonoBehaviour
 {
+    public static float volume;
     public Sound[] sounds;
     AudioSource dunkelheit;
     AudioSource hintergrund;
@@ -15,7 +17,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     [HideInInspector]
     public bool generatorStarted = false;
-    public PostProcessingBehaviour pPB;
+    private bool saferoomAktiv = false;
+    private PostProcessingBehaviour pPB;
 
     // Start is called before the first frame update
     void Awake()
@@ -38,6 +41,7 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
             s.source.spatialBlend = s.spatialBlend;
         }
+        AudioListener.volume = HauptMenue.volume;
     }
     
     void Start()
@@ -83,76 +87,87 @@ public class AudioManager : MonoBehaviour
 
 
         }
-        if (Input.GetKeyDown("n")) // Placeholder für event: in Saferoom Hitbox
+        if (generatorStarted && !generatorStartend.isPlaying)
         {
-            if (saferoom.volume > 0.01)
+            generatorStarted = false;
+            Play("GeneratorLaufend", 1.0f, generatorStartend.transform.position);
+        }
+
+
+    }
+    public void saferoomIstAktiv()
+    {
+         // Placeholder für event: in Saferoom Hitbox
+        if (saferoom.volume > 0.01)
+        {
+            if (hintergrund.volume > 0.01)
             {
-                if(hintergrund.volume > 0.01)
+                if (dunkelheit.volume > 0.01)
                 {
-                    if (dunkelheit.volume > 0.01)
-                    {
-                        StopAllCoroutines();
-                        FadeCallerMitPPBackwards(saferoom, hintergrund, dunkelheit, 0.7f, 3f, false, pPB);
-                    }
-                    else
-                    {
-                        StopAllCoroutines();
-                        FadeCaller(saferoom, hintergrund, 0.7f, 3f, false);
-                    }
+                    StopAllCoroutines();
+                    FadeCallerMitPPBackwards(saferoom, hintergrund, dunkelheit, 0.7f, 3f, false, pPB);
                 }
                 else
                 {
-                    if (dunkelheit.volume > 0.01)
-                    {
-                        StopAllCoroutines();
-                        FadeCallerMitPPBackwards(saferoom, dunkelheit, hintergrund, 0.7f, 3f, false, pPB);
-                    }
-                    else
-                    {
-                        StopAllCoroutines();
-                        FadeCaller(saferoom, hintergrund, 0.7f, 3f, false);
-                    }   
+                    StopAllCoroutines();
+                    FadeCaller(saferoom, hintergrund, 0.7f, 3f, false);
                 }
             }
             else
             {
-                if (hintergrund.volume > 0.01)
+                if (dunkelheit.volume > 0.01)
                 {
-                    if (dunkelheit.volume > 0.01)
-                    {
-                        StopAllCoroutines();
-                        FadeCallerMitPPBackwards(saferoom, hintergrund, dunkelheit, 0.7f, 3f, false, pPB);
-                    }
-                    else
-                    {
-                        StopAllCoroutines();
-                        FadeCaller(saferoom, hintergrund, 0.7f, 3f, false);
-                    }
+                    StopAllCoroutines();
+                    FadeCallerMitPPBackwards(saferoom, dunkelheit, hintergrund, 0.7f, 3f, false, pPB);
                 }
                 else
                 {
-                    if (dunkelheit.volume > 0.01)
-                    {
-                        StopAllCoroutines();
-                        FadeCallerMitPPBackwards(saferoom, dunkelheit, 0.7f, 1.5f, false, pPB);
-                        Play("Atmung", 0.2f);
-                    }
-                    else
-                    {
-                        StopAllCoroutines();
-                        FadeInCaller(saferoom, 0.7f, 3f, false);
-                    }
+                    StopAllCoroutines();
+                    FadeCaller(saferoom, hintergrund, 0.7f, 3f, false);
+                }
+            }
+        }
+        else
+        {
+            if (hintergrund.volume > 0.01)
+            {
+                if (dunkelheit.volume > 0.01)
+                {
+                    StopAllCoroutines();
+                    FadeCallerMitPPBackwards(saferoom, hintergrund, dunkelheit, 0.7f, 3f, false, pPB);
+                }
+                else
+                {
+                    StopAllCoroutines();
+                    FadeCaller(saferoom, hintergrund, 0.7f, 3f, false);
+                }
+            }
+            else
+            {
+                if (dunkelheit.volume > 0.01)
+                {
+                    StopAllCoroutines();
+                    FadeCallerMitPPBackwards(saferoom, dunkelheit, 0.7f, 1.5f, false, pPB);
+                    Play("Atmung", 0.2f);
+                }
+                else
+                {
+                    StopAllCoroutines();
+                    FadeInCaller(saferoom, 0.7f, 3f, false);
                 }
             }
         }
 
-        if (Input.GetKeyDown("m")) { //Placeholder fuer event: In normaler Licht Hitbox
-            if(dunkelheit.volume > 0.01)
+    }
+    public void saferoomIstNichtAktiv()
+    {
+         //Placeholder fuer event: In normaler Licht Hitbox
+            if (dunkelheit.volume > 0.01)
             {
                 instance.StopAllCoroutines();
                 FadeCallerMitPPBackwards(hintergrund, dunkelheit, 0.7f, 3f, false, pPB);
             }
-            else if(saferoom.volume > 0.01)
+            else if (saferoom.volume > 0.01)
             {
                 instance.StopAllCoroutines();
                 FadeCaller(hintergrund, saferoom, 0.7f, 3f, false);
@@ -162,12 +177,8 @@ public class AudioManager : MonoBehaviour
                 instance.StopAllCoroutines();
                 FadeInCaller(hintergrund, 0.7f, 1f, false);
             }
-        }
-        if (generatorStarted && !generatorStartend.isPlaying)
-        {
-            generatorStarted = false;
-            Play("GeneratorLaufend", 1.0f, generatorStartend.transform.position);
-        }
+        
+        
     }
     
 
@@ -476,5 +487,10 @@ public class AudioManager : MonoBehaviour
             profile.chromaticAberration.settings = chromaticAberrationSettings;
         }
 
+    }
+
+    public void setSaferoom(bool aktiv)
+    {
+        saferoomAktiv = aktiv;
     }
 }

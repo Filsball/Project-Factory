@@ -22,7 +22,11 @@ public class PlayerControl : MonoBehaviour
     FirstPersonController fpc;
     private bool isInRiddle = false;
 
-   // private bool mLockPickUp;
+    private static bool LightOn;
+    private static int Oil { get; set; }
+    [SerializeField] Light Oillamp;
+
+    // private bool mLockPickUp;
 
     private bool InvOpen;
     private Color enteredColor;
@@ -37,6 +41,9 @@ public class PlayerControl : MonoBehaviour
         head = transform.GetComponentInChildren<Camera>().transform;
         headCamera = GetComponentInChildren<Camera>(); 
         fpc = GetComponent<FirstPersonController>();
+        Oil = 100;
+        LightOn = false;
+        Oillamp.enabled = false;
     }
 
     public void ResetLookedAtObject()
@@ -65,10 +72,6 @@ public class PlayerControl : MonoBehaviour
             {
                 hud.CloseMsgPanel();
             }
-        }
-        else
-        {
-
         }
 
         HandleInput();
@@ -149,8 +152,13 @@ public class PlayerControl : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.I))
                 inventarVerwalten();
 
-            if (Input.GetKeyDown(KeyCode.G))
-                dropItem();
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                if (LightOn)
+                    SwitchOillampOf();
+                else
+                    SwitchOillampOn();
+            }
 
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -183,11 +191,6 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void dropItem()
-    {
-        //inventory.RemoveItem(0);
-    }
-
     private void inventarVerwalten()
     {
 
@@ -205,6 +208,38 @@ public class PlayerControl : MonoBehaviour
         }
         
         
+    }
+
+    IEnumerator LooseOil()
+    {
+        Debug.Log("LooseOil Gestartet");
+        while (LightOn && Oil > 0)
+        {
+            yield return new WaitForSeconds(1);
+            --Oil;
+            Debug.Log("Oelstand:  " + Oil);
+        }
+        if (Oil <= 0)
+        {
+            Debug.Log("Lampe Leer");
+            SwitchOillampOf();
+        }
+    }
+
+    private void SwitchOillampOn() {
+        if (Oil > 5)
+            Oil -= 5;
+        LightOn = true;
+        Oillamp.enabled = true;
+        Debug.Log("Oellampe aktiviert");
+        StartCoroutine(LooseOil());
+        Time.timeScale = 1;
+    }
+
+    private void SwitchOillampOf() {
+        Debug.Log("Oellampe Deaktiviert");
+        LightOn = false;
+        Oillamp.enabled = false;
     }
 
     private void OnTriggerEnter(Collider collider)
