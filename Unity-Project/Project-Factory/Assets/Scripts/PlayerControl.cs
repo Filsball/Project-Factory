@@ -244,27 +244,13 @@ public class PlayerControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-         //InventoryItem inventoryItem = collider.GetComponent<InventoryItem>();
-         //if (inventoryItem != null)
-         //{
-         //   //    if (mLockPickUp)
-         //   //        return;
-
-         //   inventoryItem.Selected = true;
-         //   itemPickUp = inventoryItem;
-         //    hud.OpenMsgPanel("");
-         //}
-       
+        // in Lichtzone, Kein Schaden
+        Debug.Log("In Lichtzone");
 
     }
     private void OnTriggerExit(Collider collider)
     {
-        //InventoryItem inventoryItem = collider.GetComponent<InventoryItem>();
-        //if (inventoryItem != null)
-        //{
-        //    inventoryItem.Selected = false;
-        //    hud.CloseMsgPanel();
-        //    itemPickUp = null;
-        //}
+        // Leite Tod ein wenn Oellampe nicht aktiv
+        Debug.Log("Außerhalb von Lichtzone");
     }
 }

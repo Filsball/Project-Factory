@@ -5832,6 +5832,51 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_Range
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 9.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.70672673
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.33161268
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_DrawHalo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_Flare
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 122.94
+      objectReference: {fileID: 0}
     - target: {fileID: 2748446561743699559, guid: e92bf34467b95cd4c8e9d88c455658ec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5886,51 +5931,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
-        type: 3}
-      propertyPath: m_Range
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 9.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.8679245
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.70672673
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.33161268
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
-        type: 3}
-      propertyPath: m_DrawHalo
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
-        type: 3}
-      propertyPath: m_Flare
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
-        type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748446562769641177, guid: e92bf34467b95cd4c8e9d88c455658ec,
-        type: 3}
-      propertyPath: m_SpotAngle
-      value: 122.94
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e92bf34467b95cd4c8e9d88c455658ec, type: 3}
