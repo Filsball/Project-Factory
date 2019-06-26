@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - ScreenShotting
+  - Licht
+  - Saferoom
   layers:
   - Default
   - TransparentFX

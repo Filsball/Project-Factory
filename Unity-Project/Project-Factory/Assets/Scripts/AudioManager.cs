@@ -18,7 +18,10 @@ public class AudioManager : MonoBehaviour
     [HideInInspector]
     public bool generatorStarted = false;
     private bool saferoomAktiv = false;
+    private bool dunkelheitAktiv = false;
+    private bool hintergrundAktiv = false;
     private PostProcessingBehaviour pPB;
+    private static IEnumerator lastCalled;
 
     // Start is called before the first frame update
     void Awake()
@@ -31,7 +34,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
-        foreach(Sound s in sounds)
+        foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -43,7 +46,7 @@ public class AudioManager : MonoBehaviour
         }
         AudioListener.volume = HauptMenue.volume;
     }
-    
+
     void Start()
     {
         pPB = FindObjectOfType<PostProcessingBehaviour>();
@@ -68,147 +71,142 @@ public class AudioManager : MonoBehaviour
         saferoom = Array.Find(sounds, sound => sound.name == "Saferoom").source;
         generatorStartend = Array.Find(sounds, sound => sound.name == "GeneratorStartend").source;
         Play("Hintergrund", 0.7f);
+        hintergrundAktiv = true;
     }
 
-    
 
     // Update is called once per frame
     public void Update()
     {
-        
-        if (Input.GetKeyDown("b")) // Placeholder fuer event: 5 Sekunden in Dunkelheit
-        {
-            
-            if (hintergrund.volume > 0.01)
-            {
-                instance.StopAllCoroutines();
-                FadeCallerMitPP(dunkelheit, hintergrund, 0.9f, 3f, true, pPB);
-            }
-
-
-        }
         if (generatorStarted && !generatorStartend.isPlaying)
         {
             generatorStarted = false;
             Play("GeneratorLaufend", 1.0f, generatorStartend.transform.position);
         }
-
-
     }
-    public void saferoomIstAktiv()
+
+    public void DunkelheitAktivieren()
     {
-         // Placeholder für event: in Saferoom Hitbox
-        if (saferoom.volume > 0.01)
+        if (lastCalled != null)
         {
-            if (hintergrund.volume > 0.01)
+            instance.StopCoroutine(lastCalled);
+        }
+        FadeCallerMitPP(dunkelheit, hintergrund, saferoom, 0.9f, 5f, true, pPB);
+        setHintergrund(false);
+        setSaferoom(false);
+        setDunkelheit(true);
+        
+    }
+
+    public void SaferoomAktivieren()
+    {
+        //Event: in Saferoom Hitbox
+        if (dunkelheitAktiv) {
+            if (lastCalled != null)
             {
-                if (dunkelheit.volume > 0.01)
-                {
-                    StopAllCoroutines();
-                    FadeCallerMitPPBackwards(saferoom, hintergrund, dunkelheit, 0.7f, 3f, false, pPB);
-                }
-                else
-                {
-                    StopAllCoroutines();
-                    FadeCaller(saferoom, hintergrund, 0.7f, 3f, false);
-                }
+                instance.StopCoroutine(lastCalled);
             }
-            else
+            FadeCallerMitPPBackwards(saferoom, hintergrund, dunkelheit, 0.7f, 1.5f, false, pPB);
+            Play("Atmung", 0.2f);
+            setDunkelheit(false);
+            setSaferoom(true);
+            
+        }
+        else if(hintergrundAktiv)
+        {
+            if (lastCalled != null)
             {
-                if (dunkelheit.volume > 0.01)
-                {
-                    StopAllCoroutines();
-                    FadeCallerMitPPBackwards(saferoom, dunkelheit, hintergrund, 0.7f, 3f, false, pPB);
-                }
-                else
-                {
-                    StopAllCoroutines();
-                    FadeCaller(saferoom, hintergrund, 0.7f, 3f, false);
-                }
+                instance.StopCoroutine(lastCalled);
             }
+            FadeCaller(saferoom, dunkelheit, hintergrund, 0.7f, 1.5f, false);
+            setHintergrund(false);
+            setSaferoom(true);
+            
         }
         else
         {
-            if (hintergrund.volume > 0.01)
+            if (lastCalled != null)
             {
-                if (dunkelheit.volume > 0.01)
-                {
-                    StopAllCoroutines();
-                    FadeCallerMitPPBackwards(saferoom, hintergrund, dunkelheit, 0.7f, 3f, false, pPB);
-                }
-                else
-                {
-                    StopAllCoroutines();
-                    FadeCaller(saferoom, hintergrund, 0.7f, 3f, false);
-                }
+                instance.StopCoroutine(lastCalled);
             }
-            else
-            {
-                if (dunkelheit.volume > 0.01)
-                {
-                    StopAllCoroutines();
-                    FadeCallerMitPPBackwards(saferoom, dunkelheit, 0.7f, 1.5f, false, pPB);
-                    Play("Atmung", 0.2f);
-                }
-                else
-                {
-                    StopAllCoroutines();
-                    FadeInCaller(saferoom, 0.7f, 3f, false);
-                }
-            }
+            FadeInCaller(saferoom, 0.7f, 1f, false);
+            setSaferoom(true);
         }
 
     }
-    public void saferoomIstNichtAktiv()
+    public void HintergrundAktivieren()
     {
-         //Placeholder fuer event: In normaler Licht Hitbox
-            if (dunkelheit.volume > 0.01)
+        //Event: In normaler Licht Hitbox
+        if (dunkelheitAktiv)
+        {
+            if (lastCalled != null)
             {
-                instance.StopAllCoroutines();
-                FadeCallerMitPPBackwards(hintergrund, dunkelheit, 0.7f, 3f, false, pPB);
+                instance.StopCoroutine(lastCalled);
             }
-            else if (saferoom.volume > 0.01)
+            FadeCallerMitPPBackwards(hintergrund, dunkelheit, saferoom, 0.7f, 3f, false, pPB);
+            setDunkelheit(false);
+            setHintergrund(true);
+        }
+        else if (saferoomAktiv)
+        {
+            if (lastCalled != null)
             {
-                instance.StopAllCoroutines();
-                FadeCaller(hintergrund, saferoom, 0.7f, 3f, false);
+                instance.StopCoroutine(lastCalled);
             }
-            else
+            FadeCaller(hintergrund, saferoom, dunkelheit, 0.7f, 3f, false);
+            setSaferoom(false);
+            setHintergrund(true);
+        }
+        else
+        {
+            if (lastCalled != null)
             {
-                instance.StopAllCoroutines();
-                FadeInCaller(hintergrund, 0.7f, 1f, false);
+                instance.StopCoroutine(lastCalled);
             }
-        
-        
+            FadeInCaller(hintergrund, 0.7f, 1f, false);
+            setHintergrund(true);
+        }
     }
     
-
-    public static void FadeInCaller (AudioSource toFadeIn, float maxVolume, float time, Boolean startNew)
+    public static void FadeInCaller(AudioSource toFadeIn, float maxVolume, float time, Boolean startNew)
     {
-        instance.StartCoroutine(fadeIn(toFadeIn, maxVolume, time, startNew));
+        lastCalled = fadeIn(toFadeIn, maxVolume, time, startNew);
+        instance.StartCoroutine(lastCalled);
     }
     public static void FadeOutCaller(AudioSource toFadeOut, float time)
     {
-        instance.StartCoroutine(fadeOut(toFadeOut, time));
+        lastCalled = fadeOut(toFadeOut, time);
+        instance.StartCoroutine(lastCalled);
     }
     public static void FadeCaller(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew)
     {
-        instance.StartCoroutine(fadeSounds(toFadeIn, toFadeOut, maxVolume, time, startNew));
+        lastCalled = fadeSounds(toFadeIn, toFadeOut, maxVolume, time, startNew);
+        instance.StartCoroutine(lastCalled);
     }
     public static void FadeCaller(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew)
     {
-        instance.StartCoroutine(fadeSounds(toFadeIn, toFadeOut, toFadeOut2, maxVolume, time, startNew));
+        lastCalled = fadeSounds(toFadeIn, toFadeOut, toFadeOut2, maxVolume, time, startNew);
+        instance.StartCoroutine(lastCalled);
     }
     public static void FadeCallerMitPP(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {
-        instance.StartCoroutine(fadeSoundsMitPP(toFadeIn, toFadeOut, maxVolume, time, startNew, pPB));
+        lastCalled = fadeSoundsMitPP(toFadeIn, toFadeOut, maxVolume, time, startNew, pPB);
+        instance.StartCoroutine(lastCalled);
+    }
+    public static void FadeCallerMitPP(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
+    {
+        lastCalled = fadeSoundsMitPP(toFadeIn, toFadeOut, toFadeOut2, maxVolume, time, startNew, pPB);
+        instance.StartCoroutine(lastCalled);
     }
     public static void FadeCallerMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {
-        instance.StartCoroutine(fadeSoundsMitPPBackwards(toFadeIn, toFadeOut, maxVolume, time, startNew, pPB));
+        lastCalled = fadeSoundsMitPPBackwards(toFadeIn, toFadeOut, maxVolume, time, startNew, pPB);
+        instance.StartCoroutine(lastCalled);
     }
     public static void FadeCallerMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {
-        instance.StartCoroutine(fadeSoundsMitPPBackwards( toFadeIn,  toFadeOut,  toFadeOut2,  maxVolume,  time,  startNew,  pPB));
+        lastCalled = fadeSoundsMitPPBackwards(toFadeIn, toFadeOut, toFadeOut2, maxVolume, time, startNew, pPB);
+        instance.StartCoroutine(lastCalled);
     }
     static IEnumerator fadeIn(AudioSource toFadeIn, float maxVolume, float time, Boolean startNew)
     {
@@ -216,7 +214,7 @@ public class AudioManager : MonoBehaviour
         keepFadingOut = false;
         if (startNew) toFadeIn.Play();
 
-        while(toFadeIn.volume < maxVolume && keepFadingIn)
+        while (toFadeIn.volume < maxVolume && keepFadingIn)
         {
             toFadeIn.volume += Time.deltaTime / time;
             yield return null;
@@ -231,7 +229,7 @@ public class AudioManager : MonoBehaviour
         while (toFadeOut.volume > 0 && keepFadingOut)
         {
             toFadeOut.volume -= startVolume * Time.deltaTime / time;
-            
+
             yield return null;
         }
         toFadeOut.Stop();
@@ -244,7 +242,7 @@ public class AudioManager : MonoBehaviour
 
         while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0)
         {
-            if(toFadeIn.volume < maxVolume) toFadeIn.volume += Time.deltaTime / time;
+            if (toFadeIn.volume < maxVolume) toFadeIn.volume += Time.deltaTime / time;
             toFadeOut.volume -= startVolume * Time.deltaTime / time;
             yield return null;
         }
@@ -258,12 +256,45 @@ public class AudioManager : MonoBehaviour
         float wartezeit = 10f;
         float wartezeitStartwert = wartezeit;
         float PPFadeZeit = 20f;
-       
+
 
         while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0)
         {
             if (toFadeIn.volume < maxVolume) toFadeIn.volume += Time.deltaTime / time;
             toFadeOut.volume -= startVolume * Time.deltaTime / time;
+            yield return null;
+        }
+        while (pufferzeit > 0)
+        {
+            pufferzeit -= wartezeitStartwert * Time.deltaTime / wartezeit;
+            yield return null;
+        }
+        while (profile.motionBlur.settings.frameBlending < 1)
+        {
+            PPMotionBlur(pPB, profile, PPFadeZeit, true);
+            PPColorGrading(pPB, profile, PPFadeZeit, true);
+            PPVignette(pPB, profile, PPFadeZeit, true);
+            PPChromaticAberration(pPB, profile, PPFadeZeit, true);
+            yield return null;
+        }
+    }
+    static IEnumerator fadeSoundsMitPP(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
+    {
+        if (startNew || !toFadeIn.isPlaying) toFadeIn.Play();
+        float startVolume = toFadeOut.volume;
+        float startVolume2 = toFadeOut2.volume;
+        PostProcessingProfile profile = pPB.profile;
+        float pufferzeit = 10f;
+        float wartezeit = 10f;
+        float wartezeitStartwert = wartezeit;
+        float PPFadeZeit = 20f;
+
+
+        while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0 || toFadeOut2.volume > 0)
+        {
+            if (toFadeIn.volume < maxVolume) toFadeIn.volume += Time.deltaTime / time;
+            toFadeOut.volume -= startVolume * Time.deltaTime / time;
+            toFadeOut2.volume -= startVolume2 * Time.deltaTime / time;
             yield return null;
         }
         while (pufferzeit > 0)
@@ -319,7 +350,7 @@ public class AudioManager : MonoBehaviour
         float PPFadeZeit = 1.5f;
 
 
-        while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0 || profile.motionBlur.settings.frameBlending > 0.05)
+        while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0 || toFadeOut2.volume > 0 || profile.motionBlur.settings.frameBlending > 0.05)
         {
             if (toFadeIn.volume < maxVolume) toFadeIn.volume += Time.deltaTime / time;
             toFadeOut.volume -= startVolume * Time.deltaTime / time;
@@ -340,7 +371,7 @@ public class AudioManager : MonoBehaviour
         float startVolume = toFadeOut.volume;
         float startVolume2 = toFadeOut2.volume;
 
-        while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0)
+        while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0 || toFadeOut2.volume > 0)
         {
             if (toFadeIn.volume < maxVolume) toFadeIn.volume += Time.deltaTime / time;
             toFadeOut.volume -= startVolume * Time.deltaTime / time;
@@ -423,7 +454,7 @@ public class AudioManager : MonoBehaviour
             moBlurSettings.frameBlending -= startwert * Time.deltaTime / time;
             profile.motionBlur.settings = moBlurSettings;
         }
-            
+
     }
     public static void PPColorGrading(PostProcessingBehaviour pPB, PostProcessingProfile profile, float time, Boolean forward)
     {
@@ -432,7 +463,7 @@ public class AudioManager : MonoBehaviour
         float contrastStartwert = colorGradingSettings.basic.contrast;
         if (forward)
         {
-            if(colorGradingSettings.basic.contrast < 1.7f)
+            if (colorGradingSettings.basic.contrast < 1.7f)
             {
                 colorGradingSettings.basic.contrast += Time.deltaTime / time;
             }
@@ -444,17 +475,17 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            if(colorGradingSettings.basic.contrast > 1f)
+            if (colorGradingSettings.basic.contrast > 1f)
             {
                 colorGradingSettings.basic.contrast -= contrastStartwert * Time.deltaTime / time;
             }
-            if(colorGradingSettings.basic.saturation < 1f)
+            if (colorGradingSettings.basic.saturation < 1f)
             {
                 colorGradingSettings.basic.saturation += Time.deltaTime / time;
             }
             profile.colorGrading.settings = colorGradingSettings;
         }
-        
+
     }
     public static void PPVignette(PostProcessingBehaviour pPB, PostProcessingProfile profile, float time, Boolean forward)
     {
@@ -470,7 +501,7 @@ public class AudioManager : MonoBehaviour
             vignetteSettings.opacity -= startwert * Time.deltaTime / time;
             profile.vignette.settings = vignetteSettings;
         }
-        
+
     }
     public static void PPChromaticAberration(PostProcessingBehaviour pPB, PostProcessingProfile profile, float time, Boolean forward)
     {
@@ -492,5 +523,30 @@ public class AudioManager : MonoBehaviour
     public void setSaferoom(bool aktiv)
     {
         saferoomAktiv = aktiv;
+    }
+
+    public bool getSaferoom()
+    {
+        return saferoomAktiv;
+    }
+
+    public void setDunkelheit(bool aktiv)
+    {
+        dunkelheitAktiv = aktiv;
+    }
+
+    public bool getDunkelheit()
+    {
+        return dunkelheitAktiv;
+    }
+
+    public void setHintergrund(bool aktiv)
+    {
+        hintergrundAktiv = aktiv;
+    }
+
+    public bool getHintergrund()
+    {
+        return hintergrundAktiv;
     }
 }

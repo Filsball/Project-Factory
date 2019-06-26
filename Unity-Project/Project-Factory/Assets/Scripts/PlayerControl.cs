@@ -21,9 +21,9 @@ public class PlayerControl : MonoBehaviour
     private Camera activeCamera;
     FirstPersonController fpc;
     private bool isInRiddle = false;
-
     private static bool LightOn;
     private static int Oil { get; set; }
+    private AudioManager audio;
     [SerializeField] Light Oillamp;
 
     // private bool mLockPickUp;
@@ -37,6 +37,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audio = FindObjectOfType<AudioManager>();
         characterController = GetComponent<CharacterController>();
         head = transform.GetComponentInChildren<Camera>().transform;
         headCamera = GetComponentInChildren<Camera>(); 
@@ -234,23 +235,63 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("Oellampe aktiviert");
         StartCoroutine(LooseOil());
         Time.timeScale = 1;
+        // fuer Audio
+        if (audio.getDunkelheit())
+        {
+            audio.HintergrundAktivieren();
+        }
     }
 
     private void SwitchOillampOf() {
         Debug.Log("Oellampe Deaktiviert");
         LightOn = false;
         Oillamp.enabled = false;
+        // fuer Audio
+        if (!audio.getSaferoom() && audio.getHintergrund())
+        {
+            audio.DunkelheitAktivieren();
+        }
     }
 
     private void OnTriggerEnter(Collider collider)
     {
         // in Lichtzone, Kein Schaden
-        Debug.Log("In Lichtzone");
-
+        if (collider.tag == "Licht")
+        {
+            audio.HintergrundAktivieren();
+            Debug.Log("In Lichtzone");
+        }
+        // in Saferoom
+        if (collider.tag == "Saferoom")
+        {
+            audio.SaferoomAktivieren();
+            Debug.Log("In Saferoom");
+        }
     }
     private void OnTriggerExit(Collider collider)
     {
         // Leite Tod ein wenn Oellampe nicht aktiv
-        Debug.Log("Außerhalb von Lichtzone");
+        if(collider.tag == "Licht")
+        {
+            if(!LightOn)
+            {
+                audio.DunkelheitAktivieren();
+            }
+            Debug.Log("Außerhalb von Lichtzone");
+        }
+        // Saferoom verlassen
+        if (collider.tag == "Saferoom")
+        {
+            if(LightOn)
+            {
+                audio.HintergrundAktivieren();
+            }
+            else if(!audio.getHintergrund())
+            {
+                audio.DunkelheitAktivieren();
+            }
+            Debug.Log("Außerhalb von Saferoom");
+        }
+
     }
 }

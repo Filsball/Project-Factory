@@ -7,19 +7,26 @@ public class Button : InteractableObject
     public bool pressed = false;
 
     private Vector3 translateTo;
+    public BoxCollider boxCollider;
     [Range(0,10)]
     public float translationSpeed;
     private bool translating;
+    private AudioManager audio;
 
     public override void Interact()
     {
         if (!currentlyInteractable) return;
         if (!pressed){
-            translateTo = transform.localPosition + new Vector3(-col.bounds.size.x / 2, 0, 0);
+            translateTo = transform.position + new Vector3(-col.bounds.size.x / 2, 0, 0);
+            if (!this.gameObject.GetComponentInParent<GeneratorManager>().CheckDreiButtons())
+            {
+                audio.Play("Button", 0.7f, audio.transform.position);
+            }
+            
         }
         else
         {
-            translateTo = transform.localPosition + new Vector3(col.bounds.size.x / 2, 0, 0);
+            translateTo = transform.position + new Vector3(col.bounds.size.x / 2, 0, 0);
         }
         pressed = !pressed;
         translating = true;
@@ -30,16 +37,16 @@ public class Button : InteractableObject
         base.Update();
         if (translating)
         {
-            float distance1 = Vector3.Distance(transform.localPosition, translateTo);
+            float distance1 = Vector3.Distance(transform.position, translateTo);
 
-            transform.Translate((translateTo - transform.localPosition).normalized * translationSpeed/10 * Time.deltaTime);
+            transform.Translate((translateTo - transform.position).normalized * translationSpeed/10 * Time.deltaTime);
 
-            float distance2 = Vector3.Distance(transform.localPosition, translateTo);
+            float distance2 = Vector3.Distance(transform.position, translateTo);
         
 
             if (distance1 <= distance2)
             {
-                transform.localPosition = translateTo;
+                transform.position = translateTo;
                 translating = false;
             }
             
@@ -51,6 +58,9 @@ public class Button : InteractableObject
     // Start is called before the first frame update
     new public void Start()
     {
+        boxCollider = GetComponent<BoxCollider>();
+        audio = FindObjectOfType<AudioManager>();
+        audio.setPosition("Button", position: boxCollider.center + transform.position);
         Name = "Knopf";
         base.Start();
         //translationSpeed = 0.5f;

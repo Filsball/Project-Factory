@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2332,7 +2332,7 @@ GameObject:
   - component: {fileID: 270315676}
   m_Layer: 0
   m_Name: Lichtzone
-  m_TagString: Untagged
+  m_TagString: Licht
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7693,6 +7693,27 @@ MonoBehaviour:
     spatialBlend: 0
     loop: 0
     source: {fileID: 0}
+  - name: Button
+    clip: {fileID: 8300000, guid: db1d70cd1c9311749a0788967fb7d8e7, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ButtonMitEinrasten
+    clip: {fileID: 8300000, guid: f41054be4ebaeca4c987847211a58214, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MetalltuerGenerator
+    clip: {fileID: 8300000, guid: 4add5f4aa72abad409ae3f3eb5e02060, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 1
+    loop: 0
+    source: {fileID: 0}
   generatorStarted: 0
 --- !u!4 &1101529874
 Transform:
@@ -12704,10 +12725,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1742455583}
   - component: {fileID: 1742455585}
-  - component: {fileID: 1742455584}
   m_Layer: 0
   m_Name: Saferoom
-  m_TagString: Untagged
+  m_TagString: Saferoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12726,18 +12746,6 @@ Transform:
   m_Father: {fileID: 322808360}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1742455584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742455582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0a9b4fae314c454eab0d9aae18d8a26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &1742455585
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -16204,6 +16212,12 @@ PrefabInstance:
       propertyPath: m_HDR
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7154594419983911313, guid: d1bb63386fcad194f93ac374dd3c45cd,
+        type: 3}
+      propertyPath: profile
+      value: 
+      objectReference: {fileID: 11400000, guid: b6369672968d4a842b8053f51d199d33,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1bb63386fcad194f93ac374dd3c45cd, type: 3}
 --- !u!1001 &5521551518831023135
