@@ -12,7 +12,7 @@ public class Sockel : InteractableObject
 
     public Inventory inventory;
 
-    private void Start()
+    private new void Start()
     {
         Gluehbirne.enabled = false;
         Lichtzone.SetActive(false);
@@ -32,7 +32,7 @@ public class Sockel : InteractableObject
     private void In()
     {
         Debug.Log("In() aufgerufen");
-        // Hier moeglicherweise prüfen ob Generator aktiviert/ Strom vorhanden
+        // Hier moeglicherweise pruefen ob Generator aktiviert/ Strom vorhanden
         InventoryItem birne = inventory.containsGluehbirne();
         Debug.Log("In If birne im Inventar");
         if (birne != null)
