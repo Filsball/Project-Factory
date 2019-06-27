@@ -238,7 +238,7 @@ public class PlayerControl : MonoBehaviour
         // fuer Audio
         if (audio.getDunkelheit())
         {
-            audio.HintergrundAktivieren();
+            audio.HintergrundAktivierenMitLampe();
         }
     }
 
@@ -247,9 +247,9 @@ public class PlayerControl : MonoBehaviour
         LightOn = false;
         Oillamp.enabled = false;
         // fuer Audio
-        if (!audio.getSaferoom() && audio.getHintergrund())
+        if (audio.getDunkelheit())
         {
-            audio.DunkelheitAktivieren();
+            audio.DunkelheitAktivierenMitLampe();
         }
     }
 

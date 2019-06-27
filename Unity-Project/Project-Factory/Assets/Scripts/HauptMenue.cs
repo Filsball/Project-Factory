@@ -15,7 +15,6 @@ public class HauptMenue : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         instance = this;
-        DontDestroyOnLoad(instance.gameObject);
         audio = GetComponent<AudioSource>();
         audio.Play();
     }

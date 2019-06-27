@@ -5,64 +5,32 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
-public class Pausemenu : MonoBehaviour
+public class TodController : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseMenuUI;
-    [SerializeField] private bool isPaused;
+    [SerializeField] private GameObject TodUI;
     private Scene scene;
-    public static Slider slider;
     private AudioListener audioListener;
-    
+
     void Start()
     {
         audioListener = FindObjectOfType<AudioListener>();
         scene = SceneManager.GetActiveScene();
-        
+
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-
-            isPaused = !isPaused;
-        }
-        if (isPaused)
-        {
-            ActivateMenu();
-        }
-        else
-        {
-            if(pauseMenuUI.transform.localPosition.Equals(new Vector3(0, 350, 0)))
-            {
-                ShowMenue();
-            }
-            DeactivateMenu();
-        }
-
     }
 
-    public void ActivateMenu()
+    public void ActivateTod()
     {
         Time.timeScale = 0;
         AudioListener.pause = true;
-        pauseMenuUI.SetActive(true);
+        TodUI.SetActive(true);
         GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.lockState = CursorLockMode.Confined;
-
-
-    }
-    public void DeactivateMenu()
-    {
-        Time.timeScale = 1;
-        AudioListener.pause = false;
-        pauseMenuUI.SetActive(false);
-        isPaused = false;
-        GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = true;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void Respawn()
@@ -74,7 +42,6 @@ public class Pausemenu : MonoBehaviour
     {
         Time.timeScale = 1;
         AudioListener.pause = false;
-        isPaused = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.lockState = CursorLockMode.Confined;
@@ -85,15 +52,5 @@ public class Pausemenu : MonoBehaviour
         Destroy(audio);
         SceneManager.LoadScene(0);
     }
-    
-    public void HideMenue()
-    {
-        pauseMenuUI.transform.localPosition = new Vector3(0, 750, 0);
-    }
 
-    public void ShowMenue()
-    {
-        pauseMenuUI.transform.localPosition = new Vector3(0, 0, 0);
-    }
-    
 }

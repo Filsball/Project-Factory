@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
     private bool hintergrundAktiv = false;
     private PostProcessingBehaviour pPB;
     private static IEnumerator lastCalled;
+    public static TodController todController;
 
     // Start is called before the first frame update
     void Awake()
@@ -33,7 +34,6 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -96,6 +96,15 @@ public class AudioManager : MonoBehaviour
         setSaferoom(false);
         setDunkelheit(true);
         
+    }
+
+    public void DunkelheitAktivierenMitLampe()
+    {
+        if (lastCalled != null)
+        {
+            instance.StopCoroutine(lastCalled);
+        }
+        FadeCallerMitPP(dunkelheit, hintergrund, saferoom, 0.9f, 5f, true, pPB);
     }
 
     public void SaferoomAktivieren()
@@ -167,7 +176,36 @@ public class AudioManager : MonoBehaviour
             setHintergrund(true);
         }
     }
-    
+
+    public void HintergrundAktivierenMitLampe()
+    {
+        //Event: In normaler Licht Hitbox
+        if (dunkelheitAktiv)
+        {
+            if (lastCalled != null)
+            {
+                instance.StopCoroutine(lastCalled);
+            }
+            FadeCallerMitPPBackwards(hintergrund, dunkelheit, saferoom, 0.7f, 3f, false, pPB);
+        }
+        else if (saferoomAktiv)
+        {
+            if (lastCalled != null)
+            {
+                instance.StopCoroutine(lastCalled);
+            }
+            FadeCaller(hintergrund, saferoom, dunkelheit, 0.7f, 3f, false);
+        }
+        else
+        {
+            if (lastCalled != null)
+            {
+                instance.StopCoroutine(lastCalled);
+            }
+            FadeInCaller(hintergrund, 0.7f, 1f, false);
+        }
+    }
+
     public static void FadeInCaller(AudioSource toFadeIn, float maxVolume, float time, Boolean startNew)
     {
         lastCalled = fadeIn(toFadeIn, maxVolume, time, startNew);
@@ -310,6 +348,7 @@ public class AudioManager : MonoBehaviour
             PPChromaticAberration(pPB, profile, PPFadeZeit, true);
             yield return null;
         }
+        todController.ActivateTod();
     }
     static IEnumerator fadeSoundsMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {
