@@ -9,6 +9,7 @@ public class Pausemenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private bool isPaused;
+    public TodController todController;
     private Scene scene;
     public static Slider slider;
     private AudioListener audioListener;
@@ -33,11 +34,15 @@ public class Pausemenu : MonoBehaviour
         }
         else
         {
-            if(pauseMenuUI.transform.localPosition.Equals(new Vector3(0, 350, 0)))
+            if (!todController.getTod())
             {
-                ShowMenue();
+                if (pauseMenuUI.transform.localPosition.Equals(new Vector3(0, 350, 0)))
+                {
+                    ShowMenue();
+                }
+                DeactivateMenu();
             }
-            DeactivateMenu();
+            
         }
 
     }
