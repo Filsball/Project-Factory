@@ -10,12 +10,15 @@ public class Sockel : InteractableObject
     [SerializeField] Light Gluehbirne;
     [SerializeField] GameObject Lichtzone;
 
+    public static bool StromAktiviert;
+
     public Inventory inventory;
 
     private new void Start()
     {
         Gluehbirne.enabled = false;
         Lichtzone.SetActive(false);
+        StromAktiviert = false;
     }
 
     public bool GluehbirneInSockelAktiviert() { return Gluehbirne.enabled; }
@@ -33,6 +36,7 @@ public class Sockel : InteractableObject
     {
         Debug.Log("In() aufgerufen");
         // Hier moeglicherweise pruefen ob Generator aktiviert/ Strom vorhanden
+        //if(StromAktiviert){
         InventoryItem birne = inventory.containsGluehbirne();
         Debug.Log("In If birne im Inventar");
         if (birne != null)
@@ -40,7 +44,12 @@ public class Sockel : InteractableObject
             inventory.removeItem(birne);
             Gluehbirne.enabled = true;
             Lichtzone.SetActive(true);
+            currentlyInteractable = false;
         }
+        //}
+    }
+    public static void StromAn() {
+        StromAktiviert = true;
     }
 
 }
