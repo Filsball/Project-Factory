@@ -76,6 +76,9 @@ public class PlayerControl : MonoBehaviour
         }
 
         HandleInput();
+
+
+        hud.UpdateOil(Oil/100f);
     }
 
     public void SwapBackToPlayer()
