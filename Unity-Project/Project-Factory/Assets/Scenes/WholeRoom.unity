@@ -1646,6 +1646,69 @@ MonoBehaviour:
     spatialBlend: 1
     loop: 0
     source: {fileID: 0}
+  - name: LampeAnschalten
+    clip: {fileID: 8300000, guid: 064cf0de4a80f1a47ae6009525925cc4, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: LampeIstAn
+    clip: {fileID: 8300000, guid: 4c32dc061dc4a584292c2f490264d5d9, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: GegenstandGefallen
+    clip: {fileID: 8300000, guid: 8705c58dd81613d49bee59366df4eacb, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ItemPickup
+    clip: {fileID: 8300000, guid: 5ffa4ef320874bb439e66396feabd011, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: NotizPickup
+    clip: {fileID: 8300000, guid: 1740c5415c61d7b4da8c0e68e5f91d7b, type: 3}
+    volume: 0
+    pitch: 1.37
+    spatialBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SchubladeAuf
+    clip: {fileID: 8300000, guid: 2c8736240d18e6f4684cd0ea11d82835, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SchubladeZu
+    clip: {fileID: 8300000, guid: 919eaf67e0ff22e4cb606009e4df8e0c, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: InventarOeffnen
+    clip: {fileID: 8300000, guid: 1740c5415c61d7b4da8c0e68e5f91d7b, type: 3}
+    volume: 0
+    pitch: 1.04
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: "InventarSchlie\xDFen"
+    clip: {fileID: 8300000, guid: 1740c5415c61d7b4da8c0e68e5f91d7b, type: 3}
+    volume: 0
+    pitch: 0.87
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
   generatorStarted: 0
 --- !u!4 &351552335
 Transform:
@@ -3381,8 +3444,8 @@ RectTransform:
   m_Father: {fileID: 1799710507}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3915,7 +3978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &875572835
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3939,7 +4002,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1400, y: 700}
+  m_SizeDelta: {x: 1800, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &875572836
 MonoBehaviour:
@@ -4125,7 +4188,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -120}
-  m_SizeDelta: {x: 1400, y: 100}
+  m_SizeDelta: {x: 1800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &944529984
 MonoBehaviour:
@@ -7180,7 +7243,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7259,7 +7322,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: -400}
-  m_SizeDelta: {x: 1400, y: 700}
+  m_SizeDelta: {x: 1800, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1701196726
 MonoBehaviour:
@@ -8291,7 +8354,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -120}
-  m_SizeDelta: {x: 1400, y: 100}
+  m_SizeDelta: {x: 1800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1919104314
 MonoBehaviour:
