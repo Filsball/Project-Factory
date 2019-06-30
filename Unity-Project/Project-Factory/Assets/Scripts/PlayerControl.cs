@@ -21,8 +21,12 @@ public class PlayerControl : MonoBehaviour
     private Camera activeCamera;
     FirstPersonController fpc;
     private bool isInRiddle = false;
+    private static bool LightOn;
+    private static int Oil { get; set; }
+    private AudioManager audio;
+    [SerializeField] Light Oillamp;
 
-   // private bool mLockPickUp;
+    // private bool mLockPickUp;
 
     private bool InvOpen;
     private Color enteredColor;
@@ -33,10 +37,14 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audio = FindObjectOfType<AudioManager>();
         characterController = GetComponent<CharacterController>();
         head = transform.GetComponentInChildren<Camera>().transform;
         headCamera = GetComponentInChildren<Camera>(); 
         fpc = GetComponent<FirstPersonController>();
+        Oil = 100;
+        LightOn = false;
+        Oillamp.enabled = false;
     }
 
     public void ResetLookedAtObject()
@@ -66,12 +74,11 @@ public class PlayerControl : MonoBehaviour
                 hud.CloseMsgPanel();
             }
         }
-        else
-        {
-
-        }
 
         HandleInput();
+
+
+        hud.UpdateOil(Oil/100f);
     }
 
     public void SwapBackToPlayer()
@@ -149,8 +156,13 @@ public class PlayerControl : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.I))
                 inventarVerwalten();
 
-            if (Input.GetKeyDown(KeyCode.G))
-                dropItem();
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                if (LightOn)
+                    SwitchOillampOf();
+                else
+                    SwitchOillampOn();
+            }
 
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -183,11 +195,6 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void dropItem()
-    {
-        //inventory.RemoveItem(0);
-    }
-
     private void inventarVerwalten()
     {
 
@@ -207,29 +214,87 @@ public class PlayerControl : MonoBehaviour
         
     }
 
+    IEnumerator LooseOil()
+    {
+        Debug.Log("LooseOil Gestartet");
+        while (LightOn && Oil > 0)
+        {
+            yield return new WaitForSeconds(1);
+            --Oil;
+            Debug.Log("Oelstand:  " + Oil);
+        }
+        if (Oil <= 0)
+        {
+            Debug.Log("Lampe Leer");
+            SwitchOillampOf();
+        }
+    }
+
+    private void SwitchOillampOn() {
+        if (Oil > 5)
+            Oil -= 5;
+        LightOn = true;
+        Oillamp.enabled = true;
+        Debug.Log("Oellampe aktiviert");
+        StartCoroutine(LooseOil());
+        Time.timeScale = 1;
+        // fuer Audio
+        if (audio.getDunkelheit())
+        {
+            audio.HintergrundAktivierenMitLampe();
+        }
+    }
+
+    private void SwitchOillampOf() {
+        Debug.Log("Oellampe Deaktiviert");
+        LightOn = false;
+        Oillamp.enabled = false;
+        // fuer Audio
+        if (audio.getDunkelheit())
+        {
+            audio.DunkelheitAktivierenMitLampe();
+        }
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
-         //InventoryItem inventoryItem = collider.GetComponent<InventoryItem>();
-         //if (inventoryItem != null)
-         //{
-         //   //    if (mLockPickUp)
-         //   //        return;
-
-         //   inventoryItem.Selected = true;
-         //   itemPickUp = inventoryItem;
-         //    hud.OpenMsgPanel("");
-         //}
-       
-
+        // in Lichtzone, Kein Schaden
+        if (collider.tag == "Licht")
+        {
+            audio.HintergrundAktivieren();
+            Debug.Log("In Lichtzone");
+        }
+        // in Saferoom
+        if (collider.tag == "Saferoom")
+        {
+            audio.SaferoomAktivieren();
+            Debug.Log("In Saferoom");
+        }
     }
     private void OnTriggerExit(Collider collider)
     {
-        //InventoryItem inventoryItem = collider.GetComponent<InventoryItem>();
-        //if (inventoryItem != null)
-        //{
-        //    inventoryItem.Selected = false;
-        //    hud.CloseMsgPanel();
-        //    itemPickUp = null;
-        //}
+        // Leite Tod ein wenn Oellampe nicht aktiv
+        if(collider.tag == "Licht")
+        {
+            if(!LightOn)
+            {
+                audio.DunkelheitAktivieren();
+            }
+            Debug.Log("Außerhalb von Lichtzone");
+        }
+        // Saferoom verlassen
+        if (collider.tag == "Saferoom")
+        {
+            if(LightOn)
+            {
+                audio.HintergrundAktivieren();
+            }
+            else if(!audio.getHintergrund())
+            {
+                audio.DunkelheitAktivieren();
+            }
+            Debug.Log("Außerhalb von Saferoom");
+        }
+
     }
 }

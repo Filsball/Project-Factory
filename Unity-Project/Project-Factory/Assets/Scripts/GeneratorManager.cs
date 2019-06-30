@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,22 +16,25 @@ public class GeneratorManager : MonoBehaviour
     [Range(0.5f, 5)]
     public float doorOpenSpeed = 2;
 
+    private AudioManager audio;
     private bool doorsHaveOpened = false;
     [SerializeField]
     private bool doorsOpening = false;
-   
-    List<Button> buttonsPressed = new List<Button>();
-    private bool buttonsSolved = false;
 
-    public void OnMouseDown()
-    {
-        Debug.Log("CLICKED ON: " + name);
-    }
+    List<Button> buttonsPressed = new List<Button>();
+
+    private bool buttonsSolved = false;
+   
 
     // Start is called before the first frame update
     void Start()
     {
         zrManager = GetComponentInChildren<Zahnrad_Manager>();
+        audio = FindObjectOfType<AudioManager>();
+        audio.setPosition("Button", position: buttonOrder[2].transform.position);
+        audio.setPosition("ButtonMitEinrasten", position: buttonOrder[0].transform.position);
+        audio.setPosition("MetalltuerGenerator", position: rightDoor.transform.position);
+
     }
 
     void OpenDoors()
@@ -47,6 +51,7 @@ public class GeneratorManager : MonoBehaviour
             leftDoor.transform.Rotate(new Vector3(0, 0, doorOpenSpeed));
             doorsHaveOpened = false;
         }
+        
 
         doorsOpening = !doorsHaveOpened;
     }
@@ -55,6 +60,27 @@ public class GeneratorManager : MonoBehaviour
     {
         for(int i=0; i<buttonOrder.Length; i++)
         {
+            if (!buttonOrder[i].Equals(buttonsPressed[i]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public bool CheckDreiButtons()
+    {
+
+        Debug.Log(buttonOrder.Length);
+        Debug.Log(buttonsPressed.Count);
+        if (buttonsPressed.Count < buttonOrder.Length - 1)
+        {
+
+            return false;
+        }
+        for (int i = 0; i < buttonOrder.Length-1; i++)
+        {
+
             if (!buttonOrder[i].Equals(buttonsPressed[i]))
             {
                 return false;
@@ -77,9 +103,6 @@ public class GeneratorManager : MonoBehaviour
                     b.currentlyInteractable = false;
                     buttonsPressed.Add(b);
                     canCheckButtons = false;
-                } else
-                {
-                    canCheckButtons = false;
                 }
             }
 
@@ -89,6 +112,7 @@ public class GeneratorManager : MonoBehaviour
                 if (buttonsSolved)
                 {
                     doorsOpening = true;
+                    audio.Play("ButtonMitEinrasten", 0.7f);
                 }
                 else
                 {
@@ -105,6 +129,7 @@ public class GeneratorManager : MonoBehaviour
         if (!doorsHaveOpened && doorsOpening)
         {
             OpenDoors();
+            audio.Play("MetalltuerGenerator", 0.8f);
         }
 
         zrManager.running = running;

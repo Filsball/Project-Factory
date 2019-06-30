@@ -7,19 +7,27 @@ public class Button : InteractableObject
     public bool pressed = false;
 
     private Vector3 translateTo;
+    public BoxCollider boxCollider;
     [Range(0,10)]
     public float translationSpeed;
     private bool translating;
+    private AudioManager audio;
 
     public override void Interact()
     {
         if (!currentlyInteractable) return;
         if (!pressed){
-            translateTo = transform.position + new Vector3(-col.bounds.size.x / 2, 0, 0);
+            translateTo = transform.position + col.bounds.size.x / 2 * transform.right;
+            GeneratorManager gm = gameObject.GetComponentInParent<GeneratorManager>();
+            if (gm == null || !gm.CheckDreiButtons())
+            {
+                audio.Play("Button", 0.7f, audio.transform.position);
+            }
+            
         }
         else
         {
-            translateTo = transform.position + new Vector3(col.bounds.size.x / 2, 0, 0);
+            translateTo = transform.position + new Vector3(-col.bounds.size.x / 2, 0, 0);
         }
         pressed = !pressed;
         translating = true;
@@ -51,6 +59,9 @@ public class Button : InteractableObject
     // Start is called before the first frame update
     new public void Start()
     {
+        boxCollider = GetComponent<BoxCollider>();
+        audio = FindObjectOfType<AudioManager>();
+        audio.setPosition("Button", position: boxCollider.center + transform.position);
         Name = "Knopf";
         base.Start();
         //translationSpeed = 0.5f;

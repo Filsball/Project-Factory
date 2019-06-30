@@ -15,10 +15,11 @@ public class ItemDropHandler : MonoBehaviour, IDropHandler
             {
                 RaycastHit hit = new RaycastHit();
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Debug.DrawRay(ray.origin, ray.direction);
                 if(Physics.Raycast(ray, out hit, 1000))
                 {
-                    GameObject dropOerObject = hit.collider.gameObject;
-                    int dropStatus = itemDragged.Item.CheckDroppingOver(dropOerObject);
+                    GameObject dropOverObject = hit.collider.gameObject;
+                    int dropStatus = itemDragged.Item.CheckDroppingOver(dropOverObject);
                     if(dropStatus == InventoryItem.ABORT_DROP_OVER) return;
 
                     if(dropStatus == InventoryItem.DROP_ON_GROUND)
@@ -29,7 +30,7 @@ public class ItemDropHandler : MonoBehaviour, IDropHandler
 
                     if(dropStatus == InventoryItem.CAN_DROP_OVER)
                     {
-                        dropStatus = itemDragged.Item.DropOver(dropOerObject);
+                        dropStatus = itemDragged.Item.DropOver(dropOverObject);
                         if (dropStatus == InventoryItem.ABORT_DROP_OVER) return;
                         if (dropStatus == InventoryItem.DROP_ON_GROUND)
                         {
