@@ -151,6 +151,30 @@ ModelImporter:
     4300042: Raum_Safe_Boden
     4300044: Raum_Safe_Decke
     4300046: Dach
+    6400000: Dach
+    6400002: Flur_Boden
+    6400004: Flur_Decke
+    6400006: "Flur_W\xE4nde"
+    6400008: Raum_Generator_Boden
+    6400010: Raum_Generator_Decke
+    6400012: "Raum_Generator_T\xFCr"
+    6400014: "Raum_Generator_T\xFCrrahmen"
+    6400016: "Raum_Generator_W\xE4nde"
+    6400018: Raum_Kippschalter_Boden
+    6400020: Raum_Kippschalter_Decke
+    6400022: "Raum_Kippschalter_T\xFCr"
+    6400024: "Raum_Kippschalter_T\xFCrrahmen"
+    6400026: "Raum_Kippschalter_W\xE4nde"
+    6400028: Raum_Safe_Boden
+    6400030: Raum_Safe_Decke
+    6400032: "Raum_Safe_T\xFCr"
+    6400034: "Raum_Safe_T\xFCrrahmen"
+    6400036: "Raum_Safe_W\xE4nde"
+    6400038: Raum_Schwarzlicht_Boden
+    6400040: Raum_Schwarzlicht_Decke
+    6400042: "Raum_Schwarzlicht_T\xFCr"
+    6400044: "Raum_Schwarzlicht_T\xFCrrahmen"
+    6400046: "Raum_Schwarzlicht_W\xE4nde"
     7400000: "Raum_Generator_T\xFCr|CubeAction"
     7400002: "Raum_Generator_T\xFCr|door_heavy_metalAction.000"
     7400004: "Raum_Generator_T\xFCr|door_heavy_metalAction.002"
@@ -257,7 +281,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
