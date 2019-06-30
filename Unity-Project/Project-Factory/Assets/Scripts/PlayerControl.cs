@@ -202,12 +202,14 @@ public class PlayerControl : MonoBehaviour
         if (InvOpen)
         {
             hud.OpenInventory();
+            audio.Play("InventarOeffnen", 1f);
             //GetComponent<FirstPersonController>().enabled = false;
             //mouseLock.SetCursorLock(false);
         }
         else
         {
             hud.CloseInventory();
+            audio.Play("InventarSchließen", 1f);
             //GetComponent<FirstPersonController>().enabled = true;
         }
         
@@ -233,13 +235,25 @@ public class PlayerControl : MonoBehaviour
     private void SwitchOillampOn() {
         if (Oil > 5)
             Oil -= 5;
-        LightOn = true;
-        Oillamp.enabled = true;
-        Debug.Log("Oellampe aktiviert");
-        StartCoroutine(LooseOil());
+        
+        if(Oil > 0)
+        {
+            LightOn = true;
+            Oillamp.enabled = true;
+            Debug.Log("Oellampe aktiviert");
+            StartCoroutine(LooseOil());
+        }
+        
         Time.timeScale = 1;
+
+
         // fuer Audio
-        if (audio.getDunkelheit())
+        audio.Play("LampeAnschalten", 0.7f);
+        if (Oil > 0)
+        {
+            audio.Play("LampeIstAn", 0.1f);
+        }
+        if (audio.getDunkelheit() && Oil > 0)
         {
             audio.HintergrundAktivierenMitLampe();
         }
@@ -249,6 +263,7 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("Oellampe Deaktiviert");
         LightOn = false;
         Oillamp.enabled = false;
+        audio.Stop("LampeIstAn");
         // fuer Audio
         if (audio.getDunkelheit())
         {
