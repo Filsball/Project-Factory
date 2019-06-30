@@ -24,11 +24,7 @@ public class GeneratorManager : MonoBehaviour
     List<Button> buttonsPressed = new List<Button>();
 
     private bool buttonsSolved = false;
-
-    public void OnMouseDown()
-    {
-        Debug.Log("CLICKED ON: " + name);
-    }
+   
 
     // Start is called before the first frame update
     void Start()
@@ -106,9 +102,6 @@ public class GeneratorManager : MonoBehaviour
                     if (buttonsPressed.Contains(b)) continue;
                     b.currentlyInteractable = false;
                     buttonsPressed.Add(b);
-                    canCheckButtons = false;
-                } else
-                {
                     canCheckButtons = false;
                 }
             }
