@@ -3,9 +3,13 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.PostProcessing;
 using UnityEngine.Experimental.UIElements;
+using UnityStandardAssets.Characters.FirstPerson;
+using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
+    public TodController todController;
+    
     public static float volume;
     public Sound[] sounds;
     AudioSource dunkelheit;
@@ -16,13 +20,15 @@ public class AudioManager : MonoBehaviour
     public static bool keepFadingOut;
     public static AudioManager instance;
     [HideInInspector]
+    private FirstPersonController firstPersonController;
     public bool generatorStarted = false;
     private bool saferoomAktiv = false;
     private bool dunkelheitAktiv = false;
     private bool hintergrundAktiv = false;
     private PostProcessingBehaviour pPB;
     private static IEnumerator lastCalled;
-    public static TodController todController;
+    public static Transform camera;
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -49,6 +55,8 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        camera = Camera.main.transform;
+        firstPersonController = GameObject.Find("FPSController").GetComponent<FirstPersonController>();
         pPB = FindObjectOfType<PostProcessingBehaviour>();
         MotionBlurModel.Settings MBS = pPB.profile.motionBlur.settings;
         MBS.frameBlending = 0;
@@ -78,11 +86,16 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        if (todController.getTod())
+        {
+            todController.ActivateTod();
+        }
         if (generatorStarted && !generatorStartend.isPlaying)
         {
             generatorStarted = false;
             Play("GeneratorLaufend", 1.0f, generatorStartend.transform.position);
         }
+
     }
 
     public void DunkelheitAktivieren()
@@ -290,10 +303,10 @@ public class AudioManager : MonoBehaviour
         if (startNew || !toFadeIn.isPlaying) toFadeIn.Play();
         float startVolume = toFadeOut.volume;
         PostProcessingProfile profile = pPB.profile;
-        float pufferzeit = 10f;
-        float wartezeit = 10f;
+        float pufferzeit = 3f;
+        float wartezeit = 3f;
         float wartezeitStartwert = wartezeit;
-        float PPFadeZeit = 20f;
+        float PPFadeZeit = 18f;
 
 
         while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0)
@@ -315,6 +328,14 @@ public class AudioManager : MonoBehaviour
             PPChromaticAberration(pPB, profile, PPFadeZeit, true);
             yield return null;
         }
+        while (pufferzeit < 8.5f)
+        {
+            Vector3 startPosition = camera.localPosition;
+            pufferzeit += Time.deltaTime;
+            camera.localPosition = startPosition + Random.insideUnitSphere * pufferzeit / 25f;
+            yield return null;
+        }
+        instance.todController.setTod();
     }
     static IEnumerator fadeSoundsMitPP(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {
@@ -322,10 +343,10 @@ public class AudioManager : MonoBehaviour
         float startVolume = toFadeOut.volume;
         float startVolume2 = toFadeOut2.volume;
         PostProcessingProfile profile = pPB.profile;
-        float pufferzeit = 10f;
-        float wartezeit = 10f;
+        float pufferzeit = 3f;
+        float wartezeit = 3f;
         float wartezeitStartwert = wartezeit;
-        float PPFadeZeit = 20f;
+        float PPFadeZeit = 18f;
 
 
         while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0 || toFadeOut2.volume > 0)
@@ -348,7 +369,14 @@ public class AudioManager : MonoBehaviour
             PPChromaticAberration(pPB, profile, PPFadeZeit, true);
             yield return null;
         }
-        todController.ActivateTod();
+        while (pufferzeit < 8.5f)
+        {
+            Vector3 startPosition = camera.localPosition;
+            pufferzeit += Time.deltaTime;
+            camera.localPosition = startPosition + Random.insideUnitSphere * pufferzeit / 25f;
+            yield return null;
+        }
+        instance.todController.setTod();
     }
     static IEnumerator fadeSoundsMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {

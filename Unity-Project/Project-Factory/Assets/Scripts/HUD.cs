@@ -12,6 +12,7 @@ public class HUD : MonoBehaviour
     public GameObject MsgPanel;
 
     public GameObject InventoryPanel;
+    public GameObject OilPanel;
 
     public GameObject CrossHiarPanel;
     // Start is called before the first frame update
@@ -25,6 +26,13 @@ public class HUD : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdateOil(float Oil)
+    {
+        RectTransform oilFillPosition = OilPanel.GetComponent<RectTransform>();
+        float top = 13 + (1- Oil) * 574;
+        oilFillPosition.offsetMax = new Vector2(oilFillPosition.offsetMax.x, -top);
     }
 
     private void InventoryScript_ItemAdded(object sender, InventoryEventArgs e) {
