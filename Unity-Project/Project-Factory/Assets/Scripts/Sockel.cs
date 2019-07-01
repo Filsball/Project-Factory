@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class Sockel : InteractableObject
 {
-
     [SerializeField] GameObject Gluehbirne;
     //[SerializeField] Light GluehbirneX;
     [SerializeField] GameObject Lichtzone;
@@ -19,7 +18,7 @@ public class Sockel : InteractableObject
     private new void Start()
     {
         Gluehbirne.SetActive(false);
-     
+        //GluehbirneX.enabled = false;
         Lichtzone.SetActive(false);
         StromAktiviert = false;
     }
@@ -46,6 +45,7 @@ public class Sockel : InteractableObject
         {
             inventory.removeItem(birne);
             Gluehbirne.SetActive(true);
+            //GluehbirneX.enabled = true;
             Lichtzone.SetActive(true);
             currentlyInteractable = false;
             Debug.Log("Alle Stücke Aktiviert");
