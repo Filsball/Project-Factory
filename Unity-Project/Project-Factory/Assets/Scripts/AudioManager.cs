@@ -9,7 +9,6 @@ using Random = UnityEngine.Random;
 public class AudioManager : MonoBehaviour
 {
     public TodController todController;
-    
     public static float volume;
     public Sound[] sounds;
     AudioSource dunkelheit;
@@ -373,7 +372,7 @@ public class AudioManager : MonoBehaviour
         {
             Vector3 startPosition = camera.localPosition;
             pufferzeit += Time.deltaTime;
-            camera.localPosition = startPosition + Random.insideUnitSphere * pufferzeit / 25f;
+            camera.localPosition = startPosition + Random.insideUnitSphere* pufferzeit / 25f;
             yield return null;
         }
         instance.todController.setTod();
