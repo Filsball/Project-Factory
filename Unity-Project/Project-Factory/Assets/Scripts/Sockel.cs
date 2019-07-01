@@ -18,7 +18,7 @@ public class Sockel : InteractableObject
     private new void Start()
     {
         Gluehbirne.SetActive(false);
-        //GluehbirneX.enabled = false;
+        
         Lichtzone.SetActive(false);
         StromAktiviert = false;
     }
@@ -38,19 +38,18 @@ public class Sockel : InteractableObject
     {
         Debug.Log("In() aufgerufen");
         // Hier moeglicherweise pruefen ob Generator aktiviert/ Strom vorhanden
-        //if(StromAktiviert){
+        if(StromAktiviert){
         InventoryItem birne = inventory.containsGluehbirne();
         Debug.Log("In If birne im Inventar");
         if (birne != null)
         {
             inventory.removeItem(birne);
             Gluehbirne.SetActive(true);
-            //GluehbirneX.enabled = true;
             Lichtzone.SetActive(true);
             currentlyInteractable = false;
             Debug.Log("Alle Stücke Aktiviert");
         }
-        //}
+        }
     }
     public static void StromAn() {
         StromAktiviert = true;

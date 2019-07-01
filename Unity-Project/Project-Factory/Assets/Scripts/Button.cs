@@ -17,7 +17,7 @@ public class Button : InteractableObject
     {
         if (!currentlyInteractable) return;
         if (!pressed){
-            translateTo = transform.position + col.bounds.size.x / 2 * transform.right;
+            translateTo = transform.position - col.bounds.size.x / 4 * transform.right;
             GeneratorManager gm = gameObject.GetComponentInParent<GeneratorManager>();
             if (gm == null || !gm.CheckDreiButtons())
             {
@@ -27,7 +27,7 @@ public class Button : InteractableObject
         }
         else
         {
-            translateTo = transform.position + new Vector3(-col.bounds.size.x / 2, 0, 0);
+            translateTo = transform.position + col.bounds.size.x / 4 * transform.right;
         }
         pressed = !pressed;
         translating = true;

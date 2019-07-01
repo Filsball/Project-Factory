@@ -13,6 +13,7 @@ public class Pausemenu : MonoBehaviour
     private Scene scene;
     public static Slider slider;
     private AudioListener audioListener;
+    public bool pauseAn = false;
     
     void Start()
     {
@@ -40,7 +41,11 @@ public class Pausemenu : MonoBehaviour
                 {
                     ShowMenue();
                 }
-                DeactivateMenu();
+                if (pauseAn)
+                {
+                    DeactivateMenu();
+                }
+                
             }
             
         }
@@ -56,11 +61,13 @@ public class Pausemenu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.lockState = CursorLockMode.Confined;
+        pauseAn = true;
 
 
     }
     public void DeactivateMenu()
     {
+        pauseAn = false;
         Time.timeScale = 1;
         AudioListener.pause = false;
         pauseMenuUI.SetActive(false);

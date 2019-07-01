@@ -117,13 +117,13 @@ public class PlayerControl : MonoBehaviour
         isInRiddle = true;
         headCamera.gameObject.SetActive(false);
         fpc.enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         if (c != null)
         {
             activeCamera = c;
             c.gameObject.SetActive(true);
         }
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
 
         hud.OpenInventory();
         hud.CloseMsgPanel();

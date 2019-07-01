@@ -41,12 +41,12 @@ public class GeneratorManager : MonoBehaviour
     {
         doorsHaveOpened = true;
 
-        if ((int)(rightDoor.transform.rotation.eulerAngles.y) != 360 - doorOpenAngle)
+        if ((int)(rightDoor.transform.localRotation.eulerAngles.y) != 360 - doorOpenAngle)
         {
             rightDoor.transform.Rotate(new Vector3(0, 0, -doorOpenSpeed));
             doorsHaveOpened = false;
         }
-        if ((int)(leftDoor.transform.rotation.eulerAngles.y) < doorOpenAngle)
+        if ((int)(leftDoor.transform.localRotation.eulerAngles.y) < doorOpenAngle)
         {
             leftDoor.transform.Rotate(new Vector3(0, 0, doorOpenSpeed));
             doorsHaveOpened = false;
@@ -94,7 +94,6 @@ public class GeneratorManager : MonoBehaviour
     {
         if (!buttonsSolved)
         {
-            bool canCheckButtons = buttonsPressed.Capacity > 0;
             foreach (Button b in buttonOrder)
             {
                 if (b.pressed)
@@ -102,11 +101,10 @@ public class GeneratorManager : MonoBehaviour
                     if (buttonsPressed.Contains(b)) continue;
                     b.currentlyInteractable = false;
                     buttonsPressed.Add(b);
-                    canCheckButtons = false;
                 }
             }
 
-            if (canCheckButtons)
+            if (buttonsPressed.Count == buttonOrder.Length)
             {
                 buttonsSolved = CheckButtons();
                 if (buttonsSolved)
@@ -133,5 +131,9 @@ public class GeneratorManager : MonoBehaviour
         }
 
         zrManager.running = running;
+        if (running)
+        {
+            Sockel.StromAn();
+        }
     }
 }

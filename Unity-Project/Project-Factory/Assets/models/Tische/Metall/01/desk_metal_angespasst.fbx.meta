@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: b038860d79e75f040b25f5dae4f1fa5c
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: desk_metal
+    100002: desk_metal.002
+    100004: //RootNode
+    100006: desk_metal_schublade_L1
+    100008: desk_metal_schublade_L2
+    100010: desk_metal_schublade_L3
+    100012: desk_metal_schublade_R1
+    100014: desk_metal_schublade_R2
+    400000: desk_metal
+    400002: desk_metal.002
+    400004: //RootNode
+    400006: desk_metal_schublade_L1
+    400008: desk_metal_schublade_L2
+    400010: desk_metal_schublade_L3
+    400012: desk_metal_schublade_R1
+    400014: desk_metal_schublade_R2
+    2100000: Desk_Body_Mat
+    2100002: Desk_Schublade_L1_Mat
+    2100004: Desk_SchubladenGriffe_Mat
+    2300000: desk_metal
+    2300002: desk_metal.002
+    2300004: desk_metal_schublade_L1
+    2300006: desk_metal_schublade_L2
+    2300008: desk_metal_schublade_L3
+    2300010: desk_metal_schublade_R1
+    2300012: desk_metal_schublade_R2
+    3300000: desk_metal
+    3300002: desk_metal.002
+    3300004: desk_metal_schublade_L1
+    3300006: desk_metal_schublade_L2
+    3300008: desk_metal_schublade_L3
+    3300010: desk_metal_schublade_R1
+    3300012: desk_metal_schublade_R2
+    4300000: desk_metal
+    4300002: desk_metal_schublade_L1
+    4300004: desk_metal_schublade_L2
+    4300006: desk_metal_schublade_L3
+    4300008: desk_metal_schublade_R1
+    4300010: desk_metal_schublade_R2
+    4300012: desk_metal.002
+    7400000: desk_metal_schublade_L1|desk_metal.002Action
+    7400002: desk_metal_schublade_L1|desk_metal_schublade_L1Action.002
+    7400004: desk_metal_schublade_L1|desk_metal_schublade_L2Action.002
+    7400006: desk_metal_schublade_L1|desk_metal_schublade_L3Action
+    7400008: desk_metal_schublade_L1|desk_metal_schublade_R1Action
+    7400010: desk_metal_schublade_L1|desk_metal_schublade_R2Action
+    7400012: desk_metal_schublade_L2|desk_metal.002Action
+    7400014: desk_metal_schublade_L2|desk_metal_schublade_L1Action.002
+    7400016: desk_metal_schublade_L2|desk_metal_schublade_L2Action.002
+    7400018: desk_metal_schublade_L2|desk_metal_schublade_L3Action
+    7400020: desk_metal_schublade_L2|desk_metal_schublade_R1Action
+    7400022: desk_metal_schublade_L2|desk_metal_schublade_R2Action
+    7400024: desk_metal_schublade_L3|desk_metal.002Action
+    7400026: desk_metal_schublade_L3|desk_metal_schublade_L1Action.002
+    7400028: desk_metal_schublade_L3|desk_metal_schublade_L2Action.002
+    7400030: desk_metal_schublade_L3|desk_metal_schublade_L3Action
+    7400032: desk_metal_schublade_L3|desk_metal_schublade_R1Action
+    7400034: desk_metal_schublade_L3|desk_metal_schublade_R2Action
+    7400036: desk_metal_schublade_R1|desk_metal.002Action
+    7400038: desk_metal_schublade_R1|desk_metal_schublade_L1Action.002
+    7400040: desk_metal_schublade_R1|desk_metal_schublade_L2Action.002
+    7400042: desk_metal_schublade_R1|desk_metal_schublade_L3Action
+    7400044: desk_metal_schublade_R1|desk_metal_schublade_R1Action
+    7400046: desk_metal_schublade_R1|desk_metal_schublade_R2Action
+    7400048: desk_metal_schublade_R2|desk_metal.002Action
+    7400050: desk_metal_schublade_R2|desk_metal_schublade_L1Action.002
+    7400052: desk_metal_schublade_R2|desk_metal_schublade_L2Action.002
+    7400054: desk_metal_schublade_R2|desk_metal_schublade_L3Action
+    7400056: desk_metal_schublade_R2|desk_metal_schublade_R1Action
+    7400058: desk_metal_schublade_R2|desk_metal_schublade_R2Action
+    7400060: desk_metal.002|desk_metal.002Action
+    7400062: desk_metal.002|desk_metal_schublade_L1Action.002
+    7400064: desk_metal.002|desk_metal_schublade_L2Action.002
+    7400066: desk_metal.002|desk_metal_schublade_L3Action
+    7400068: desk_metal.002|desk_metal_schublade_R1Action
+    7400070: desk_metal.002|desk_metal_schublade_R2Action
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

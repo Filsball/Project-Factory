@@ -10,7 +10,7 @@ public class Mitwirkende : MonoBehaviour
     public Text text;
     public Text text2;
     public Text text3;
-    private int geschwindigkeit = 300;
+    private int geschwindigkeit = 50;
     private AudioSource audio;
     private AudioSource audioParent;
     private Vector3 startPosition;
