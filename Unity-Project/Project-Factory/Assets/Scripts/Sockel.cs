@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class Sockel : InteractableObject
 {
-    [SerializeField] Light Gluehbirne;
+
+    [SerializeField] GameObject Gluehbirne;
+    //[SerializeField] Light GluehbirneX;
     [SerializeField] GameObject Lichtzone;
 
     public static bool StromAktiviert;
@@ -16,21 +18,22 @@ public class Sockel : InteractableObject
 
     private new void Start()
     {
-        Gluehbirne.enabled = false;
+        Gluehbirne.SetActive(false);
+     
         Lichtzone.SetActive(false);
         StromAktiviert = false;
     }
 
-    public bool GluehbirneInSockelAktiviert() { return Gluehbirne.enabled; }
+   // public bool GluehbirneInSockelAktiviert() { return Gluehbirne.enabled; }
 
     public override void Interact()
     {
         Debug.Log("Sockel Interact");
-        if (!Gluehbirne.enabled)
-        {
+     //   if (!Gluehbirne.enabled)
+      //  {
             Debug.Log("In()");
             In();
-        }
+      //  }
     }
     private void In()
     {
@@ -42,9 +45,10 @@ public class Sockel : InteractableObject
         if (birne != null)
         {
             inventory.removeItem(birne);
-            Gluehbirne.enabled = true;
+            Gluehbirne.SetActive(true);
             Lichtzone.SetActive(true);
             currentlyInteractable = false;
+            Debug.Log("Alle Stücke Aktiviert");
         }
         //}
     }
