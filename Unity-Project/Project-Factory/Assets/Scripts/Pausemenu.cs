@@ -93,7 +93,7 @@ public class Pausemenu : MonoBehaviour
     
     public void HideMenue()
     {
-        pauseMenuUI.transform.localPosition = new Vector3(0, 750, 0);
+        pauseMenuUI.transform.localPosition = new Vector3(0, 800, 0);
     }
 
     public void ShowMenue()

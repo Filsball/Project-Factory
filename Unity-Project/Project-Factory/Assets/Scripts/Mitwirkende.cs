@@ -10,6 +10,7 @@ public class Mitwirkende : MonoBehaviour
     public Text text;
     public Text text2;
     public Text text3;
+    private int geschwindigkeit = 300;
     private AudioSource audio;
     private AudioSource audioParent;
     private Vector3 startPosition;
@@ -44,7 +45,7 @@ public class Mitwirkende : MonoBehaviour
                 if (c.a < 0) c.a = 0;
                 text3.color = c;
                 v = gameObject.transform.position;
-                v.y += Time.deltaTime * 20;
+                v.y += Time.deltaTime * geschwindigkeit;
                 gameObject.transform.position = v;
                 audioParent.volume += Time.deltaTime / 3;
                 if (audioParent.volume > 0.7) audioParent.volume = 0.7f;
@@ -52,7 +53,7 @@ public class Mitwirkende : MonoBehaviour
                 if (audio.volume < 0) audio.volume = 0;
                 zuHauptmenue();
             } 
-            else if(gameObject.transform.position.y < 300 || bild.color.a < 1 || audioParent.volume > 0 || audio.volume < 1)
+            else if(gameObject.transform.position.y <2000 || bild.color.a < 1 || audioParent.volume > 0 || audio.volume < 1)
             {
                 Debug.Log(audioParent.volume);
                 c = bild.color;
@@ -60,7 +61,7 @@ public class Mitwirkende : MonoBehaviour
                 if (c.a > 1) c.a = 1;
                 bild.color = c;
                 v = gameObject.transform.position;
-                v.y += Time.deltaTime * 20;
+                v.y += Time.deltaTime * geschwindigkeit;
                 gameObject.transform.position = v;
                 audioParent.volume -= Time.deltaTime / 3;
                 if (audioParent.volume < 0) audioParent.volume = 0;
