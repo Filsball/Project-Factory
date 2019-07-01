@@ -169,7 +169,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 960440e8b06f09b4b9da49a02a5c787b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 528e5b9c7753a2e4fb41d62f104da477, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2493,8 +2493,8 @@ MonoBehaviour:
     Leak\ntempleofhades,\nhttps://freesound.org/people/templeofhades/sounds/233405/\n\nGolf
     Bag Pocket Shuffling\nYoutube Audiobibliothek\n\nMetal Dropped Lingering\nYoutube
     Audiobibliothek\n\nMetal Parts Cling\nYoutube Audiobibliothek\n\nMetal Strike
-    on Wood\nYoutube Audiobibliothek\n\nPound On Big Tin Bin\nYoutube Audiobibliothek\n\nRock
-    Scraping on Boulder\nYoutube Audiobibliothek\n\n\n\n\n\n"
+    on Wood\nYoutube Audiobibliothek\n\nPick up Item 2\nSilverIllusionist,\nhttps://freesound.org/people/SilverIllusionist/sounds/411178/\n\nPound
+    On Big Tin Bin\nYoutube Audiobibliothek\n\nRock Scraping on Boulder\nYoutube Audiobibliothek\n\n\n\n\n\n"
 --- !u!222 &1222768309
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3112,7 +3112,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 960440e8b06f09b4b9da49a02a5c787b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 528e5b9c7753a2e4fb41d62f104da477, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3379,7 +3379,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 960440e8b06f09b4b9da49a02a5c787b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 528e5b9c7753a2e4fb41d62f104da477, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
