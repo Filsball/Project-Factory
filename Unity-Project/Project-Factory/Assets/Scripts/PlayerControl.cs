@@ -24,7 +24,8 @@ public class PlayerControl : MonoBehaviour
     private static bool LightOn;
     private static int Oil { get; set; }
     private AudioManager audio;
-    [SerializeField] Light Oillamp;
+    [SerializeField] GameObject Oillamp;
+    Light oilLight;
 
     // private bool mLockPickUp;
 
@@ -44,7 +45,8 @@ public class PlayerControl : MonoBehaviour
         fpc = GetComponent<FirstPersonController>();
         Oil = 100;
         LightOn = false;
-        Oillamp.enabled = false;
+        oilLight = Oillamp.GetComponentInChildren<Light>();
+        oilLight.enabled = false;
     }
 
     public void ResetLookedAtObject()
@@ -126,6 +128,10 @@ public class PlayerControl : MonoBehaviour
         }
 
         hud.OpenInventory();
+        if (Oillamp.activeSelf)
+        {
+            hud.OpenOilTankPanel();
+        }
         hud.CloseMsgPanel();
         hud.CloseCrossHairPanel();
     }
@@ -202,6 +208,10 @@ public class PlayerControl : MonoBehaviour
         if (InvOpen)
         {
             hud.OpenInventory();
+            if (Oillamp.activeSelf)
+            {
+                hud.OpenOilTankPanel();
+            }
             audio.Play("InventarOeffnen", 1f);
             //GetComponent<FirstPersonController>().enabled = false;
             //mouseLock.SetCursorLock(false);
@@ -210,6 +220,10 @@ public class PlayerControl : MonoBehaviour
         {
             hud.CloseInventory();
             audio.Play("InventarSchließen", 1f);
+            if (Oillamp.activeSelf  && !LightOn)
+            {
+                hud.CloseOilTankPanel();
+            }
             //GetComponent<FirstPersonController>().enabled = true;
         }
         
@@ -233,13 +247,15 @@ public class PlayerControl : MonoBehaviour
     }
 
     private void SwitchOillampOn() {
+        if (!Oillamp.activeSelf) return;
+        hud.OpenOilTankPanel();
         if (Oil > 5)
             Oil -= 5;
         
         if(Oil > 0)
         {
             LightOn = true;
-            Oillamp.enabled = true;
+            oilLight.enabled = true;
             Debug.Log("Oellampe aktiviert");
             StartCoroutine(LooseOil());
         }
@@ -259,10 +275,16 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void SwitchOillampOf() {
+    private void SwitchOillampOf()
+    {
+        if (!Oillamp.activeSelf) return;
+        if (!InvOpen)
+        {
+            hud.CloseOilTankPanel();
+        }
         Debug.Log("Oellampe Deaktiviert");
         LightOn = false;
-        Oillamp.enabled = false;
+        oilLight.enabled = false;
         audio.Stop("LampeIstAn");
         // fuer Audio
         if (audio.getDunkelheit())
