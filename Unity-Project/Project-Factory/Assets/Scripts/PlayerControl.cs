@@ -324,7 +324,8 @@ public class PlayerControl : MonoBehaviour
         {
             if(LightOn)
             {
-                audio.HintergrundAktivieren();
+                audio.HintergrundAktivierenMitLampe();
+                audio.setDunkelheit(true);
             }
             else if(!audio.getHintergrund())
             {
