@@ -12,11 +12,13 @@ public class Sockel : InteractableObject
     [SerializeField] GameObject Lichtzone;
 
     public static bool StromAktiviert;
+    public static List<Sockel> allSockets = new List<Sockel>();
 
     public Inventory inventory;
 
     private new void Start()
     {
+        allSockets.Add(this);
         Gluehbirne.SetActive(false);
         
         Lichtzone.SetActive(false);
@@ -24,6 +26,15 @@ public class Sockel : InteractableObject
     }
 
    // public bool GluehbirneInSockelAktiviert() { return Gluehbirne.enabled; }
+
+    public new void Update()
+    {
+        if (Gluehbirne.activeSelf)
+        {
+            Gluehbirne.GetComponentInChildren<Light>().enabled = StromAktiviert;
+            Lichtzone.SetActive(StromAktiviert);
+        }
+    }
 
     public override void Interact()
     {
@@ -38,17 +49,18 @@ public class Sockel : InteractableObject
     {
         Debug.Log("In() aufgerufen");
         // Hier moeglicherweise pruefen ob Generator aktiviert/ Strom vorhanden
-        if(StromAktiviert){
         InventoryItem birne = inventory.containsGluehbirne();
         Debug.Log("In If birne im Inventar");
         if (birne != null)
         {
             inventory.removeItem(birne);
             Gluehbirne.SetActive(true);
-            Lichtzone.SetActive(true);
-            currentlyInteractable = false;
-            Debug.Log("Alle Stücke Aktiviert");
-        }
+            if (StromAktiviert)
+            {
+                //Lichtzone.SetActive(true);
+                currentlyInteractable = false;
+                Debug.Log("Alle Stücke Aktiviert");
+            }
         }
     }
     public static void StromAn() {

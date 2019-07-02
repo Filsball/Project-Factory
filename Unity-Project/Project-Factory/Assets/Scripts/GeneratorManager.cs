@@ -8,7 +8,10 @@ public class GeneratorManager : MonoBehaviour
     public bool running = true;
     public Button[] buttonOrder;
     public Zahnrad_Manager zrManager;
+    public float motorMaxSpeed = 100;
+    public float motorSpeed = 0;
 
+    public GameObject turbine;
     public GameObject rightDoor;
     public GameObject leftDoor;
     [Range(90, 180)]
@@ -131,9 +134,15 @@ public class GeneratorManager : MonoBehaviour
         }
 
         zrManager.running = running;
-        if (running)
+        if (zrManager.solved)
         {
             Sockel.StromAn();
+            turbine.transform.Rotate(new Vector3(0, 0, motorSpeed * Time.deltaTime));
+            if (motorSpeed < motorMaxSpeed)
+            {
+                motorSpeed += 0.25f;
+                motorSpeed *= 1.01f;
+            }
         }
     }
 }

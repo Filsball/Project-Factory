@@ -92,6 +92,17 @@ public class HUD : MonoBehaviour
         CrossHiarPanel.SetActive(true);
     }
 
+    public void CloseOilTankPanel()
+    {
+        OilPanel.transform.parent.gameObject.SetActive(false);
+    }
+
+
+    public void OpenOilTankPanel()
+    {
+        OilPanel.transform.parent.gameObject.SetActive(true);
+    }
+
     public void CloseCrossHairPanel()
     {
         CrossHiarPanel.SetActive(false);

@@ -89,7 +89,22 @@ ModelImporter:
     4300028: casing_small.002
     4300030: 'electric-motor_axis '
     2186277476908879412: ImportLogs
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: dcd7584d6db32e0408be567a8761acd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: f13b212ad9b54e846afc16c78f780f20, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: antennas_mat.002
+    second: {fileID: 2100000, guid: 1e1bc4a3e74705e41b932c6f3edee403, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
