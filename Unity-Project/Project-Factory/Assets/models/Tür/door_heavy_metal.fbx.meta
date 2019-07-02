@@ -16,7 +16,12 @@ ModelImporter:
     3300002: door_heavy_metal
     4300000: door_frame_metal
     4300002: door_heavy_metal
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door_heavy_metal
+    second: {fileID: 2100000, guid: 2b29f0218ff6212469d11850accda948, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

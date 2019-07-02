@@ -342,8 +342,8 @@ public class AudioManager : MonoBehaviour
         float startVolume = toFadeOut.volume;
         float startVolume2 = toFadeOut2.volume;
         PostProcessingProfile profile = pPB.profile;
-        float pufferzeit = 3f;
-        float wartezeit = 3f;
+        float pufferzeit = 0f;
+        float wartezeit = 1f;
         float wartezeitStartwert = wartezeit;
         float PPFadeZeit = 18f;
 
