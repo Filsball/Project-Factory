@@ -79,6 +79,10 @@ public class Pausemenu : MonoBehaviour
 
     public void Respawn()
     {
+        Time.timeScale = 1;
+        AudioListener.pause = false;
+        isPaused = false;
+        GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = true;
         SceneManager.LoadScene(scene.name);
     }
 

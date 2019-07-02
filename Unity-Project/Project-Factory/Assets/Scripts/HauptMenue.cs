@@ -44,10 +44,10 @@ public class HauptMenue : MonoBehaviour
         if (fade1 && bild1.color.a < 0.4f && pufferzeit < 0.5f)
         {
             tmpPosition = bild1.transform.localPosition;
-            tmpPosition += new Vector3(-.2f, -.1f, 0);
+            tmpPosition += new Vector3(-.3f, -.2f, 0);
             bild1.transform.localPosition = tmpPosition;
             tmpPosition = bild3.transform.localPosition;
-            tmpPosition += new Vector3(-.2f, .1f, 0);
+            tmpPosition += new Vector3(-.4f, .3f, 0);
             bild3.transform.localPosition = tmpPosition;
             c = bild3.color;
             c.a -= Time.deltaTime / fadetime;
@@ -71,10 +71,10 @@ public class HauptMenue : MonoBehaviour
         if (fade2 && bild2.color.a < 0.4f && pufferzeit < 0.5f)
         {
             tmpPosition = bild1.transform.localPosition;
-            tmpPosition += new Vector3(-.2f, -.1f, 0);
+            tmpPosition += new Vector3(-.3f, -.2f, 0);
             bild1.transform.localPosition = tmpPosition;
             tmpPosition = bild2.transform.localPosition;
-            tmpPosition += new Vector3(+.2f, -.1f, 0);
+            tmpPosition += new Vector3(+.4f, -.2f, 0);
             bild2.transform.localPosition = tmpPosition;
             c = bild1.color;
             c.a -= Time.deltaTime / fadetime;
@@ -96,10 +96,10 @@ public class HauptMenue : MonoBehaviour
         if (fade3 && bild3.color.a < 0.4f && pufferzeit < 0.5f)
         {
             tmpPosition = bild2.transform.localPosition;
-            tmpPosition += new Vector3(+.2f, -.1f, 0);
+            tmpPosition += new Vector3(+.4f, -.2f, 0);
             bild2.transform.localPosition = tmpPosition;
             tmpPosition = bild3.transform.localPosition;
-            tmpPosition += new Vector3(-.2f, .1f, 0);
+            tmpPosition += new Vector3(-.4f, .3f, 0);
             bild3.transform.localPosition = tmpPosition;
             c = bild2.color;
             c.a -= Time.deltaTime / fadetime;
