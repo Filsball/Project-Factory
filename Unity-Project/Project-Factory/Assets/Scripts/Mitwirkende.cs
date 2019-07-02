@@ -12,7 +12,7 @@ public class Mitwirkende : MonoBehaviour
     public Text text3;
     private int geschwindigkeit = 50;
     private AudioSource audio;
-    private AudioSource audioParent;
+    public AudioSource audioParent;
     private Vector3 startPosition;
     private Color startFarbe;
     public bool mitwirkendeAktiv;
@@ -53,9 +53,8 @@ public class Mitwirkende : MonoBehaviour
                 if (audio.volume < 0) audio.volume = 0;
                 zuHauptmenue();
             } 
-            else if(gameObject.transform.position.y < 300 || bild.color.a < 1 || audioParent.volume > 0 || audio.volume < 1)
+            else if(gameObject.transform.position.y < 400 || bild.color.a < 1 || audioParent.volume > 0 || audio.volume < 1)
             {
-                Debug.Log(audioParent.volume);
                 c = bild.color;
                 c.a += Time.deltaTime / 3;
                 if (c.a > 1) c.a = 1;
@@ -67,8 +66,6 @@ public class Mitwirkende : MonoBehaviour
                 if (audioParent.volume < 0) audioParent.volume = 0;
                 audio.volume += Time.deltaTime / 3;
                 if (audio.volume > 1) audio.volume = 1;
-
-
             }
             else
             {
@@ -79,26 +76,26 @@ public class Mitwirkende : MonoBehaviour
 
     public void ButtonMitwirkende()
     {
-
         startPosition = gameObject.transform.position;
         startFarbe = this.bild.color;
         audio = GetComponent<AudioSource>();
-        audioParent = GetComponentInParent<AudioSource>();
+        audio.volume = 0;
+        if(!audio.isPlaying) audio.Play();
         bild.gameObject.SetActive(true);
-        gameObject.SetActive(true);
         mitwirkendeAktiv = true;
         text.color = new Color(1f, 1f, 1f, 1f);
+        text2.color = new Color(1f, 1f, 1f, 1f);
+        text3.color = new Color(1f, 1f, 1f, 1f);
     }
 
     void zuHauptmenue()
     {
-        if(bild.color.a <= 0.001 || audioParent.volume >= 0.699 || audio.volume <= 0.001)
+        if(bild.color.a <= 0.001 && audioParent.volume >= 0.699 && audio.volume <= 0.001)
         {
             bild.color = startFarbe;
             gameObject.transform.position = startPosition;
             mitwirkendeAktiv = false;
             mitwirkendeBeendet = false;
-            gameObject.SetActive(false);
             bild.gameObject.SetActive(false);
         }
     }

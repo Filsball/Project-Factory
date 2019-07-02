@@ -24,7 +24,7 @@ public class Pausemenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
 
             isPaused = !isPaused;
@@ -79,6 +79,10 @@ public class Pausemenu : MonoBehaviour
 
     public void Respawn()
     {
+        Time.timeScale = 1;
+        AudioListener.pause = false;
+        isPaused = false;
+        GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = true;
         SceneManager.LoadScene(scene.name);
     }
 

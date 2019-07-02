@@ -34,7 +34,7 @@ public class GeneratorManager : MonoBehaviour
     {
         zrManager = GetComponentInChildren<Zahnrad_Manager>();
         audio = FindObjectOfType<AudioManager>();
-        audio.setPosition("Button", position: buttonOrder[2].transform.position);
+        audio.setPosition("Button", position: new Vector3(3.26f, -0.001834235f, 10.19f));
         audio.setPosition("ButtonMitEinrasten", position: buttonOrder[0].transform.position);
         audio.setPosition("MetalltuerGenerator", position: rightDoor.transform.position);
 
