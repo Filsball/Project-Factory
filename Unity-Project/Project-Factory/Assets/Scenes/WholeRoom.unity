@@ -235,6 +235,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 1318826318}
+  glowPower: 0.75
   col: {fileID: 29471871}
   _Image: {fileID: 21300000, guid: 979a47bb70a924243be7d9385b4a67ea, type: 3}
   colOuter: {fileID: 29471871}
@@ -910,6 +911,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 121785371}
   pressed: 0
   boxCollider: {fileID: 121785371}
@@ -1510,6 +1512,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 0}
   Gluehbirne: {fileID: 160461083}
   Lichtzone: {fileID: 1314570301}
@@ -2463,6 +2466,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 273619088}
   pressed: 0
   boxCollider: {fileID: 273619088}
@@ -3729,6 +3733,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 424148864}
   pressed: 0
   boxCollider: {fileID: 424148864}
@@ -4146,6 +4151,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 483432095}
   pressed: 0
   boxCollider: {fileID: 483432095}
@@ -4263,6 +4269,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 494254961}
   pressed: 0
   boxCollider: {fileID: 494254961}
@@ -4671,6 +4678,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 0}
   fpc_Lantern: {fileID: 649941345}
 --- !u!1 &529963950
@@ -5330,6 +5338,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 548602354}
   pressed: 0
   boxCollider: {fileID: 548602354}
@@ -6725,6 +6734,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 0}
   Gluehbirne: {fileID: 1712402930}
   Lichtzone: {fileID: 1846311228}
@@ -6796,7 +6806,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517323781}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.003098532, y: 0.017668711, z: 0.027445326}
@@ -7043,6 +7053,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 1207025511}
+  glowPower: 0.75
   col: {fileID: 769906778}
   _Image: {fileID: 21300000, guid: 8e29443e0ad9b964b985820ac8b2e1f9, type: 3}
   colOuter: {fileID: 769906778}
@@ -7329,6 +7340,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 0}
   Gluehbirne: {fileID: 425251150}
   Lichtzone: {fileID: 2068206711}
@@ -8138,6 +8150,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 942192954}
   pressed: 0
   boxCollider: {fileID: 942192954}
@@ -8403,6 +8416,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 974831898}
   pressed: 0
   boxCollider: {fileID: 974831898}
@@ -9045,6 +9059,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 0}
   Gluehbirne: {fileID: 1346133936}
   Lichtzone: {fileID: 1956924864}
@@ -9907,6 +9922,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 0}
   _Image: {fileID: 21300000, guid: 74900a00b48b11840bc1ffba955ed49d, type: 3}
 --- !u!1 &1224047028
@@ -11397,6 +11413,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 1396132001}
   pressed: 0
   boxCollider: {fileID: 1396132001}
@@ -12130,6 +12147,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 1246082793}
+  glowPower: 0.75
   col: {fileID: 1453985927}
   _Image: {fileID: 21300000, guid: b42dc863f60ee1b4fa6b0ce80e810182, type: 3}
   colOuter: {fileID: 1453985927}
@@ -12427,20 +12445,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300034, guid: 1371e5d4b7948a0458fdd7c709d6da5d, type: 3}
---- !u!64 &1511041155
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1517323875}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300028, guid: 1371e5d4b7948a0458fdd7c709d6da5d, type: 3}
 --- !u!64 &1511041157
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12469,20 +12473,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300026, guid: 1371e5d4b7948a0458fdd7c709d6da5d, type: 3}
---- !u!64 &1511041161
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1517323881}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300038, guid: 1371e5d4b7948a0458fdd7c709d6da5d, type: 3}
 --- !u!64 &1511041163
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12553,20 +12543,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300008, guid: 1371e5d4b7948a0458fdd7c709d6da5d, type: 3}
---- !u!64 &1511041189
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1517323781}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300004, guid: 1371e5d4b7948a0458fdd7c709d6da5d, type: 3}
 --- !u!64 &1511041191
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12721,20 +12697,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300024, guid: 1371e5d4b7948a0458fdd7c709d6da5d, type: 3}
---- !u!64 &1511041215
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1517323807}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300018, guid: 1371e5d4b7948a0458fdd7c709d6da5d, type: 3}
 --- !u!33 &1514363393
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -13835,7 +13797,6 @@ GameObject:
   - component: {fileID: 1517754917}
   - component: {fileID: 1514363397}
   - component: {fileID: 1515329733}
-  - component: {fileID: 1511041189}
   - component: {fileID: 701181997}
   - component: {fileID: 1517323782}
   m_Layer: 0
@@ -13860,9 +13821,12 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 1515329733}
+  glowPower: 0.75
   col: {fileID: 701181997}
-  opening: 0
-  openingAnle: 100
+  animating: 0
+  open: 1
+  openingAngle: 260
+  closingAngle: 180
   openingSpeed: 100
   curRot: 0
 --- !u!1 &1517323783
@@ -14085,14 +14049,51 @@ GameObject:
   - component: {fileID: 1517754943}
   - component: {fileID: 1514363423}
   - component: {fileID: 1515329759}
-  - component: {fileID: 1511041215}
+  - component: {fileID: 1517323808}
+  - component: {fileID: 1517323809}
   m_Layer: 0
   m_Name: "Raum_Kippschalter_T\xFCr"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &1517323808
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517323807}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0030985307, y: 0.0176687, z: 0.027445314}
+  m_Center: {x: 0.0004918503, y: 0.008640361, z: 0.014026}
+--- !u!114 &1517323809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517323807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aa6c18e65a23a4c8c20331ee09ad2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyInteractable: 1
+  _selected: 0
+  renderer: {fileID: 0}
+  glowPower: 0.75
+  col: {fileID: 0}
+  animating: 0
+  open: 0
+  openingAngle: -15
+  closingAngle: -90
+  openingSpeed: 100
+  curRot: 0
 --- !u!1 &1517323873
 GameObject:
   m_ObjectHideFlags: 0
@@ -14123,14 +14124,28 @@ GameObject:
   - component: {fileID: 1517754883}
   - component: {fileID: 1514363491}
   - component: {fileID: 1515329571}
-  - component: {fileID: 1511041155}
+  - component: {fileID: 1517323878}
+  - component: {fileID: 1517323876}
   m_Layer: 0
   m_Name: "Raum_Schwarzlicht_T\xFCr"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &1517323876
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517323875}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0030985307, y: 0.017668704, z: 0.027445322}
+  m_Center: {x: 0.0004918503, y: 0.008640363, z: 0.014026004}
 --- !u!1 &1517323877
 GameObject:
   m_ObjectHideFlags: 0
@@ -14150,6 +14165,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!114 &1517323878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517323875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aa6c18e65a23a4c8c20331ee09ad2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyInteractable: 1
+  _selected: 0
+  renderer: {fileID: 0}
+  glowPower: 0.75
+  col: {fileID: 0}
+  animating: 0
+  open: 0
+  openingAngle: 75
+  closingAngle: 0
+  openingSpeed: 100
+  curRot: 0
 --- !u!1 &1517323879
 GameObject:
   m_ObjectHideFlags: 0
@@ -14180,14 +14218,28 @@ GameObject:
   - component: {fileID: 1517754889}
   - component: {fileID: 1514363497}
   - component: {fileID: 1515329577}
-  - component: {fileID: 1511041161}
+  - component: {fileID: 1517323882}
+  - component: {fileID: 1517323884}
   m_Layer: 0
   m_Name: "Raum_Safe_T\xFCr"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &1517323882
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517323881}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0030985307, y: 0.0176687, z: 0.027445314}
+  m_Center: {x: 0.0004918503, y: 0.008640361, z: 0.014026}
 --- !u!1 &1517323883
 GameObject:
   m_ObjectHideFlags: 0
@@ -14207,6 +14259,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!114 &1517323884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517323881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aa6c18e65a23a4c8c20331ee09ad2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyInteractable: 1
+  _selected: 0
+  renderer: {fileID: 0}
+  glowPower: 0.75
+  col: {fileID: 0}
+  animating: 0
+  open: 0
+  openingAngle: 190
+  closingAngle: 90
+  openingSpeed: 100
+  curRot: 0
 --- !u!1 &1517323885
 GameObject:
   m_ObjectHideFlags: 0
@@ -14283,7 +14358,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517323875}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -5.176363, y: -0.0132036945, z: -2.7757704}
   m_LocalScale: {x: 100, y: 100.00006, z: 100.00006}
   m_Children: []
@@ -14430,13 +14505,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517323781}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalRotation: {x: 0.45451945, y: 0.54167527, z: 0.54167527, w: -0.45451945}
   m_LocalPosition: {x: 3.69, y: -0.005444779, z: 2.59}
   m_LocalScale: {x: 100.000046, y: 100.00004, z: 100.00006}
   m_Children: []
   m_Father: {fileID: 1528040379}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 260, z: 0}
 --- !u!4 &1517754919
 Transform:
   m_ObjectHideFlags: 0
@@ -14675,6 +14750,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 0}
   Gluehbirne: {fileID: 1858854235}
   Lichtzone: {fileID: 857309692}
@@ -15003,6 +15079,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 1501974547}
+  glowPower: 0.75
   col: {fileID: 1559750854}
   _Image: {fileID: 21300000, guid: a1cd558564ba0e84c85745f777ba549c, type: 3}
   colOuter: {fileID: 1559750854}
@@ -15073,6 +15150,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 0}
   Gluehbirne: {fileID: 1340168008}
   Lichtzone: {fileID: 1767205281}
@@ -15193,6 +15271,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 0}
   Gluehbirne: {fileID: 1095478490}
   Lichtzone: {fileID: 880884732}
@@ -15382,6 +15461,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 0}
   Gluehbirne: {fileID: 158762451}
   Lichtzone: {fileID: 1095264483}
@@ -16976,15 +17056,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.002
       objectReference: {fileID: 0}
-    - target: {fileID: 882621957534601031, guid: e92bf34467b95cd4c8e9d88c455658ec,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2748446562769641175, guid: e92bf34467b95cd4c8e9d88c455658ec,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 882621957534601031, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e92bf34467b95cd4c8e9d88c455658ec, type: 3}
@@ -17205,6 +17285,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 565593969}
+  glowPower: 0.75
   col: {fileID: 1871913510}
   _Image: {fileID: 21300000, guid: 9f085d6332274384e97084a3f75999fc, type: 3}
   colOuter: {fileID: 1871913510}
@@ -17549,11 +17630,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.002
       objectReference: {fileID: 0}
-    - target: {fileID: 882621957534601031, guid: e92bf34467b95cd4c8e9d88c455658ec,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2748446561743699557, guid: e92bf34467b95cd4c8e9d88c455658ec,
         type: 3}
       propertyPath: m_Materials.Array.data[3]
@@ -17564,6 +17640,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[4]
       value: 
       objectReference: {fileID: 2100000, guid: 9cd41087bf886334fb439e470e94539b, type: 2}
+    - target: {fileID: 882621957534601031, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e92bf34467b95cd4c8e9d88c455658ec, type: 3}
 --- !u!1 &1906169960
@@ -17689,6 +17770,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 0}
   _Image: {fileID: 21300000, guid: 74900a00b48b11840bc1ffba955ed49d, type: 3}
 --- !u!1 &1915723158
@@ -17949,6 +18031,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 0}
   _Image: {fileID: 21300000, guid: 74900a00b48b11840bc1ffba955ed49d, type: 3}
 --- !u!136 &1943889439
@@ -18098,6 +18181,7 @@ MonoBehaviour:
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
+  glowPower: 0.75
   col: {fileID: 0}
   Gluehbirne: {fileID: 1954112736}
   Lichtzone: {fileID: 7860194}

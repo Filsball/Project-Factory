@@ -238,16 +238,16 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator LooseOil()
     {
-        Debug.Log("LooseOil Gestartet");
+        //Debug.Log("LooseOil Gestartet");
         while (LightOn && Oil > 0)
         {
             yield return new WaitForSeconds(1);
             --Oil;
-            Debug.Log("Oelstand:  " + Oil);
+            //Debug.Log("Oelstand:  " + Oil);
         }
         if (Oil <= 0)
         {
-            Debug.Log("Lampe Leer");
+            //Debug.Log("Lampe Leer");
             SwitchOillampOf();
             GeneratorManager.DisableFakeLight();
         }
@@ -263,7 +263,7 @@ public class PlayerControl : MonoBehaviour
         {
             LightOn = true;
             oilLight.enabled = true;
-            Debug.Log("Oellampe aktiviert");
+            //Debug.Log("Oellampe aktiviert");
             StartCoroutine(LooseOil());
             lampGlassMaterial.EnableKeyword("_EMISSION");
         }

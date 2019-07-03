@@ -6,7 +6,8 @@ public class Door : InteractableObject
 {
     public bool animating = false;
     public bool open = false;
-    public float openingAnle = 50f;
+    public float openingAngle = 50f;
+    public float closingAngle = 50f;
     public float openingSpeed = 100f;
     public float curRot = 0f;
 
@@ -18,9 +19,20 @@ public class Door : InteractableObject
 
     public new void Start()
     {
+        glowPower = 0.3f;
         Name = "Tür";
         _interactionName = "öffnen";
         base.Start();
+
+        if (openingAngle < 0)
+        {
+            openingAngle = 360 + openingAngle;
+        }
+
+        if (closingAngle < 0)
+        {
+            closingAngle = 360 + closingAngle;
+        }
     }
 
     public new void Update()
@@ -31,16 +43,21 @@ public class Door : InteractableObject
         {
             if (open)
             {
-                if (transform.localRotation.eulerAngles.y < 180 + openingAnle)
+                if (transform.localRotation.eulerAngles.y < openingAngle)
                 {
                     transform.Rotate(new Vector3(0, 0, openingSpeed) * Time.deltaTime);
                 }
             }
             else
             {
-                if (transform.localRotation.eulerAngles.y > 180)
+                if (transform.localRotation.eulerAngles.y > closingAngle)
                 {
+                    float before = transform.localRotation.eulerAngles.y;
                     transform.Rotate(new Vector3(0, 0, -openingSpeed) * Time.deltaTime);
+                    if (transform.localRotation.eulerAngles.y > before)
+                    {
+                        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, closingAngle , transform.eulerAngles.z);
+                    }
                 }
             }
         }

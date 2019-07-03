@@ -6,7 +6,7 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
 {
     public bool currentlyInteractable = true;
     protected string _interactionName = "interagieren";
-    public string ToolTip { get => Name + (Name != "" ? ":\n":"") + "Drücke F zum "+_interactionName; } // set => _toolTip = value; }
+    public string ToolTip { get => Name + (Name != "" ? ":\n":"") + "Drücke Linke Maustaste zum "+_interactionName; } // set => _toolTip = value; }
 
     [SerializeField]
     protected bool _selected = false;
@@ -19,6 +19,7 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
 
     private Material mat;
     private float glow = 0.5f;
+    public float glowPower = 0.75f;
     private int fadeDirection = 1;
 
     public Collider col;
@@ -52,18 +53,18 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
             mat.SetColor("_EmissionColor", emissiveColor);
 
             //Debug.Log("HIGHLIGHTING the Object: " + gameObject.name + " with Color "+emissiveColor);
-            if (glow >= 0.75f || glow <= 0)
+            if (glow >= glowPower  || glow <= 0)
             {
                 fadeDirection *= -1;
             }
-            glow += 0.75f * fadeDirection * Time.deltaTime;
+            glow += glowPower * fadeDirection * Time.deltaTime;
         }
     }
 
 
     private void StopHighlighting()
     {
-        glow = 0.5f;
+        glow = glowPower/2;
         fadeDirection = 1;
         if (mat != null)
         {
