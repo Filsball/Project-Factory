@@ -26,6 +26,7 @@ public class PlayerControl : MonoBehaviour
     private AudioManager audio;
     [SerializeField] GameObject Oillamp;
     Light oilLight;
+    [SerializeField] Material lampGlassMaterial;
 
     // private bool mLockPickUp;
 
@@ -47,6 +48,7 @@ public class PlayerControl : MonoBehaviour
         LightOn = false;
         oilLight = Oillamp.GetComponentInChildren<Light>();
         oilLight.enabled = false;
+        lampGlassMaterial.DisableKeyword("_EMISSION");
     }
 
     public void ResetLookedAtObject()
@@ -258,6 +260,7 @@ public class PlayerControl : MonoBehaviour
             oilLight.enabled = true;
             Debug.Log("Oellampe aktiviert");
             StartCoroutine(LooseOil());
+            lampGlassMaterial.EnableKeyword("_EMISSION");
         }
         
         Time.timeScale = 1;
@@ -282,6 +285,7 @@ public class PlayerControl : MonoBehaviour
         {
             hud.CloseOilTankPanel();
         }
+        lampGlassMaterial.DisableKeyword("_EMISSION");
         Debug.Log("Oellampe Deaktiviert");
         LightOn = false;
         oilLight.enabled = false;

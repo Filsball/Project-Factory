@@ -99,7 +99,7 @@ public class ZahnradAufsatz : MonoBehaviour
         if (zahnrad != null)
         {
             float zr_height = zahnrad.GetComponent<BoxCollider>().size.y / 2;
-            zahnrad.transform.position = transform.position + transform.up * ((zr_height * zahnrad.transform.localScale.y) + (transform.localScale.y));
+            zahnrad.transform.position = transform.position + transform.up * 4.5f * ((zr_height * zahnrad.transform.localScale.y) + (transform.localScale.y));
             zahnrad.GetComponent<Rigidbody>().useGravity = true;
             zahnrad.GetComponent<Rigidbody>().isKinematic = false;
 
