@@ -19,7 +19,7 @@ public class Sockel : InteractableObject
     private new void Start()
     {
         allSockets.Add(this);
-        Gluehbirne.SetActive(false);
+        //Gluehbirne.SetActive(false);
         
         Lichtzone.SetActive(false);
         StromAktiviert = false;
