@@ -9632,7 +9632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1194008032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16245,7 +16245,7 @@ GameObject:
   - component: {fileID: 1767205283}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Licht
+  m_TagString: Saferoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16976,15 +16976,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.002
       objectReference: {fileID: 0}
-    - target: {fileID: 2748446562769641175, guid: e92bf34467b95cd4c8e9d88c455658ec,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 882621957534601031, guid: e92bf34467b95cd4c8e9d88c455658ec,
         type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2748446562769641175, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e92bf34467b95cd4c8e9d88c455658ec, type: 3}
@@ -17549,6 +17549,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.002
       objectReference: {fileID: 0}
+    - target: {fileID: 882621957534601031, guid: e92bf34467b95cd4c8e9d88c455658ec,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2748446561743699557, guid: e92bf34467b95cd4c8e9d88c455658ec,
         type: 3}
       propertyPath: m_Materials.Array.data[3]
@@ -17559,11 +17564,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[4]
       value: 
       objectReference: {fileID: 2100000, guid: 9cd41087bf886334fb439e470e94539b, type: 2}
-    - target: {fileID: 882621957534601031, guid: e92bf34467b95cd4c8e9d88c455658ec,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e92bf34467b95cd4c8e9d88c455658ec, type: 3}
 --- !u!1 &1906169960
