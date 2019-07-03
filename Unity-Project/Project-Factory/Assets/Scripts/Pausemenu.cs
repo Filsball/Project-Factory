@@ -14,20 +14,22 @@ public class Pausemenu : MonoBehaviour
     public static Slider slider;
     private AudioListener audioListener;
     public bool pauseAn = false;
+    public PlayerControl playerControl;
     
     void Start()
     {
         audioListener = FindObjectOfType<AudioListener>();
         scene = SceneManager.GetActiveScene();
-        
+        playerControl = GameObject.Find("FPSController").GetComponent<PlayerControl>();
+
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if(!playerControl.GetIsInRiddle()) isPaused = !isPaused;
 
-            isPaused = !isPaused;
         }
         if (isPaused)
         {
