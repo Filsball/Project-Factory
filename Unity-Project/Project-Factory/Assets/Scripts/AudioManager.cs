@@ -21,9 +21,9 @@ public class AudioManager : MonoBehaviour
     [HideInInspector]
     private FirstPersonController firstPersonController;
     public bool generatorStarted = false;
-    private bool saferoomAktiv = false;
-    private bool dunkelheitAktiv = false;
-    private bool hintergrundAktiv = false;
+    [SerializeField] private bool saferoomAktiv = false;
+    [SerializeField] private bool dunkelheitAktiv = false;
+    [SerializeField] private bool hintergrundAktiv = false;
     private PostProcessingBehaviour pPB;
     private static IEnumerator lastCalled;
     public static Transform camera;
@@ -92,7 +92,7 @@ public class AudioManager : MonoBehaviour
         if (generatorStarted && !generatorStartend.isPlaying)
         {
             generatorStarted = false;
-            Play("GeneratorLaufend", 0.9f, generatorStartend.transform.position);
+            Play("GeneratorLaufend", 0.7f, generatorStartend.transform.position);
         }
 
     }

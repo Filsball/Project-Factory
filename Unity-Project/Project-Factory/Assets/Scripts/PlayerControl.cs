@@ -302,14 +302,20 @@ public class PlayerControl : MonoBehaviour
         // in Lichtzone, Kein Schaden
         if (collider.tag == "Licht")
         {
-            audio.HintergrundAktivieren();
-            Debug.Log("In Lichtzone");
+            if (audio.getSaferoom())
+            {
+                audio.setHintergrund(true);
+            }
+            else
+            {
+                audio.HintergrundAktivieren();
+            }
+            
         }
         // in Saferoom
         if (collider.tag == "Saferoom")
         {
             audio.SaferoomAktivieren();
-            Debug.Log("In Saferoom");
         }
     }
     private void OnTriggerExit(Collider collider)
@@ -317,19 +323,23 @@ public class PlayerControl : MonoBehaviour
         // Leite Tod ein wenn Oellampe nicht aktiv
         if(collider.tag == "Licht")
         {
-            if(!LightOn)
+            if(!LightOn && !audio.getSaferoom())
             {
                 audio.DunkelheitAktivieren();
             }
-            Debug.Log("Außerhalb von Lichtzone");
         }
         // Saferoom verlassen
         if (collider.tag == "Saferoom")
         {
-            if(LightOn)
+            if (audio.getHintergrund())
+            {
+                audio.HintergrundAktivieren();
+            }
+            else if(LightOn)
             {
                 audio.HintergrundAktivierenMitLampe();
                 audio.setDunkelheit(true);
+                audio.setSaferoom(false);
             }
             else if(!audio.getHintergrund())
             {

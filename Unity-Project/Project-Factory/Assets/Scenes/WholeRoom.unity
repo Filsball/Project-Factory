@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.119
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.121350326, g: 0.124489404, b: 0.11542194, a: 0.119}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3037,6 +3037,9 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   generatorStarted: 0
+  saferoomAktiv: 0
+  dunkelheitAktiv: 0
+  hintergrundAktiv: 0
 --- !u!4 &351552335
 Transform:
   m_ObjectHideFlags: 0
@@ -9540,7 +9543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1194008032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16125,7 +16128,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767205281}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -9, z: 0}
+  m_LocalPosition: {x: -4.12, y: -9, z: -5.3}
   m_LocalScale: {x: 30, y: 14, z: 45}
   m_Children: []
   m_Father: {fileID: 1579564539}
@@ -17284,7 +17287,7 @@ PrefabInstance:
     - target: {fileID: 2748446561743699556, guid: e92bf34467b95cd4c8e9d88c455658ec,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2748446561743699559, guid: e92bf34467b95cd4c8e9d88c455658ec,
         type: 3}
