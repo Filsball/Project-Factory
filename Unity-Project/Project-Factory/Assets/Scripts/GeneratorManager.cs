@@ -34,10 +34,6 @@ public class GeneratorManager : MonoBehaviour
     {
         zrManager = GetComponentInChildren<Zahnrad_Manager>();
         audio = FindObjectOfType<AudioManager>();
-        audio.setPosition("Button", position: new Vector3(3.26f, -0.001834235f, 10.19f));
-        audio.setPosition("ButtonMitEinrasten", position: buttonOrder[0].transform.position);
-        audio.setPosition("MetalltuerGenerator", position: rightDoor.transform.position);
-
     }
 
     void OpenDoors()
@@ -113,7 +109,7 @@ public class GeneratorManager : MonoBehaviour
                 if (buttonsSolved)
                 {
                     doorsOpening = true;
-                    audio.Play("ButtonMitEinrasten", 0.7f);
+                    audio.Play("ButtonMitEinrasten", 0.8f, buttonOrder[0].transform.position);
                 }
                 else
                 {
@@ -130,7 +126,7 @@ public class GeneratorManager : MonoBehaviour
         if (!doorsHaveOpened && doorsOpening)
         {
             OpenDoors();
-            audio.Play("MetalltuerGenerator", 0.8f);
+            audio.Play("MetalltuerGenerator", 0.7f, rightDoor.transform.position);
         }
 
         zrManager.running = running;

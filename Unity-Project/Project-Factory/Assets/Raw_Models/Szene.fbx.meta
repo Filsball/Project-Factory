@@ -287,7 +287,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
-    swapUVChannels: 0
+    swapUVChannels: 1
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
@@ -295,10 +295,10 @@ ModelImporter:
     weldVertices: 1
     preserveHierarchy: 0
     indexFormat: 0
-    secondaryUVAngleDistortion: 8
-    secondaryUVAreaDistortion: 15.000001
+    secondaryUVAngleDistortion: 75
+    secondaryUVAreaDistortion: 15
     secondaryUVHardAngle: 88
-    secondaryUVPackMargin: 4
+    secondaryUVPackMargin: 32
     useFileScale: 1
     previousCalculatedGlobalScale: 0.01
     hasPreviousCalculatedGlobalScale: 1

@@ -10,6 +10,7 @@ public class PickUpLaterne : InteractableObject
         gameObject.SetActive(false);
         if(fpc_Lantern != null)
         {
+            
             fpc_Lantern.SetActive(true);
         }
     }
