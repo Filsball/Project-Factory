@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
+    public static Animator animation;
     public TodController todController;
     public static float volume;
     public Sound[] sounds;
@@ -70,6 +71,7 @@ public class AudioManager : MonoBehaviour
         pPB.profile.colorGrading.settings = CGS;
         pPB.profile.vignette.settings = VS;
         pPB.profile.chromaticAberration.settings = CAS;
+        animation = FindObjectOfType<FirstPersonController>().GetComponent<Animator>();
 
 
 
@@ -85,6 +87,10 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            FadeCallerMitPP(dunkelheit, hintergrund, saferoom, 0.9f, 5f, true, pPB);
+        }
         if (todController.getTod())
         {
             todController.ActivateTod();
@@ -221,19 +227,10 @@ public class AudioManager : MonoBehaviour
         lastCalled = fadeSounds(toFadeIn, toFadeOut, toFadeOut2, maxVolume, time, startNew);
         instance.StartCoroutine(lastCalled);
     }
-    public static void FadeCallerMitPP(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
-    {
-        lastCalled = fadeSoundsMitPP(toFadeIn, toFadeOut, maxVolume, time, startNew, pPB);
-        instance.StartCoroutine(lastCalled);
-    }
+   
     public static void FadeCallerMitPP(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {
         lastCalled = fadeSoundsMitPP(toFadeIn, toFadeOut, toFadeOut2, maxVolume, time, startNew, pPB);
-        instance.StartCoroutine(lastCalled);
-    }
-    public static void FadeCallerMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
-    {
-        lastCalled = fadeSoundsMitPPBackwards(toFadeIn, toFadeOut, maxVolume, time, startNew, pPB);
         instance.StartCoroutine(lastCalled);
     }
     public static void FadeCallerMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
@@ -280,45 +277,7 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
     }
-    static IEnumerator fadeSoundsMitPP(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
-    {
-        if (startNew || !toFadeIn.isPlaying) toFadeIn.Play();
-        float startVolume = toFadeOut.volume;
-        PostProcessingProfile profile = pPB.profile;
-        float pufferzeit = 3f;
-        float wartezeit = 3f;
-        float wartezeitStartwert = wartezeit;
-        float PPFadeZeit = 18f;
-
-
-        while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0)
-        {
-            if (toFadeIn.volume < maxVolume) toFadeIn.volume += Time.deltaTime / time;
-            toFadeOut.volume -= startVolume * Time.deltaTime / time;
-            yield return null;
-        }
-        while (pufferzeit > 0)
-        {
-            pufferzeit -= wartezeitStartwert * Time.deltaTime / wartezeit;
-            yield return null;
-        }
-        while (profile.motionBlur.settings.frameBlending < 1)
-        {
-            PPMotionBlur(pPB, profile, PPFadeZeit, true);
-            PPColorGrading(pPB, profile, PPFadeZeit, true);
-            PPVignette(pPB, profile, PPFadeZeit, true);
-            PPChromaticAberration(pPB, profile, PPFadeZeit, true);
-            yield return null;
-        }
-        while (pufferzeit < 6f)
-        {
-            Vector3 startPosition = camera.localPosition;
-            pufferzeit += Time.deltaTime;
-            camera.localPosition = startPosition + Random.insideUnitSphere * pufferzeit / 25f;
-            yield return null;
-        }
-        instance.todController.setTod();
-    }
+   
     static IEnumerator fadeSoundsMitPP(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {
         if (startNew || !toFadeIn.isPlaying) toFadeIn.Play();
@@ -351,45 +310,28 @@ public class AudioManager : MonoBehaviour
             PPChromaticAberration(pPB, profile, PPFadeZeit, true);
             yield return null;
         }
-        while (pufferzeit < 6f)
+        while (pufferzeit < 4f)
         {
             Vector3 startPosition = camera.localPosition;
             pufferzeit += Time.deltaTime;
             camera.localPosition = startPosition + Random.insideUnitSphere* pufferzeit / 25f;
             yield return null;
         }
+        while(pufferzeit < 4.005)
+        {
+            animation.enabled = true;
+        }
+        
+        while (pufferzeit < 6f)
+        {
+            Vector3 startPosition = camera.localPosition;
+            pufferzeit += Time.deltaTime;
+            camera.localPosition = startPosition + Random.insideUnitSphere * pufferzeit / 25f;
+            yield return null;
+        }
         instance.todController.setTod();
     }
-    static IEnumerator fadeSoundsMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
-    {
-        if (startNew || !toFadeIn.isPlaying) toFadeIn.Play();
-        float startVolume = toFadeOut.volume;
-        PostProcessingProfile profile = pPB.profile;
-        float PPFadeZeit = 1.5f;
-
-
-        while (toFadeIn.volume < maxVolume || toFadeOut.volume > 0 || profile.motionBlur.settings.frameBlending > 0.05)
-        {
-            if (toFadeIn.volume < maxVolume) toFadeIn.volume += Time.deltaTime / time;
-            toFadeOut.volume -= startVolume * Time.deltaTime / time;
-            PPMotionBlur(pPB, profile, PPFadeZeit, false);
-            PPColorGrading(pPB, profile, PPFadeZeit, false);
-            PPVignette(pPB, profile, PPFadeZeit, false);
-            PPChromaticAberration(pPB, profile, PPFadeZeit, false);
-            yield return null;
-
-        }
-        MotionBlurModel.Settings moBlurSettings = profile.motionBlur.settings;
-        moBlurSettings.frameBlending = 0;
-        profile.motionBlur.settings = moBlurSettings;
-        ChromaticAberrationModel.Settings chromaticAberrationSettings = profile.chromaticAberration.settings;
-        chromaticAberrationSettings.intensity = 0;
-        profile.chromaticAberration.settings = chromaticAberrationSettings;
-        VignetteModel.Settings vignetteSettings = profile.vignette.settings;
-        vignetteSettings.opacity = 0;
-        profile.vignette.settings = vignetteSettings;
-
-    }
+    
     static IEnumerator fadeSoundsMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {
         if (startNew || !toFadeIn.isPlaying) toFadeIn.Play();
