@@ -53,7 +53,7 @@ public class Mitwirkende : MonoBehaviour
                 if (audio.volume < 0) audio.volume = 0;
                 zuHauptmenue();
             } 
-            else if(gameObject.transform.position.y < 400 || bild.color.a < 1 || audioParent.volume > 0 || audio.volume < 1)
+            else if(gameObject.transform.position.y < 500 || bild.color.a < 1 || audioParent.volume > 0 || audio.volume < 1)
             {
                 c = bild.color;
                 c.a += Time.deltaTime / 3;

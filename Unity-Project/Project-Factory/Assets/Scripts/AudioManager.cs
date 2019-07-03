@@ -87,10 +87,10 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        /*if (Input.GetKeyDown(KeyCode.O))
         {
             FadeCallerMitPP(dunkelheit, hintergrund, saferoom, 0.9f, 5f, true, pPB);
-        }
+        }*/
         if (todController.getTod())
         {
             todController.ActivateTod();
