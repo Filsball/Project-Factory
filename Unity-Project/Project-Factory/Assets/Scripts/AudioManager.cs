@@ -92,7 +92,7 @@ public class AudioManager : MonoBehaviour
         if (generatorStarted && !generatorStartend.isPlaying)
         {
             generatorStarted = false;
-            Play("GeneratorLaufend", 1.0f, generatorStartend.transform.position);
+            Play("GeneratorLaufend", 0.9f, generatorStartend.transform.position);
         }
 
     }
@@ -192,30 +192,13 @@ public class AudioManager : MonoBehaviour
     public void HintergrundAktivierenMitLampe()
     {
         //Event: In normaler Licht Hitbox
-        if (dunkelheitAktiv)
-        {
+        
             if (lastCalled != null)
             {
                 instance.StopCoroutine(lastCalled);
             }
             FadeCallerMitPPBackwards(hintergrund, dunkelheit, saferoom, 0.7f, 3f, false, pPB);
-        }
-        else if (saferoomAktiv)
-        {
-            if (lastCalled != null)
-            {
-                instance.StopCoroutine(lastCalled);
-            }
-            FadeCaller(hintergrund, saferoom, dunkelheit, 0.7f, 3f, false);
-        }
-        else
-        {
-            if (lastCalled != null)
-            {
-                instance.StopCoroutine(lastCalled);
-            }
-            FadeInCaller(hintergrund, 0.7f, 1f, false);
-        }
+       
     }
 
     public static void FadeInCaller(AudioSource toFadeIn, float maxVolume, float time, Boolean startNew)
@@ -327,7 +310,7 @@ public class AudioManager : MonoBehaviour
             PPChromaticAberration(pPB, profile, PPFadeZeit, true);
             yield return null;
         }
-        while (pufferzeit < 8.5f)
+        while (pufferzeit < 6f)
         {
             Vector3 startPosition = camera.localPosition;
             pufferzeit += Time.deltaTime;
@@ -368,7 +351,7 @@ public class AudioManager : MonoBehaviour
             PPChromaticAberration(pPB, profile, PPFadeZeit, true);
             yield return null;
         }
-        while (pufferzeit < 8.5f)
+        while (pufferzeit < 6f)
         {
             Vector3 startPosition = camera.localPosition;
             pufferzeit += Time.deltaTime;

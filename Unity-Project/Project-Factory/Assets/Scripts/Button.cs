@@ -21,7 +21,7 @@ public class Button : InteractableObject
             GeneratorManager gm = gameObject.GetComponentInParent<GeneratorManager>();
             if (gm == null || !gm.CheckDreiButtons())
             {
-                audio.Play("Button", 0.7f, audio.transform.position);
+                audio.Play("Button", 0.7f, gameObject.transform.position);
             }
             
         }
