@@ -165,10 +165,10 @@ public class PlayerControl : MonoBehaviour
     {
         if (!isInRiddle)
         {
-            if (Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(KeyCode.E))
                 inventarVerwalten();
 
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 if (LightOn)
                     SwitchOillampOf();
@@ -176,7 +176,7 @@ public class PlayerControl : MonoBehaviour
                     SwitchOillampOn();
             }
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if (lookedAtObject != null)
                 {
@@ -198,7 +198,7 @@ public class PlayerControl : MonoBehaviour
         else
         {
             // Escape Riddle
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SwapBackToPlayer();
                 hud.CloseInventory();
@@ -353,5 +353,9 @@ public class PlayerControl : MonoBehaviour
             Debug.Log("Außerhalb von Saferoom");
         }
 
+    }
+    public bool GetIsInRiddle()
+    {
+        return isInRiddle;
     }
 }
