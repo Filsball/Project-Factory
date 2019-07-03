@@ -1,0 +1,262 @@
+fileFormatVersion: 2
+guid: 756a2bb15fa18eb4ba379025123612d1
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Armature.001
+    100004: Armature.002
+    100006: Bone
+    100008: Bone 1
+    100010: Bone 2
+    100012: Bone_end
+    100014: Bone_end 1
+    100016: Bone_end 2
+    100018: bone_Riegel_01
+    100020: bone_Riegel_01 1
+    100022: bone_Riegel_01 2
+    100024: bone_Riegel_01 3
+    100026: bone_Riegel_01.001
+    100028: bone_Riegel_01.002
+    100030: bone_Riegel_01_end
+    100032: bone_Riegel_01_end 1
+    100034: bone_Riegel_01_end 2
+    100036: //RootNode
+    100038: "T\xFCrriegel_01"
+    100040: "T\xFCrriegel_02"
+    100042: "T\xFCrriegel_03"
+    100044: "T\xFCrriegel_Kabel"
+    100046: "T\xFCrriegel_Spangen.001"
+    100048: "T\xFCrriegel_Zahnrad_01"
+    100050: "T\xFCrriegel_Zahnrad_02"
+    100052: "T\xFCrriegel_Zahnrad_03"
+    100054: "T\xFCrriegel_Zahnrad_Pin_01"
+    100056: "T\xFCrriegel_Zahnrad_Pin_02"
+    100058: "T\xFCrriegel_Zahnrad_Pin_03"
+    100060: "T\xFCrriegel_Z\xE4hnr\xE4der_Antrieb"
+    400000: Armature
+    400002: Armature.001
+    400004: Armature.002
+    400006: Bone
+    400008: Bone 1
+    400010: Bone 2
+    400012: Bone_end
+    400014: Bone_end 1
+    400016: Bone_end 2
+    400018: bone_Riegel_01
+    400020: bone_Riegel_01 1
+    400022: bone_Riegel_01 2
+    400024: bone_Riegel_01 3
+    400026: bone_Riegel_01.001
+    400028: bone_Riegel_01.002
+    400030: bone_Riegel_01_end
+    400032: bone_Riegel_01_end 1
+    400034: bone_Riegel_01_end 2
+    400036: //RootNode
+    400038: "T\xFCrriegel_01"
+    400040: "T\xFCrriegel_02"
+    400042: "T\xFCrriegel_03"
+    400044: "T\xFCrriegel_Kabel"
+    400046: "T\xFCrriegel_Spangen.001"
+    400048: "T\xFCrriegel_Zahnrad_01"
+    400050: "T\xFCrriegel_Zahnrad_02"
+    400052: "T\xFCrriegel_Zahnrad_03"
+    400054: "T\xFCrriegel_Zahnrad_Pin_01"
+    400056: "T\xFCrriegel_Zahnrad_Pin_02"
+    400058: "T\xFCrriegel_Zahnrad_Pin_03"
+    400060: "T\xFCrriegel_Z\xE4hnr\xE4der_Antrieb"
+    2100000: steel.001
+    2100002: No Name
+    2100004: black rubber.001
+    2100006: steel dark used.001
+    2100008: Painted rusty metal.001
+    2300000: "T\xFCrriegel_Kabel"
+    2300002: "T\xFCrriegel_Spangen.001"
+    2300004: "T\xFCrriegel_Zahnrad_Pin_01"
+    2300006: "T\xFCrriegel_Zahnrad_Pin_02"
+    2300008: "T\xFCrriegel_Zahnrad_Pin_03"
+    2300010: "T\xFCrriegel_Z\xE4hnr\xE4der_Antrieb"
+    3300000: "T\xFCrriegel_Kabel"
+    3300002: "T\xFCrriegel_Spangen.001"
+    3300004: "T\xFCrriegel_Zahnrad_Pin_01"
+    3300006: "T\xFCrriegel_Zahnrad_Pin_02"
+    3300008: "T\xFCrriegel_Zahnrad_Pin_03"
+    3300010: "T\xFCrriegel_Z\xE4hnr\xE4der_Antrieb"
+    4300000: "T\xFCrriegel_01"
+    4300002: "T\xFCrriegel_02"
+    4300004: "T\xFCrriegel_03"
+    4300006: "T\xFCrriegel_Zahnrad_01"
+    4300008: "T\xFCrriegel_Zahnrad_02"
+    4300010: "T\xFCrriegel_Zahnrad_03"
+    4300012: "T\xFCrriegel_Zahnrad_Pin_01"
+    4300014: "T\xFCrriegel_Zahnrad_Pin_02"
+    4300016: "T\xFCrriegel_Zahnrad_Pin_03"
+    4300018: "T\xFCrriegel_Kabel"
+    4300020: "T\xFCrriegel_Z\xE4hnr\xE4der_Antrieb"
+    4300022: "T\xFCrriegel_Spangen.001"
+    7400000: "T\xFCrriegel_Zahnrad_Pin_01|ArmatureAction"
+    7400002: "T\xFCrriegel_Zahnrad_Pin_01|GearAction.001"
+    7400004: "T\xFCrriegel_Zahnrad_Pin_01|Raum_Safe_T\xFCr \xF6ffnetAction"
+    7400006: "T\xFCrriegel_Zahnrad_Pin_01|T\xFCrriegel_Zahnrad_03Action"
+    7400008: "T\xFCrriegel_Zahnrad_Pin_02|ArmatureAction"
+    7400010: "T\xFCrriegel_Zahnrad_Pin_02|GearAction.001"
+    7400012: "T\xFCrriegel_Zahnrad_Pin_02|Raum_Safe_T\xFCr \xF6ffnetAction"
+    7400014: "T\xFCrriegel_Zahnrad_Pin_02|T\xFCrriegel_Zahnrad_03Action"
+    7400016: "T\xFCrriegel_Zahnrad_Pin_03|ArmatureAction"
+    7400018: "T\xFCrriegel_Zahnrad_Pin_03|GearAction.001"
+    7400020: "T\xFCrriegel_Zahnrad_Pin_03|Raum_Safe_T\xFCr \xF6ffnetAction"
+    7400022: "T\xFCrriegel_Zahnrad_Pin_03|T\xFCrriegel_Zahnrad_03Action"
+    7400024: "T\xFCrriegel_Kabel|ArmatureAction"
+    7400026: "T\xFCrriegel_Kabel|GearAction.001"
+    7400028: "T\xFCrriegel_Kabel|Raum_Safe_T\xFCr \xF6ffnetAction"
+    7400030: "T\xFCrriegel_Kabel|T\xFCrriegel_Zahnrad_03Action"
+    7400032: "T\xFCrriegel_Z\xE4hnr\xE4der_Antrieb|ArmatureAction"
+    7400034: "T\xFCrriegel_Z\xE4hnr\xE4der_Antrieb|GearAction.001"
+    7400036: "T\xFCrriegel_Z\xE4hnr\xE4der_Antrieb|Raum_Safe_T\xFCr \xF6ffnetAction"
+    7400038: "T\xFCrriegel_Z\xE4hnr\xE4der_Antrieb|T\xFCrriegel_Zahnrad_03Action"
+    7400040: bone_Riegel_01|ArmatureAction
+    7400042: bone_Riegel_01|bone_Riegel_01Action
+    7400044: bone_Riegel_01|bone_Riegel_01Action.001
+    7400046: bone_Riegel_01|bone_Riegel_01Action.002
+    7400048: bone_Riegel_01|GearAction.001
+    7400050: "bone_Riegel_01|Raum_Safe_T\xFCr \xF6ffnetAction"
+    7400052: "bone_Riegel_01|T\xFCrriegel_Zahnrad_03Action"
+    7400054: Armature|ArmatureAction
+    7400056: Armature|ArmatureAction.001
+    7400058: Armature|ArmatureAction.002
+    7400060: Armature|ArmatureAction.003
+    7400062: Armature|ArmatureAction.004
+    7400064: Armature|ArmatureAction.005
+    7400066: Armature|GearAction.001
+    7400068: "Armature|Raum_Safe_T\xFCr \xF6ffnetAction"
+    7400070: "Armature|T\xFCrriegel_Zahnrad_03Action"
+    7400072: bone_Riegel_01.001|ArmatureAction
+    7400074: bone_Riegel_01.001|bone_Riegel_01Action
+    7400076: bone_Riegel_01.001|bone_Riegel_01Action.001
+    7400078: bone_Riegel_01.001|bone_Riegel_01Action.002
+    7400080: bone_Riegel_01.001|GearAction.001
+    7400082: "bone_Riegel_01.001|Raum_Safe_T\xFCr \xF6ffnetAction"
+    7400084: "bone_Riegel_01.001|T\xFCrriegel_Zahnrad_03Action"
+    7400086: bone_Riegel_01.002|ArmatureAction
+    7400088: bone_Riegel_01.002|bone_Riegel_01Action
+    7400090: bone_Riegel_01.002|bone_Riegel_01Action.001
+    7400092: bone_Riegel_01.002|bone_Riegel_01Action.002
+    7400094: bone_Riegel_01.002|GearAction.001
+    7400096: "bone_Riegel_01.002|Raum_Safe_T\xFCr \xF6ffnetAction"
+    7400098: "bone_Riegel_01.002|T\xFCrriegel_Zahnrad_03Action"
+    7400100: Armature.001|ArmatureAction
+    7400102: Armature.001|ArmatureAction.001
+    7400104: Armature.001|ArmatureAction.002
+    7400106: Armature.001|ArmatureAction.003
+    7400108: Armature.001|ArmatureAction.004
+    7400110: Armature.001|ArmatureAction.005
+    7400112: Armature.001|GearAction.001
+    7400114: "Armature.001|Raum_Safe_T\xFCr \xF6ffnetAction"
+    7400116: "Armature.001|T\xFCrriegel_Zahnrad_03Action"
+    7400118: Armature.002|ArmatureAction
+    7400120: Armature.002|ArmatureAction.001
+    7400122: Armature.002|ArmatureAction.002
+    7400124: Armature.002|ArmatureAction.003
+    7400126: Armature.002|ArmatureAction.004
+    7400128: Armature.002|ArmatureAction.005
+    7400130: Armature.002|GearAction.001
+    7400132: "Armature.002|Raum_Safe_T\xFCr \xF6ffnetAction"
+    7400134: "Armature.002|T\xFCrriegel_Zahnrad_03Action"
+    7400136: "T\xFCrriegel_Spangen.001|ArmatureAction"
+    7400138: "T\xFCrriegel_Spangen.001|GearAction.001"
+    7400140: "T\xFCrriegel_Spangen.001|Raum_Safe_T\xFCr \xF6ffnetAction"
+    7400142: "T\xFCrriegel_Spangen.001|T\xFCrriegel_Zahnrad_03Action"
+    9500000: //RootNode
+    13700000: "T\xFCrriegel_01"
+    13700002: "T\xFCrriegel_02"
+    13700004: "T\xFCrriegel_03"
+    13700006: "T\xFCrriegel_Zahnrad_01"
+    13700008: "T\xFCrriegel_Zahnrad_02"
+    13700010: "T\xFCrriegel_Zahnrad_03"
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
