@@ -28,7 +28,8 @@ public class GeneratorManager : MonoBehaviour
 
     private bool buttonsSolved = false;
 
-    [SerializeField] Light OilLightFaker;
+    public static Light OilLightFaker;
+    
    
 
     // Start is called before the first frame update
@@ -36,6 +37,8 @@ public class GeneratorManager : MonoBehaviour
     {
         zrManager = GetComponentInChildren<Zahnrad_Manager>();
         audio = FindObjectOfType<AudioManager>();
+        OilLightFaker = GetComponentInChildren<Light>();
+        OilLightFaker.enabled = false;
     }
 
     void OpenDoors()
@@ -143,10 +146,10 @@ public class GeneratorManager : MonoBehaviour
             }
         }
     }
-    public void EnableFakeLight() {
+    public static void EnableFakeLight() {
         OilLightFaker.enabled = true;
     }
-    public void DisableFakeLight()
+    public static void DisableFakeLight()
     {
         OilLightFaker.enabled = false;
     }

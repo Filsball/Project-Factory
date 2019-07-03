@@ -99,6 +99,8 @@ public class PlayerControl : MonoBehaviour
         Cursor.visible = true;
 
         headCamera.gameObject.SetActive(true);
+        if(LightOn)
+            GeneratorManager.DisableFakeLight();
         fpc.enabled = true;
         if (activeCamera != null)
         {
@@ -121,6 +123,8 @@ public class PlayerControl : MonoBehaviour
         isInRiddle = true;
         headCamera.gameObject.SetActive(false);
         fpc.enabled = false;
+        if(LightOn)
+            GeneratorManager.EnableFakeLight();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         if (c != null)
