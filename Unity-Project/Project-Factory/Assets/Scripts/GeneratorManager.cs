@@ -27,6 +27,8 @@ public class GeneratorManager : MonoBehaviour
     List<Button> buttonsPressed = new List<Button>();
 
     private bool buttonsSolved = false;
+
+    [SerializeField] Light OilLightFaker;
    
 
     // Start is called before the first frame update
@@ -140,5 +142,12 @@ public class GeneratorManager : MonoBehaviour
                 motorSpeed *= 1.01f;
             }
         }
+    }
+    public void EnableFakeLight() {
+        OilLightFaker.enabled = true;
+    }
+    public void DisableFakeLight()
+    {
+        OilLightFaker.enabled = false;
     }
 }
