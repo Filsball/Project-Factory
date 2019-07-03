@@ -30,6 +30,8 @@ public class GeneratorManager : MonoBehaviour
 
     public static Light OilLightFaker;
 
+    public bool SOLVED_ONLY_FOR_DEBUGGING = false;
+
     [SerializeField]
     Material LightBulbGlassMaterial;
     [SerializeField]
@@ -142,7 +144,7 @@ public class GeneratorManager : MonoBehaviour
         }
 
         zrManager.running = running;
-        if (zrManager.solved)
+        if (zrManager.solved || SOLVED_ONLY_FOR_DEBUGGING )
         {
             LightBulbGlassMaterial.EnableKeyword("_EMISSION");
             LightBulbWireMaterial.EnableKeyword("_EMISSION");

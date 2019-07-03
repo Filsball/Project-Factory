@@ -6796,7 +6796,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517323781}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.003098532, y: 0.017668711, z: 0.027445326}
@@ -13837,6 +13837,7 @@ GameObject:
   - component: {fileID: 1515329733}
   - component: {fileID: 1511041189}
   - component: {fileID: 701181997}
+  - component: {fileID: 1517323782}
   m_Layer: 0
   m_Name: "Raum_Generator_T\xFCr"
   m_TagString: Untagged
@@ -13844,6 +13845,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1517323782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517323781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aa6c18e65a23a4c8c20331ee09ad2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyInteractable: 1
+  _selected: 0
+  renderer: {fileID: 1515329733}
+  col: {fileID: 701181997}
+  opening: 0
+  openingAnle: 100
+  openingSpeed: 100
+  curRot: 0
 --- !u!1 &1517323783
 GameObject:
   m_ObjectHideFlags: 0
@@ -17962,15 +17983,15 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 8a99733699e92ab4c9dc4c1d53077c52, type: 2}
-  - {fileID: 2100002, guid: 589b6fdceafe3424299ae4b535d487d5, type: 3}
-  - {fileID: 2100004, guid: 589b6fdceafe3424299ae4b535d487d5, type: 3}
-  - {fileID: 2100006, guid: 589b6fdceafe3424299ae4b535d487d5, type: 3}
-  - {fileID: 2100008, guid: 589b6fdceafe3424299ae4b535d487d5, type: 3}
-  - {fileID: 2100010, guid: 589b6fdceafe3424299ae4b535d487d5, type: 3}
-  - {fileID: 2100012, guid: 589b6fdceafe3424299ae4b535d487d5, type: 3}
-  - {fileID: 2100014, guid: 589b6fdceafe3424299ae4b535d487d5, type: 3}
-  - {fileID: 2100000, guid: fb4b3a9a9a231b349a73e7481a5d98ce, type: 2}
-  - {fileID: 2100018, guid: 589b6fdceafe3424299ae4b535d487d5, type: 3}
+  - {fileID: 2100000, guid: 9cd41087bf886334fb439e470e94539b, type: 2}
+  - {fileID: 2100000, guid: 9cd41087bf886334fb439e470e94539b, type: 2}
+  - {fileID: 2100000, guid: 9cd41087bf886334fb439e470e94539b, type: 2}
+  - {fileID: 2100000, guid: 9cd41087bf886334fb439e470e94539b, type: 2}
+  - {fileID: 2100000, guid: 9cd41087bf886334fb439e470e94539b, type: 2}
+  - {fileID: 2100000, guid: 9cd41087bf886334fb439e470e94539b, type: 2}
+  - {fileID: 2100000, guid: 9cd41087bf886334fb439e470e94539b, type: 2}
+  - {fileID: 2100000, guid: 9cd41087bf886334fb439e470e94539b, type: 2}
+  - {fileID: 2100000, guid: 9cd41087bf886334fb439e470e94539b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
