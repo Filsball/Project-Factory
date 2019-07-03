@@ -249,6 +249,7 @@ public class PlayerControl : MonoBehaviour
         {
             Debug.Log("Lampe Leer");
             SwitchOillampOf();
+            GeneratorManager.DisableFakeLight();
         }
     }
 
