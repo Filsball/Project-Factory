@@ -28,8 +28,7 @@ public class Pausemenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(!playerControl.GetIsInRiddle()) isPaused = !isPaused;
-
+            isPaused = !isPaused;
         }
         if (isPaused)
         {
