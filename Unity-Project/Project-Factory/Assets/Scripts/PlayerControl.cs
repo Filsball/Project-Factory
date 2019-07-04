@@ -188,6 +188,21 @@ public class PlayerControl : MonoBehaviour
                         lookedAtObject = null;
                         hud.CloseMsgPanel();
                     }
+                    else if (lookedAtObject is PickUpOil) {
+                        PickUpOil oilpot = (PickUpOil)lookedAtObject;
+                        if (oilpot.getFuellstand() + Oil > 100)
+                        {
+                            oilpot.Restfuellstand(oilpot.getFuellstand()+Oil-100);
+                            Oil = 100;
+                        }
+                        else
+                        {
+                            Oil += oilpot.getFuellstand();
+                            oilpot.Restfuellstand(0);
+                            lookedAtObject.Interact();
+                        }
+                        
+                    }
                     else
                     {
                         lookedAtObject.Interact();
