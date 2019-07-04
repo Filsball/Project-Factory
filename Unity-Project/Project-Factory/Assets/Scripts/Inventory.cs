@@ -12,9 +12,16 @@ public class Inventory : MonoBehaviour {
     public EventHandler<InventoryEventArgs> ItemAdded;
 
     public EventHandler<InventoryEventArgs> ItemRemoved;
+
+    private AudioManager audio;
     
+        
+        
+
+
     public void addItem(InventoryItem item)
     {
+        audio = FindObjectOfType<AudioManager>();
         if (ItemList.Count < Slots)
         {
             Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
@@ -23,6 +30,7 @@ public class Inventory : MonoBehaviour {
                 collider.enabled = false;
                 ItemList.Add(item);
                 item.OnPickUp();
+                audio.Play("ItemPickup", 0.15f, item.transform.position);
                 item.Selected = false;
             }
             if (ItemAdded != null)

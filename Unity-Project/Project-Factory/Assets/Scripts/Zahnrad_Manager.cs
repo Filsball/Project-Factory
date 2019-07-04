@@ -86,8 +86,7 @@ public class Zahnrad_Manager : InteractableObject
                 gear.transform.localScale = new Vector3(zahnradSizes[i], 1, zahnradSizes[i]);
                 gear.name = zahnradSizes[i] + "er Zahnrad";
             }
-        }
-        audioManager.setPosition("Zahnraeder", position: boxCollider.center + transform.position); // da Oberklasse InteractableObject schon Collider variable hat, braucht diese Kalsse nicht mehr boxCollider
+        } 
     }
 
     // Update is called once per frame
@@ -98,8 +97,13 @@ public class Zahnrad_Manager : InteractableObject
             if (!playingAudio)
             {
                 audioManager.generatorStarted = true;
-                audioManager.Play("Zahnraeder", 0.1f, audioManager.transform.position);
-                audioManager.Play("GeneratorStartend", 1.0f, audioManager.transform.position - new Vector3(2f, 2f, 2f));
+                audioManager.Play("Zahnraeder", 0.1f, boxCollider.center + transform.position);
+                audioManager.Play("GeneratorStartend", 1.0f, boxCollider.center + transform.position - new Vector3(2f, 2f, 2f));
+                AudioManager.FadeCaller(audioManager.getSound("Saferoom").source, audioManager.getSound("Hintergrund").source, 0.7f, 1.5f, true);
+                audioManager.setSaferoom(true);
+                audioManager.setDunkelheit(false);
+                audioManager.setHintergrund(false);
+                Debug.Log("saferoom");
                 playingAudio = true;
             }
         }

@@ -99,6 +99,8 @@ public class PlayerControl : MonoBehaviour
         Cursor.visible = true;
 
         headCamera.gameObject.SetActive(true);
+        if(LightOn)
+            GeneratorManager.DisableFakeLight();
         fpc.enabled = true;
         if (activeCamera != null)
         {
@@ -121,6 +123,8 @@ public class PlayerControl : MonoBehaviour
         isInRiddle = true;
         headCamera.gameObject.SetActive(false);
         fpc.enabled = false;
+        if(LightOn)
+            GeneratorManager.EnableFakeLight();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         if (c != null)
@@ -161,10 +165,10 @@ public class PlayerControl : MonoBehaviour
     {
         if (!isInRiddle)
         {
-            if (Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(KeyCode.E))
                 inventarVerwalten();
 
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 if (LightOn)
                     SwitchOillampOf();
@@ -172,7 +176,7 @@ public class PlayerControl : MonoBehaviour
                     SwitchOillampOn();
             }
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if (lookedAtObject != null)
                 {
@@ -194,15 +198,13 @@ public class PlayerControl : MonoBehaviour
         else
         {
             // Escape Riddle
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
             {
                 SwapBackToPlayer();
                 hud.CloseInventory();
             }
-
         }
     }
-
     private void inventarVerwalten()
     {
 
@@ -234,17 +236,18 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator LooseOil()
     {
-        Debug.Log("LooseOil Gestartet");
+        //Debug.Log("LooseOil Gestartet");
         while (LightOn && Oil > 0)
         {
             yield return new WaitForSeconds(1);
             --Oil;
-            Debug.Log("Oelstand:  " + Oil);
+            //Debug.Log("Oelstand:  " + Oil);
         }
         if (Oil <= 0)
         {
-            Debug.Log("Lampe Leer");
+            //Debug.Log("Lampe Leer");
             SwitchOillampOf();
+            GeneratorManager.DisableFakeLight();
         }
     }
 
@@ -258,7 +261,7 @@ public class PlayerControl : MonoBehaviour
         {
             LightOn = true;
             oilLight.enabled = true;
-            Debug.Log("Oellampe aktiviert");
+            //Debug.Log("Oellampe aktiviert");
             StartCoroutine(LooseOil());
             lampGlassMaterial.EnableKeyword("_EMISSION");
         }
@@ -302,14 +305,20 @@ public class PlayerControl : MonoBehaviour
         // in Lichtzone, Kein Schaden
         if (collider.tag == "Licht")
         {
-            audio.HintergrundAktivieren();
-            Debug.Log("In Lichtzone");
+            if (audio.getSaferoom())
+            {
+                audio.setHintergrund(true);
+            }
+            else
+            {
+                audio.HintergrundAktivieren();
+            }
+            
         }
         // in Saferoom
         if (collider.tag == "Saferoom")
         {
             audio.SaferoomAktivieren();
-            Debug.Log("In Saferoom");
         }
     }
     private void OnTriggerExit(Collider collider)
@@ -317,19 +326,23 @@ public class PlayerControl : MonoBehaviour
         // Leite Tod ein wenn Oellampe nicht aktiv
         if(collider.tag == "Licht")
         {
-            if(!LightOn)
+            if(!LightOn && !audio.getSaferoom())
             {
                 audio.DunkelheitAktivieren();
             }
-            Debug.Log("Außerhalb von Lichtzone");
         }
         // Saferoom verlassen
         if (collider.tag == "Saferoom")
         {
-            if(LightOn)
+            if (audio.getHintergrund())
+            {
+                audio.HintergrundAktivieren();
+            }
+            else if(LightOn)
             {
                 audio.HintergrundAktivierenMitLampe();
                 audio.setDunkelheit(true);
+                audio.setSaferoom(false);
             }
             else if(!audio.getHintergrund())
             {
@@ -338,5 +351,9 @@ public class PlayerControl : MonoBehaviour
             Debug.Log("Außerhalb von Saferoom");
         }
 
+    }
+    public bool GetIsInRiddle()
+    {
+        return isInRiddle;
     }
 }

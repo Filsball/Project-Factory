@@ -122,16 +122,22 @@ public class HauptMenue : MonoBehaviour
 
     public void StarteSpiel()
     {
-        audio.Stop();
         volume = AudioListener.volume;
-        SceneManager.LoadScene(1);
-        this.gameObject.SetActive(false);
-        
+        StartCoroutine(SceneLoader());
     }
 
     public void Beenden()
     {
         Application.Quit();
+    }
+
+    public IEnumerator SceneLoader()
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(1);
+        while (!operation.isDone)
+        {
+            yield return null;
+        }
     }
     
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GeneratorManager : MonoBehaviour
 {
+    public Door door;
     public bool running = true;
     public Button[] buttonOrder;
     public Zahnrad_Manager zrManager;
@@ -27,13 +28,27 @@ public class GeneratorManager : MonoBehaviour
     List<Button> buttonsPressed = new List<Button>();
 
     private bool buttonsSolved = false;
-   
+
+    public static Light OilLightFaker;
+
+    public bool SOLVED_ONLY_FOR_DEBUGGING = false;
+
+    [SerializeField]
+    Material LightBulbGlassMaterial;
+    [SerializeField]
+    Material LightBulbWireMaterial;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         zrManager = GetComponentInChildren<Zahnrad_Manager>();
         audio = FindObjectOfType<AudioManager>();
+        OilLightFaker = GetComponentInChildren<Light>();
+        OilLightFaker.enabled = false;
+        LightBulbWireMaterial.DisableKeyword("_EMISSION");
+        LightBulbGlassMaterial.DisableKeyword("_EMISSION");
     }
 
     void OpenDoors()
@@ -130,8 +145,11 @@ public class GeneratorManager : MonoBehaviour
         }
 
         zrManager.running = running;
-        if (zrManager.solved)
+        door.currentlyInteractable = zrManager.solved || SOLVED_ONLY_FOR_DEBUGGING;
+        if (zrManager.solved || SOLVED_ONLY_FOR_DEBUGGING )
         {
+            LightBulbGlassMaterial.EnableKeyword("_EMISSION");
+            LightBulbWireMaterial.EnableKeyword("_EMISSION");
             Sockel.StromAn();
             turbine.transform.Rotate(new Vector3(0, 0, motorSpeed * Time.deltaTime));
             if (motorSpeed < motorMaxSpeed)
@@ -140,5 +158,13 @@ public class GeneratorManager : MonoBehaviour
                 motorSpeed *= 1.01f;
             }
         }
+    }
+    public static void EnableFakeLight() {
+        OilLightFaker.enabled = true;
+    }
+
+    public static void DisableFakeLight()
+    {
+        OilLightFaker.enabled = false;
     }
 }
