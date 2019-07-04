@@ -163,18 +163,25 @@ public class PlayerControl : MonoBehaviour
 
     private void HandleInput()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            if (LightOn)
+            {
+                SwitchOillampOf();
+                if (isInRiddle)
+                    GeneratorManager.DisableFakeLight();
+            }
+            else
+            {
+                SwitchOillampOn();
+                if (isInRiddle)
+                    GeneratorManager.EnableFakeLight();
+            }
+        }
         if (!isInRiddle)
         {
             if (Input.GetKeyDown(KeyCode.E))
                 inventarVerwalten();
-
-            if (Input.GetKeyDown(KeyCode.Mouse1))
-            {
-                if (LightOn)
-                    SwitchOillampOf();
-                else
-                    SwitchOillampOn();
-            }
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
