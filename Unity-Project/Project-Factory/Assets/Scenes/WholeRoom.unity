@@ -2364,7 +2364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &257651938
 Transform:
   m_ObjectHideFlags: 0
@@ -11700,6 +11700,11 @@ PrefabInstance:
       propertyPath: LightBulbWireMaterial
       value: 
       objectReference: {fileID: 2100000, guid: fb4b3a9a9a231b349a73e7481a5d98ce, type: 2}
+    - target: {fileID: 944871625763368961, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 1517323782}
     - target: {fileID: 944871626221921150, guid: 7f9ec82ab31c94240b58b47f96bbae50,
         type: 3}
       propertyPath: m_IsActive
@@ -13829,7 +13834,7 @@ MonoBehaviour:
   glowPower: 0.75
   col: {fileID: 701181997}
   animating: 0
-  open: 1
+  open: 0
   openingAngle: 260
   closingAngle: 180
   openingSpeed: 100
@@ -14510,13 +14515,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517323781}
-  m_LocalRotation: {x: 0.45451945, y: 0.54167527, z: 0.54167527, w: -0.45451945}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 3.69, y: -0.005444779, z: 2.59}
   m_LocalScale: {x: 100.000046, y: 100.00004, z: 100.00006}
   m_Children: []
   m_Father: {fileID: 1528040379}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -90, y: 260, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
 --- !u!4 &1517754919
 Transform:
   m_ObjectHideFlags: 0

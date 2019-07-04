@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GeneratorManager : MonoBehaviour
 {
+    public Door door;
     public bool running = true;
     public Button[] buttonOrder;
     public Zahnrad_Manager zrManager;
@@ -144,6 +145,7 @@ public class GeneratorManager : MonoBehaviour
         }
 
         zrManager.running = running;
+        door.currentlyInteractable = zrManager.solved || SOLVED_ONLY_FOR_DEBUGGING;
         if (zrManager.solved || SOLVED_ONLY_FOR_DEBUGGING )
         {
             LightBulbGlassMaterial.EnableKeyword("_EMISSION");

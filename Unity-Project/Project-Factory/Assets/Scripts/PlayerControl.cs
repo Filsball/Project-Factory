@@ -198,15 +198,13 @@ public class PlayerControl : MonoBehaviour
         else
         {
             // Escape Riddle
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
             {
                 SwapBackToPlayer();
                 hud.CloseInventory();
             }
-
         }
     }
-
     private void inventarVerwalten()
     {
 

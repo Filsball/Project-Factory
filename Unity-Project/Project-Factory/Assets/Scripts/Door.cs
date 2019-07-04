@@ -13,13 +13,17 @@ public class Door : InteractableObject
 
     public override void Interact()
     {
+        if (!currentlyInteractable)
+        {
+            return;
+        }
         open = !open;
         animating = true;
     }
 
     public new void Start()
     {
-        glowPower = 0.3f;
+        glowPower = 0.2f;
         Name = "Tür";
         _interactionName = "öffnen";
         base.Start();
