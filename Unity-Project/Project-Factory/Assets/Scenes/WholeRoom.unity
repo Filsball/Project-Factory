@@ -3765,10 +3765,17 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: GameOver
-    clip: {fileID: 8300000, guid: 110039fa04c98394890c25dd42fac32d, type: 3}
+    clip: {fileID: 8300000, guid: f57b6206dbacacc4fbeb3dffecfa7334, type: 3}
     volume: 0
     pitch: 0.8
     spatialBlend: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 65021f1ef869be34496f929d93976b7c, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 1
     loop: 1
     source: {fileID: 0}
   generatorStarted: 0
