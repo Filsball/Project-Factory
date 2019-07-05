@@ -265,6 +265,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (InExpZone) {
                 ExpArea.Explode();
+                // @Dennis Direkten Tod + Audio Explosion einfügen
             }
             yield return new WaitForSeconds(1);
             --Oil;
