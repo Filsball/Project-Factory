@@ -597,5 +597,10 @@ public class AudioManager : MonoBehaviour
         return hintergrundAktiv;
     }
 
+    public PostProcessingBehaviour getPPB()
+    {
+        return pPB;
+    }
+
     
 }

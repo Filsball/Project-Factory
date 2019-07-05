@@ -3771,6 +3771,13 @@ MonoBehaviour:
     spatialBlend: 0
     loop: 1
     source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 65021f1ef869be34496f929d93976b7c, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 1
+    loop: 1
+    source: {fileID: 0}
   generatorStarted: 0
   saferoomAktiv: 0
   dunkelheitAktiv: 0
