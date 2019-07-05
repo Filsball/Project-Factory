@@ -27,6 +27,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] GameObject Oillamp;
     Light oilLight;
     [SerializeField] Material lampGlassMaterial;
+    private bool InExpZone;
+    private ExplosiveArea ExpArea;
 
     // private bool mLockPickUp;
 
@@ -261,6 +263,9 @@ public class PlayerControl : MonoBehaviour
         //Debug.Log("LooseOil Gestartet");
         while (LightOn && Oil > 0)
         {
+            if (InExpZone) {
+                ExpArea.Explode();
+            }
             yield return new WaitForSeconds(1);
             --Oil;
             //Debug.Log("Oelstand:  " + Oil);
@@ -342,6 +347,17 @@ public class PlayerControl : MonoBehaviour
         {
             audio.SaferoomAktivieren();
         }
+        if (collider.tag == "Faesser")
+        {
+            InExpZone = true;
+            ExpArea = collider.GetComponent<ExplosiveArea>();
+            Debug.Log("ExpArea");
+             if(LightOn)
+             {
+                ExpArea.Explode();
+                // @Dennis Direkten Tod Einleiten, Audio Explosion
+            }
+        }
     }
     private void OnTriggerExit(Collider collider)
     {
@@ -353,6 +369,7 @@ public class PlayerControl : MonoBehaviour
                 audio.DunkelheitAktivieren();
             }
         }
+        
         // Saferoom verlassen
         if (collider.tag == "Saferoom")
         {
@@ -371,6 +388,10 @@ public class PlayerControl : MonoBehaviour
                 audio.DunkelheitAktivieren();
             }
             Debug.Log("Außerhalb von Saferoom");
+        }
+        if (collider.tag == "Faesser") {
+            InExpZone = false;
+            ExpArea = null;
         }
 
     }
