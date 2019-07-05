@@ -19,4 +19,9 @@ public class ExplosiveArea : MonoBehaviour
     public void Explode() {
         ExplosiveLights.SetActive(true);
     }
+
+    public GameObject getExplosiveLights()
+    {
+        return ExplosiveLights;
+    }
 }

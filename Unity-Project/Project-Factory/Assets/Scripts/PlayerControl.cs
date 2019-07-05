@@ -265,6 +265,10 @@ public class PlayerControl : MonoBehaviour
         {
             if (InExpZone) {
                 ExpArea.Explode();
+                audio.Play("Explosion", 0.8f);
+                //Position konnte bisher noch nicht gesetzt werden
+                //audio.Play("Explosion", 0.8f, ExpArea.getExplosiveLights().transform.position);
+                AudioManager.GameOverCallerMitPP(2f, audio.getPPB());
                 // @Dennis Direkten Tod + Audio Explosion einfügen
             }
             yield return new WaitForSeconds(1);
