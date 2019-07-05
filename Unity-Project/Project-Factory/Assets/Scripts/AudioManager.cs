@@ -92,7 +92,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            
+            GameOverCallerMitPP(2f, pPB);
             //FadeCallerMitPP(dunkelheit, hintergrund, saferoom, 0.9f, 5f, true, pPB);
         }
         
@@ -228,10 +228,14 @@ public class AudioManager : MonoBehaviour
         lastCalled = fadeSounds(toFadeIn, toFadeOut, toFadeOut2, maxVolume, time, startNew);
         instance.StartCoroutine(lastCalled);
     }
-   
     public static void FadeCallerMitPP(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {
         lastCalled = fadeSoundsMitPP(toFadeIn, toFadeOut, toFadeOut2, maxVolume, time, startNew, pPB);
+        instance.StartCoroutine(lastCalled);
+    }
+    public static void GameOverCallerMitPP(float time, PostProcessingBehaviour pPB)
+    {
+        lastCalled = GameOverMitPP(time, pPB);
         instance.StartCoroutine(lastCalled);
     }
     public static void FadeCallerMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
@@ -311,15 +315,22 @@ public class AudioManager : MonoBehaviour
             PPChromaticAberration(pPB, profile, PPFadeZeit, true);
             yield return null;
         }
-        while (pufferzeit < 4f)
+        while (pufferzeit < 3f)
         {
             Vector3 startPosition = camera.localPosition;
             pufferzeit += Time.deltaTime;
             camera.localPosition = startPosition + Random.insideUnitSphere* pufferzeit / 40f;
             yield return null;
         }
+        while (pufferzeit > 0f)
+        {
+            Vector3 startPosition = camera.localPosition;
+            pufferzeit -= 2 * Time.deltaTime;
+            camera.localPosition = startPosition + Random.insideUnitSphere * pufferzeit / 40f;
+            yield return null;
+        }
         animation.enabled = !animation.enabled;
-        while (pufferzeit < 6f)
+        while (pufferzeit < 2f)
         {
             Vector3 startPosition = camera.localPosition;
             camera.localPosition = startPosition + Random.insideUnitSphere * pufferzeit / 40f;
@@ -329,7 +340,24 @@ public class AudioManager : MonoBehaviour
         }
         instance.todController.setTod();
     }
-    
+
+    static IEnumerator GameOverMitPP(float time, PostProcessingBehaviour pPB)
+    {
+        PostProcessingProfile profile = pPB.profile;
+        float pufferzeit = 0f;
+        
+        animation.enabled = !animation.enabled;
+        while (pufferzeit < time)
+        {
+            Vector3 startPosition = camera.localPosition;
+            camera.localPosition = startPosition + Random.insideUnitSphere * pufferzeit / 40f;
+            PPColorGradingGameOver(pPB, profile, 2f);
+            pufferzeit += Time.deltaTime;
+            yield return null;
+        }
+        instance.todController.setTod();
+    }
+
     static IEnumerator fadeSoundsMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {
         if (startNew || !toFadeIn.isPlaying) toFadeIn.Play();
