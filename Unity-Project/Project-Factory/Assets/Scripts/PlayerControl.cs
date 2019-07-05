@@ -176,7 +176,7 @@ public class PlayerControl : MonoBehaviour
             else
             {
                 SwitchOillampOn();
-                if (isInRiddle)
+                if (isInRiddle&&Oil>0)
                     GeneratorManager.EnableFakeLight();
             }
         }
@@ -299,8 +299,7 @@ public class PlayerControl : MonoBehaviour
         }
         
         Time.timeScale = 1;
-
-
+        
         // fuer Audio
         audio.Play("LampeAnschalten", 0.7f);
         if (Oil > 0)
@@ -364,6 +363,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerExit(Collider collider)
     {
         // Leite Tod ein wenn Oellampe nicht aktiv
@@ -400,6 +400,7 @@ public class PlayerControl : MonoBehaviour
         }
 
     }
+
     public bool GetIsInRiddle()
     {
         return isInRiddle;
