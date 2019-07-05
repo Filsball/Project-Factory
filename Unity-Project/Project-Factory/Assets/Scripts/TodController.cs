@@ -11,24 +11,36 @@ public class TodController : MonoBehaviour
     public bool isTod = false;
     private Scene scene;
     private AudioListener audioListener;
+    private AudioManager audio;
     public Image background;
 
     void Start()
     {
-        gameObject.SetActive(false);
         audioListener = FindObjectOfType<AudioListener>();
         scene = SceneManager.GetActiveScene();
+        todUI.SetActive(false);
+        audio = FindObjectOfType<AudioManager>();
 
     }
 
     private void Update()
     {
+        if (isTod)
+        {
+            ActivateTod();
+            if (!audio.getSound("GameOver").source.isPlaying)
+            {
+                audio.Stop("InDunkelheit");
+                audio.Stop("GeneratorLaufend");
+                audio.Play("GameOver", 0.5f);
+            }
+        }
     }
     
     public void ActivateTod()
     {
         Time.timeScale = 0;
-        AudioListener.pause = true;
+        //AudioListener.pause = true;
         todUI.SetActive(true);
         GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = false;
         Cursor.visible = true;
