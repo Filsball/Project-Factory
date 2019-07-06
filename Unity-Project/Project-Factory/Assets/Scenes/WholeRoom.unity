@@ -2265,7 +2265,7 @@ Transform:
   - {fileID: 769936092}
   - {fileID: 492785267}
   m_Father: {fileID: 1528040379}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &158762451 stripped
 GameObject:
@@ -7225,7 +7225,7 @@ Transform:
   m_Children:
   - {fileID: 1428095112}
   m_Father: {fileID: 1528040379}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -88.716, y: 112.149, z: -6.9400005}
 --- !u!4 &529598350
 Transform:
@@ -13410,7 +13410,7 @@ Transform:
   - {fileID: 769906780}
   - {fileID: 1453985929}
   m_Father: {fileID: 1528040379}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1046459305
 GameObject:
@@ -14843,50 +14843,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176919495}
   m_CullTransparentMesh: 0
---- !u!1 &1194008031
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1194008033}
-  - component: {fileID: 1194008032}
-  m_Layer: 0
-  m_Name: BeispielColliderSaferoom
-  m_TagString: Saferoom
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!65 &1194008032
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194008031}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 7.8650036, y: 3.3915699, z: 2.2083306}
-  m_Center: {x: -3.4325018, y: 1.1957849, z: 0.60416543}
---- !u!4 &1194008033
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194008031}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.113, y: 0.5, z: 1.15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1528040379}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1199213424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9170878395019744362, guid: 7f9ec82ab31c94240b58b47f96bbae50,
@@ -17784,7 +17740,7 @@ PrefabInstance:
     - target: {fileID: 944871625763793952, guid: 7f9ec82ab31c94240b58b47f96bbae50,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 944871625763793952, guid: 7f9ec82ab31c94240b58b47f96bbae50,
         type: 3}
@@ -21575,7 +21531,6 @@ Transform:
   - {fileID: 1517754917}
   - {fileID: 1517754919}
   - {fileID: 1517754937}
-  - {fileID: 1194008033}
   - {fileID: 1045112015}
   - {fileID: 158066045}
   - {fileID: 529598348}
@@ -24625,7 +24580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1767205282
 Transform:
   m_ObjectHideFlags: 0
@@ -29708,7 +29663,7 @@ PrefabInstance:
     - target: {fileID: 3830674112806285372, guid: 0730131fdecf9264da4f6322eea7c09c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3830674112806285372, guid: 0730131fdecf9264da4f6322eea7c09c,
         type: 3}

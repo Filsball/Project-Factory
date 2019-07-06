@@ -101,6 +101,7 @@ public class Zahnrad_Manager : InteractableObject
                 audioManager.generatorStarted = true;
                 audioManager.Play("Zahnraeder", 0.1f, boxCollider.center + transform.position);
                 audioManager.Play("GeneratorStartend", 1.0f, boxCollider.center + transform.position - new Vector3(2f, 2f, 2f));
+                Debug.Log("im ZahnradManager");
                 AudioManager.FadeCaller(audioManager.getSound("Saferoom").source, audioManager.getSound("Hintergrund").source, 0.7f, 1.5f, true);
                 audioManager.setSaferoom(true);
                 audioManager.setDunkelheit(false);
