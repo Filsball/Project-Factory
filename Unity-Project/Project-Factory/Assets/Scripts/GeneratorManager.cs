@@ -121,7 +121,7 @@ public class GeneratorManager : MonoBehaviour
                 if (buttonsSolved)
                 {
                     doorsOpening = true;
-                    audio.Play("ButtonMitEinrasten", 0.8f, buttonOrder[0].transform.position);
+                    audio.Play("ButtonMitEinrasten", 0.8f, buttonOrder[0].transform.position, true);
                 }
                 else
                 {
@@ -138,7 +138,7 @@ public class GeneratorManager : MonoBehaviour
         if (!doorsHaveOpened && doorsOpening)
         {
             OpenDoors();
-            audio.Play("MetalltuerGenerator", 0.7f, rightDoor.transform.position);
+            audio.Play("MetalltuerGenerator", 0.7f, rightDoor.transform.position, true);
         }
 
         zrManager.running = running;

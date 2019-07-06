@@ -4863,6 +4863,13 @@ MonoBehaviour:
     spatialBlend: 1
     loop: 1
     source: {fileID: 0}
+  - name: Metalltuer
+    clip: {fileID: 8300000, guid: 404100b9867fa7f49bacbad1424441f2, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 1
+    loop: 1
+    source: {fileID: 0}
   generatorStarted: 0
   saferoomAktiv: 0
   dunkelheitAktiv: 0
@@ -5652,6 +5659,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0387866, y: 0.07102911, z: 0.02370749}
   m_Center: {x: -0.014291113, y: -0.022542251, z: -0.00026548142}
+--- !u!1 &408842659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 408842660}
+  - component: {fileID: 408842661}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Licht
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &408842660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408842659}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -9, z: 0}
+  m_LocalScale: {x: 30, y: 10, z: 49}
+  m_Children: []
+  m_Father: {fileID: 1579564539}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &408842661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408842659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0216126, z: 0.4996972}
+  m_Center: {x: 0, y: 0.16530013, z: 0.033365786}
 --- !u!1001 &416930089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13657,7 +13708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1054197942
 Light:
   m_ObjectHideFlags: 0
@@ -18689,7 +18740,7 @@ Transform:
   m_LocalScale: {x: 0.9, y: 0.7, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1440599281}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &1466267194
 BoxCollider:
@@ -22126,6 +22177,7 @@ Transform:
   m_Children:
   - {fileID: 1340168009}
   - {fileID: 1767205282}
+  - {fileID: 408842660}
   m_Father: {fileID: 1558170005}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24456,7 +24508,7 @@ GameObject:
   - component: {fileID: 1759235317}
   m_Layer: 0
   m_Name: BRSchwarzlicht
-  m_TagString: Untagged
+  m_TagString: Notiz
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28234,7 +28286,7 @@ GameObject:
   - component: {fileID: 2033671327}
   m_Layer: 0
   m_Name: Notiz
-  m_TagString: Untagged
+  m_TagString: Notiz
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28253,7 +28305,7 @@ Transform:
   - {fileID: 1232960429}
   - {fileID: 1837212912}
   m_Father: {fileID: 1440599281}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!65 &2033671324
 BoxCollider:
