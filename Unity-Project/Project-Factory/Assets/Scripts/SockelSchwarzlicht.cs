@@ -10,6 +10,7 @@ public class SockelSchwarzlicht : SockelAbstract
     {
         In(typeof(GluehbirneSchwarzlicht));
     }
+
     public new void Update()
     {
         if (Gluehbirne.activeSelf)
