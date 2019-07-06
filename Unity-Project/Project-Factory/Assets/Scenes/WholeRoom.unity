@@ -17871,6 +17871,11 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 1517323782}
+    - target: {fileID: 944871625763368961, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: SOLVED_ONLY_FOR_DEBUGGING
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 944871626221921150, guid: 7f9ec82ab31c94240b58b47f96bbae50,
         type: 3}
       propertyPath: m_IsActive
@@ -24392,6 +24397,7 @@ GameObject:
   - component: {fileID: 1759235316}
   - component: {fileID: 1759235315}
   - component: {fileID: 1759235314}
+  - component: {fileID: 1759235317}
   m_Layer: 0
   m_Name: BRSchwarzlicht
   m_TagString: Untagged
@@ -24471,6 +24477,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759235312}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1759235317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759235312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e571fd073121a3419d34a765209ac6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Leer: {fileID: 0}
+  Sichtbar: {fileID: 0}
 --- !u!1 &1767129605
 GameObject:
   m_ObjectHideFlags: 0
@@ -27239,7 +27259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1960090072
 Transform:
   m_ObjectHideFlags: 0
@@ -28160,10 +28180,9 @@ MonoBehaviour:
   renderer: {fileID: 0}
   glowPower: 0.75
   isFocused: 0
-  OilLightFaker: {fileID: 0}
+  OilLightFaker: {fileID: 1164599811}
   col: {fileID: 0}
   riddleCam: {fileID: 1232960431}
-  boxCollider: {fileID: 0}
 --- !u!1001 &2046598066
 PrefabInstance:
   m_ObjectHideFlags: 0

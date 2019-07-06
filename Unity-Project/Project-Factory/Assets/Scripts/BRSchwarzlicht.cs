@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BRSchwarzlicht : MonoBehaviour
 {
-    [SerializeField] Notiz Leer;
-    [SerializeField] Notiz Sichtbar;
+    [SerializeField] Sprite Leer;
+    [SerializeField] Sprite Sichtbar;
 
     void Start()
     {
+
         Leer.enabled = true;
         Sichtbar.enabled = false;
     }
