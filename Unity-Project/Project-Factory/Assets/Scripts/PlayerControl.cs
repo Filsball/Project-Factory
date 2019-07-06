@@ -221,6 +221,10 @@ public class PlayerControl : MonoBehaviour
                     else
                     {
                         lookedAtObject.Interact();
+                        if(lookedAtObject.tag == "Notiz")
+                        {
+                            audio.Play("NotizPickup", 0.15f, lookedAtObject.transform.position, true);
+                        }
                     }
                 }
             }

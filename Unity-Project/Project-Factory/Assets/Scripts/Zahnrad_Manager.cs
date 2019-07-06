@@ -97,14 +97,14 @@ public class Zahnrad_Manager : InteractableObject
             if (!playingAudio)
             {
                 audioManager.generatorStarted = true;
-                audioManager.Play("Zahnraeder", 0.1f, boxCollider.center + transform.position);
-                audioManager.Play("GeneratorStartend", 1.0f, boxCollider.center + transform.position - new Vector3(2f, 2f, 2f));
+                audioManager.Play("Zahnraeder", 0.1f, boxCollider.center + transform.position, false);
+                audioManager.Play("GeneratorStartend", 1.0f, boxCollider.center + transform.position, false);
                 AudioManager.FadeCaller(audioManager.getSound("Saferoom").source, audioManager.getSound("Hintergrund").source, 0.7f, 1.5f, true);
                 audioManager.setSaferoom(true);
                 audioManager.setDunkelheit(false);
                 audioManager.setHintergrund(false);
-                Debug.Log("saferoom");
                 playingAudio = true;
+                Debug.Log("test ZahnradManager");
             }
         }
         for (int i= 0; i < aufsaetze.Count; i++)

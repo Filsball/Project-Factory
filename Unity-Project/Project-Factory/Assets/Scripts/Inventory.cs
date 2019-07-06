@@ -30,7 +30,8 @@ public class Inventory : MonoBehaviour {
                 collider.enabled = false;
                 ItemList.Add(item);
                 item.OnPickUp();
-                audio.Play("ItemPickup", 0.15f, item.transform.position);
+                audio.Play("ItemPickup", 0.15f, item.transform.position, true);
+                Debug.Log("test Inventory");
                 item.Selected = false;
             }
             if (ItemAdded != null)
