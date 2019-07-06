@@ -7,7 +7,10 @@ public class Sockel : SockelAbstract
     
     private new void Start()
     {
+        allSockets.Add(this);
+        Gluehbirne.SetActive(false);
         Lichtzone.SetActive(false);
+        Gluehbirne.SetActive(false);
     }
 
     public new void Update()
