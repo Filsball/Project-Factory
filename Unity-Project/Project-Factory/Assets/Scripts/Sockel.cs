@@ -4,13 +4,12 @@ using UnityEngine;
 public class Sockel : SockelAbstract
 {
     [SerializeField] GameObject Lichtzone;
+    public bool hasLightBulbFromBeginning = false;
     
     private new void Start()
     {
         allSockets.Add(this);
-        Gluehbirne.SetActive(false);
-        Lichtzone.SetActive(false);
-        Gluehbirne.SetActive(false);
+        Gluehbirne.SetActive(hasLightBulbFromBeginning);
     }
 
     public new void Update()
@@ -19,8 +18,8 @@ public class Sockel : SockelAbstract
         if (Gluehbirne.activeSelf)
         {
             Gluehbirne.GetComponentInChildren<Light>().enabled = StromAktiviert;
-            Lichtzone.SetActive(true);
         }
+        Lichtzone.SetActive(Gluehbirne.activeSelf && StromAktiviert);
     }
 
     public override void Interact()

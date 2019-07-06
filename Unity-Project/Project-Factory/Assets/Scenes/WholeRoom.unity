@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 1, g: 0, b: 0.019385815, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.09
+  m_AmbientIntensity: 0.05
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 256
   m_ReflectionBounces: 5
-  m_ReflectionIntensity: 0.275
+  m_ReflectionIntensity: 0.152
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.23887885, g: 0.26809287, b: 0.3132392, a: 0.275}
+  m_IndirectSpecularColor: {r: 0.17455205, g: 0.19737145, b: 0.23263574, a: 0.152}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -236,6 +236,7 @@ MonoBehaviour:
   Gluehbirne: {fileID: 135655187}
   inventory: {fileID: 85475781}
   Lichtzone: {fileID: 439531956}
+  hasLightBulbFromBeginning: 0
 --- !u!136 &7671007
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -381,8 +382,8 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.7169812, g: 0.63848186, b: 0.32805273, a: 1}
-  m_Intensity: 3.24
-  m_Range: 7.01
+  m_Intensity: 2
+  m_Range: 8
   m_SpotAngle: 134.58
   m_CookieSize: 10
   m_Shadows:
@@ -2594,6 +2595,7 @@ MonoBehaviour:
   Gluehbirne: {fileID: 160461083}
   inventory: {fileID: 85475781}
   Lichtzone: {fileID: 1314570301}
+  hasLightBulbFromBeginning: 0
 --- !u!136 &171739043
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9259,9 +9261,7 @@ MonoBehaviour:
   riddleCam: {fileID: 0}
   Gluehbirne: {fileID: 1648761790}
   inventory: {fileID: 85475781}
-
   Raetsel: {fileID: 1759235317}
-
 --- !u!136 &622265640
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9470,19 +9470,14 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &637003999
-MonoBehaviour:
+--- !u!81 &637003999
+AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637003996}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: f5ea822aeef2f9643ae5584d2b52e225, type: 2}
+  m_Enabled: 1
 --- !u!1 &639095434
 GameObject:
   m_ObjectHideFlags: 0
@@ -10506,6 +10501,7 @@ MonoBehaviour:
   Gluehbirne: {fileID: 1712402930}
   inventory: {fileID: 85475781}
   Lichtzone: {fileID: 1846311228}
+  hasLightBulbFromBeginning: 0
 --- !u!136 &697510156
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11362,6 +11358,7 @@ MonoBehaviour:
   Gluehbirne: {fileID: 425251150}
   inventory: {fileID: 85475781}
   Lichtzone: {fileID: 2068206711}
+  hasLightBulbFromBeginning: 0
 --- !u!136 &810902947
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12694,79 +12691,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 942192951}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &942806947
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 942806948}
-  - component: {fileID: 942806949}
-  m_Layer: 0
-  m_Name: Notizcam (1)
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &942806948
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942806947}
-  m_LocalRotation: {x: 0.6888925, y: -0, z: -0, w: 0.72486365}
-  m_LocalPosition: {x: -12.094, y: 0.231, z: -8.361}
-  m_LocalScale: {x: 1, y: 69.82167, z: 0.016834963}
-  m_Children: []
-  m_Father: {fileID: 1895077118}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 2.9150002, y: 0, z: 180}
---- !u!20 &942806949
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942806947}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 37
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 0
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!1 &944529982
 GameObject:
   m_ObjectHideFlags: 0
@@ -14350,6 +14274,7 @@ MonoBehaviour:
   Gluehbirne: {fileID: 1346133936}
   inventory: {fileID: 85475781}
   Lichtzone: {fileID: 1956924864}
+  hasLightBulbFromBeginning: 0
 --- !u!136 &1112393366
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -15477,6 +15402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1232960429}
   - component: {fileID: 1232960431}
+  - component: {fileID: 1232960430}
   m_Layer: 0
   m_Name: Notizcam
   m_TagString: MainCamera
@@ -15498,6 +15424,14 @@ Transform:
   m_Father: {fileID: 2033671323}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 2.9150002, y: 0, z: 180}
+--- !u!81 &1232960430
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232960428}
+  m_Enabled: 1
 --- !u!20 &1232960431
 Camera:
   m_ObjectHideFlags: 0
@@ -17992,7 +17926,7 @@ PrefabInstance:
     - target: {fileID: 944871625763368961, guid: 7f9ec82ab31c94240b58b47f96bbae50,
         type: 3}
       propertyPath: SOLVED_ONLY_FOR_DEBUGGING
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 944871626221921150, guid: 7f9ec82ab31c94240b58b47f96bbae50,
         type: 3}
@@ -18617,10 +18551,10 @@ Transform:
   m_LocalPosition: {x: 1.02, y: 1.538, z: -4.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1706025011}
+  - {fileID: 1759235313}
   - {fileID: 1466267193}
   - {fileID: 2033671323}
-  - {fileID: 1895077118}
+  - {fileID: 1706025011}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19879,7 +19813,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100042, guid: 1371e5d4b7948a0458fdd7c709d6da5d, type: 3}
+  - {fileID: 2100000, guid: 2b29f0218ff6212469d11850accda948, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20720,7 +20654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1517323791
 GameObject:
   m_ObjectHideFlags: 0
@@ -20950,7 +20884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1517323875
 GameObject:
   m_ObjectHideFlags: 0
@@ -21602,6 +21536,7 @@ MonoBehaviour:
   Gluehbirne: {fileID: 1858854235}
   inventory: {fileID: 85475781}
   Lichtzone: {fileID: 857309692}
+  hasLightBulbFromBeginning: 0
 --- !u!136 &1524980477
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22217,6 +22152,7 @@ MonoBehaviour:
   Gluehbirne: {fileID: 1340168008}
   inventory: {fileID: 85475781}
   Lichtzone: {fileID: 1767205281}
+  hasLightBulbFromBeginning: 1
 --- !u!136 &1579564541
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22467,6 +22403,7 @@ MonoBehaviour:
   Gluehbirne: {fileID: 1095478490}
   inventory: {fileID: 85475781}
   Lichtzone: {fileID: 880884732}
+  hasLightBulbFromBeginning: 0
 --- !u!136 &1616054668
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22660,6 +22597,7 @@ MonoBehaviour:
   Gluehbirne: {fileID: 158762451}
   inventory: {fileID: 85475781}
   Lichtzone: {fileID: 1095264483}
+  hasLightBulbFromBeginning: 0
 --- !u!136 &1625244924
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -24052,7 +23990,7 @@ Transform:
   m_LocalScale: {x: 0.9, y: 0.7, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1440599281}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &1706025012
 BoxCollider:
@@ -24514,10 +24452,10 @@ GameObject:
   - component: {fileID: 1759235316}
   - component: {fileID: 1759235315}
   - component: {fileID: 1759235314}
-  - component: {fileID: 1759235317}
   - component: {fileID: 1759235318}
+  - component: {fileID: 1759235317}
   m_Layer: 0
-  m_Name: Leer
+  m_Name: BRSchwarzlicht
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24532,13 +24470,11 @@ Transform:
   m_GameObject: {fileID: 1759235312}
   m_LocalRotation: {x: -0.080046766, y: 0.7025614, z: -0.7025614, w: -0.080046766}
   m_LocalPosition: {x: -12.08, y: -0.436, z: -8.305}
-
   m_LocalScale: {x: 0.5, y: 0.7, z: 0.01}
   m_Children:
   - {fileID: 637003997}
   - {fileID: 9537310}
   m_Father: {fileID: 1440599281}
-
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: -13}
 --- !u!65 &1759235314
@@ -24608,11 +24544,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1759235312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-
-  m_Script: {fileID: 11500000, guid: 63ea7ae2466a12448b30f48b045c35cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e571fd073121a3419d34a765209ac6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
   Leer: {fileID: 2800000, guid: eef02df15a552984a96dd2a4339bddc0, type: 3}
   Sichtbar: {fileID: 2800000, guid: 233dd388c23262840969840a32664485, type: 3}
   rend: {fileID: 1759235315}
@@ -24628,17 +24562,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ea7ae2466a12448b30f48b045c35cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
   currentlyInteractable: 1
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
-
   isFocused: 0
   OilLightFaker: {fileID: 9537311}
   col: {fileID: 1759235314}
   riddleCam: {fileID: 637003998}
-
 --- !u!1 &1767129605
 GameObject:
   m_ObjectHideFlags: 0
@@ -25201,8 +25132,8 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.8584906, g: 0.69269437, b: 0.376602, a: 1}
-  m_Intensity: 5
-  m_Range: 3
+  m_Intensity: 2
+  m_Range: 8
   m_SpotAngle: 130
   m_CookieSize: 10
   m_Shadows:
@@ -25287,6 +25218,7 @@ MonoBehaviour:
   Gluehbirne: {fileID: 724695286}
   inventory: {fileID: 85475781}
   Lichtzone: {fileID: 1213201099}
+  hasLightBulbFromBeginning: 0
 --- !u!136 &1840499915
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26409,54 +26341,6 @@ Transform:
   m_Father: {fileID: 518489963}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1895077117
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1895077118}
-  - component: {fileID: 1895077119}
-  m_Layer: 0
-  m_Name: BRSchwarzlicht
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1895077118
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895077117}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1759235313}
-  - {fileID: 2054244128}
-  - {fileID: 942806948}
-  m_Father: {fileID: 1440599281}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1895077119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895077117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e571fd073121a3419d34a765209ac6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Leer: {fileID: 1759235317}
-  Sichtbar: {fileID: 2054244129}
 --- !u!1001 &1900815023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27405,6 +27289,7 @@ MonoBehaviour:
   Gluehbirne: {fileID: 1954112736}
   inventory: {fileID: 85475781}
   Lichtzone: {fileID: 7860194}
+  hasLightBulbFromBeginning: 0
 --- !u!136 &1954404843
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -28366,9 +28251,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.7, z: 0.01}
   m_Children:
   - {fileID: 1232960429}
-
   - {fileID: 1837212912}
-
   m_Father: {fileID: 1440599281}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
@@ -28507,117 +28390,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03f1201ee9c8a7443af05c83955ee549, type: 3}
---- !u!1 &2054244127
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2054244128}
-  - component: {fileID: 2054244132}
-  - component: {fileID: 2054244131}
-  - component: {fileID: 2054244130}
-  - component: {fileID: 2054244129}
-  m_Layer: 0
-  m_Name: Sichtbar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &2054244128
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054244127}
-  m_LocalRotation: {x: 0.7025614, y: 0.080046766, z: -0.080046766, w: 0.7025614}
-  m_LocalPosition: {x: -12.08, y: -0.431, z: -8.305}
-  m_LocalScale: {x: 0.5, y: 0.69999975, z: 0.01}
-  m_Children: []
-  m_Father: {fileID: 1895077118}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -13}
---- !u!114 &2054244129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054244127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63ea7ae2466a12448b30f48b045c35cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentlyInteractable: 1
-  _selected: 0
-  renderer: {fileID: 0}
-  glowPower: 0.75
-  col: {fileID: 0}
-  riddleCam: {fileID: 942806949}
-  boxCollider: {fileID: 0}
---- !u!65 &2054244130
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054244127}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &2054244131
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054244127}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: dc77d5e2d6e35aa48a75fc3baf800b01, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &2054244132
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054244127}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &2057539018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30106,7 +29878,7 @@ PrefabInstance:
     - target: {fileID: 3830674112286132972, guid: 0730131fdecf9264da4f6322eea7c09c,
         type: 3}
       propertyPath: m_Intensity
-      value: 2.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 3830674112286132972, guid: 0730131fdecf9264da4f6322eea7c09c,
         type: 3}
@@ -30410,9 +30182,6 @@ MonoBehaviour:
   inventory: {fileID: 85475781}
   LightOn: 0
   Oillamp: {fileID: 649941345}
-
-  FakeLight: {fileID: 1974438763}
-
   lampGlassMaterial: {fileID: 2100000, guid: 8a64946343458e046b9da09c319667cc, type: 2}
 --- !u!20 &6866606421769659527
 Camera:

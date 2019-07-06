@@ -11,6 +11,10 @@ public class BRSchwarzlicht : MonoBehaviour
 
     void Start()
     {
+        if(rend == null)
+        {
+            rend = GetComponent<Renderer>();
+        }
         rend.material.SetTexture("_MainTex", Leer);
     }
 
