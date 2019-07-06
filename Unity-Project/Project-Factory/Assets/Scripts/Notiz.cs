@@ -18,9 +18,9 @@ public class Notiz : InteractableObject
     void Start()
     {
         base.Start();
+        boxCollider = (BoxCollider)col;
         OilLightFaker = GetComponentInChildren<Light>();
         OilLightFaker.enabled = false;
-        boxCollider = (BoxCollider)col;
     }
     
     public static void EnableFakeLight(){ OilLightFaker.enabled = true;}

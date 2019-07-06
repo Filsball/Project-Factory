@@ -104,7 +104,7 @@ public class PlayerControl : MonoBehaviour
         if (LightOn)
         {
             GeneratorManager.DisableFakeLight();
-            Notiz.DisableFakeLight();
+            //Notiz.DisableFakeLight();
         }
         fpc.enabled = true;
         if (activeCamera != null)
@@ -131,7 +131,7 @@ public class PlayerControl : MonoBehaviour
         if (LightOn)
         {
             GeneratorManager.EnableFakeLight();
-            Notiz.EnableFakeLight();
+            //Notiz.EnableFakeLight();
         }
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -179,7 +179,7 @@ public class PlayerControl : MonoBehaviour
                 if (isInRiddle)
                 {
                     GeneratorManager.DisableFakeLight();
-                    Notiz.DisableFakeLight();
+                    //Notiz.DisableFakeLight();
                 }
             }
             else
@@ -188,7 +188,7 @@ public class PlayerControl : MonoBehaviour
                 if (isInRiddle && Oil > 0)
                 {
                     GeneratorManager.EnableFakeLight();
-                    Notiz.EnableFakeLight();
+                    //Notiz.EnableFakeLight();
                 }
             }
         }
@@ -241,6 +241,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
     }
+
     private void inventarVerwalten()
     {
 
@@ -292,7 +293,7 @@ public class PlayerControl : MonoBehaviour
             //Debug.Log("Lampe Leer");
             SwitchOillampOf();
             GeneratorManager.DisableFakeLight();
-            Notiz.DisableFakeLight();
+            //Notiz.DisableFakeLight();
         }
     }
 
