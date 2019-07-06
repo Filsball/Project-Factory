@@ -345,6 +345,7 @@ public class PlayerControl : MonoBehaviour
         // in Lichtzone, Kein Schaden
         if (collider.tag == "Licht")
         {
+            Debug.Log("InLichtzone");
             if (audio.getSaferoom())
             {
                 audio.setHintergrund(true);

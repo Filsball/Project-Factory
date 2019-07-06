@@ -51,10 +51,19 @@ public class Inventory : MonoBehaviour {
             collider.enabled = true;
         ItemRemoved?.Invoke(this, new InventoryEventArgs(item));
     }
-    public InventoryItem containsGluehbirne() {   // Es wird die erste Glühbirne im Inventar ausgegeben
+    public InventoryItem ContainsGluehbirne() {   // Es wird die erste Glühbirne im Inventar ausgegeben
         for (int i = 0; i < ItemList.Count; ++i)
         {
             if (ItemList[i] is Gluehbirne)
+                return ItemList[i];
+        }
+        return null;
+    }
+    public InventoryItem ContainsElementOfType(Type type) {
+        Debug.Log("Objekttype  "+type.GetType());
+        for (int i = 0; i < ItemList.Count; ++i)
+        {
+            if (ItemList[i].GetType() == type)
                 return ItemList[i];
         }
         return null;
