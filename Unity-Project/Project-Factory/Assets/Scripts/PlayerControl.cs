@@ -26,6 +26,7 @@ public class PlayerControl : MonoBehaviour
     private AudioManager audio;
     [SerializeField] GameObject Oillamp;
     Light oilLight;
+    [SerializeField] Light FakeLight;
     [SerializeField] Material lampGlassMaterial;
     private bool InExpZone;
     private ExplosiveArea ExpArea;
@@ -50,7 +51,18 @@ public class PlayerControl : MonoBehaviour
         LightOn = false;
         oilLight = Oillamp.GetComponentInChildren<Light>();
         oilLight.enabled = false;
+        FakeLight.enabled = false;
+        RefactorFakeLight();
         lampGlassMaterial.DisableKeyword("_EMISSION");
+        
+    }
+
+    private void RefactorFakeLight()
+    {
+        FakeLight.transform.position = transform.position;
+        Vector3 vTemp = FakeLight.transform.position;
+        vTemp.y += 2;
+        FakeLight.transform.position = vTemp;
     }
 
     public void ResetLookedAtObject()
@@ -103,8 +115,9 @@ public class PlayerControl : MonoBehaviour
         headCamera.gameObject.SetActive(true);
         if (LightOn)
         {
-            GeneratorManager.DisableFakeLight();
+            //GeneratorManager.DisableFakeLight();
             //Notiz.DisableFakeLight();
+            FakeLight.enabled = false;
         }
         fpc.enabled = true;
         if (activeCamera != null)
@@ -130,8 +143,10 @@ public class PlayerControl : MonoBehaviour
         fpc.enabled = false;
         if (LightOn)
         {
-            GeneratorManager.EnableFakeLight();
+            //GeneratorManager.EnableFakeLight();
             //Notiz.EnableFakeLight();
+            RefactorFakeLight();
+            FakeLight.enabled = true;
         }
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -178,8 +193,9 @@ public class PlayerControl : MonoBehaviour
                 SwitchOillampOf();
                 if (isInRiddle)
                 {
-                    GeneratorManager.DisableFakeLight();
+                    //GeneratorManager.DisableFakeLight();
                     //Notiz.DisableFakeLight();
+                    FakeLight.enabled = false;
                 }
             }
             else
@@ -187,8 +203,9 @@ public class PlayerControl : MonoBehaviour
                 SwitchOillampOn();
                 if (isInRiddle && Oil > 0)
                 {
-                    GeneratorManager.EnableFakeLight();
+                    //GeneratorManager.EnableFakeLight();
                     //Notiz.EnableFakeLight();
+                    FakeLight.enabled = true;
                 }
             }
         }
@@ -292,8 +309,9 @@ public class PlayerControl : MonoBehaviour
         {
             //Debug.Log("Lampe Leer");
             SwitchOillampOf();
-            GeneratorManager.DisableFakeLight();
+            //GeneratorManager.DisableFakeLight();
             //Notiz.DisableFakeLight();
+            FakeLight.enabled = false; ;
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Notiz : InteractableObject
 {
-    public static Light OilLightFaker;
+    //public static Light OilLightFaker;
     public Camera riddleCam;
     public BoxCollider boxCollider;
 
@@ -19,11 +19,11 @@ public class Notiz : InteractableObject
     {
         base.Start();
         boxCollider = (BoxCollider)col;
-        OilLightFaker = GetComponentInChildren<Light>();
-        OilLightFaker.enabled = false;
+        //OilLightFaker = GetComponentInChildren<Light>();
+        //OilLightFaker.enabled = false;
     }
     
-    public static void EnableFakeLight(){ OilLightFaker.enabled = true;}
+    //public static void EnableFakeLight(){ OilLightFaker.enabled = true;}
 
-    public static void DisableFakeLight(){ OilLightFaker.enabled = false;}
+    //public static void DisableFakeLight(){ OilLightFaker.enabled = false;}
 }
