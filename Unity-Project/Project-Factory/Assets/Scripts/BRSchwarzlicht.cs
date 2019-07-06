@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class BRSchwarzlicht : MonoBehaviour
 {
-    [SerializeField] Sprite Leer;
-    [SerializeField] Sprite Sichtbar;
+    [SerializeField] Texture Leer;
+    [SerializeField] Texture Sichtbar;
+
+    public Renderer rend;
 
     void Start()
     {
-
-        Leer.enabled = true;
-        Sichtbar.enabled = false;
+        rend.material.SetTexture("_MainTex", Leer);
     }
+
     public void SichtbarMachen() {
-        Leer.enabled = false;
-        Sichtbar.enabled = true;
+        rend.material.SetTexture("_MainTex", Sichtbar);
     }
 }

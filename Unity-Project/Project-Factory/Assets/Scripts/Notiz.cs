@@ -8,4 +8,5 @@ public class Notiz : InteractableObject
     {
         RiddleInteract();
     }
+    
 }
