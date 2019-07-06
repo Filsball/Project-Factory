@@ -8,12 +8,9 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     public Inventory inventory;
-
     public GameObject MsgPanel;
-
     public GameObject InventoryPanel;
     public GameObject OilPanel;
-
     public GameObject CrossHiarPanel;
     // Start is called before the first frame update
     void Start()
@@ -97,7 +94,6 @@ public class HUD : MonoBehaviour
         OilPanel.transform.parent.gameObject.SetActive(false);
     }
 
-
     public void OpenOilTankPanel()
     {
         OilPanel.transform.parent.gameObject.SetActive(true);
@@ -117,4 +113,5 @@ public class HUD : MonoBehaviour
     {
         InventoryPanel.SetActive(false);
     }
+
 }
