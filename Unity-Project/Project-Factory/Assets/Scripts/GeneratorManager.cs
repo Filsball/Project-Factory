@@ -150,7 +150,7 @@ public class GeneratorManager : MonoBehaviour
         {
             LightBulbGlassMaterial.EnableKeyword("_EMISSION");
             LightBulbWireMaterial.EnableKeyword("_EMISSION");
-            Sockel.StromAn();
+            SockelAbstract.StromAn();
             turbine.transform.Rotate(new Vector3(0, 0, motorSpeed * Time.deltaTime));
             if (motorSpeed < motorMaxSpeed)
             {
