@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8129985827797448225}
   - component: {fileID: 8129985827797448224}
   - component: {fileID: 8129985827797448231}
+  - component: {fileID: 6659838719230157558}
   m_Layer: 0
   m_Name: Aufsatz
   m_TagString: Untagged
@@ -88,11 +89,11 @@ CapsuleCollider:
   m_GameObject: {fileID: 8129985827797448230}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Enabled: 0
+  m_Radius: 5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8129985827797448231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,3 +110,16 @@ MonoBehaviour:
   spinning: 1
   spinningSpeed: 100
   imUZSdrehen: 1
+--- !u!65 &6659838719230157558
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129985827797448230}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 1.75, z: 8}
+  m_Center: {x: 0, y: 0.125, z: 0}
