@@ -159,6 +159,7 @@ public class GeneratorManager : MonoBehaviour
             }
         }
     }
+
     public static void EnableFakeLight() {
         OilLightFaker.enabled = true;
     }

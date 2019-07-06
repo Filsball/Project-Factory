@@ -25,6 +25,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private bool saferoomAktiv = false;
     [SerializeField] private bool dunkelheitAktiv = false;
     [SerializeField] private bool hintergrundAktiv = false;
+    [SerializeField] public GameObject fpController;
     private PostProcessingBehaviour pPB;
     private static IEnumerator lastCalled;
     public static Transform camera;
@@ -61,6 +62,8 @@ public class AudioManager : MonoBehaviour
         MotionBlurModel.Settings MBS = pPB.profile.motionBlur.settings;
         MBS.frameBlending = 0;
         ColorGradingModel.Settings CGS = pPB.profile.colorGrading.settings;
+        CGS.tonemapping.neutralBlackIn = 0.02f;
+        CGS.tonemapping.neutralBlackOut = 0;
         CGS.basic.contrast = 1;
         CGS.basic.saturation = 1;
         VignetteModel.Settings VS = pPB.profile.vignette.settings;
@@ -71,7 +74,7 @@ public class AudioManager : MonoBehaviour
         pPB.profile.colorGrading.settings = CGS;
         pPB.profile.vignette.settings = VS;
         pPB.profile.chromaticAberration.settings = CAS;
-        animation = FindObjectOfType<FirstPersonController>().GetComponent<Animator>();
+        animation = fpController.GetComponent<Animator>();
 
 
 
@@ -87,14 +90,12 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            FadeCallerMitPP(dunkelheit, hintergrund, saferoom, 0.9f, 5f, true, pPB);
-        }*/
-        if (todController.getTod())
-        {
-            todController.ActivateTod();
+            GameOverCallerMitPP(2f, pPB);
+            //FadeCallerMitPP(dunkelheit, hintergrund, saferoom, 0.9f, 5f, true, pPB);
         }
+        
         if (generatorStarted && !generatorStartend.isPlaying)
         {
             generatorStarted = false;
@@ -227,10 +228,14 @@ public class AudioManager : MonoBehaviour
         lastCalled = fadeSounds(toFadeIn, toFadeOut, toFadeOut2, maxVolume, time, startNew);
         instance.StartCoroutine(lastCalled);
     }
-   
     public static void FadeCallerMitPP(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {
         lastCalled = fadeSoundsMitPP(toFadeIn, toFadeOut, toFadeOut2, maxVolume, time, startNew, pPB);
+        instance.StartCoroutine(lastCalled);
+    }
+    public static void GameOverCallerMitPP(float time, PostProcessingBehaviour pPB)
+    {
+        lastCalled = GameOverMitPP(time, pPB);
         instance.StartCoroutine(lastCalled);
     }
     public static void FadeCallerMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
@@ -310,28 +315,49 @@ public class AudioManager : MonoBehaviour
             PPChromaticAberration(pPB, profile, PPFadeZeit, true);
             yield return null;
         }
-        while (pufferzeit < 4f)
+        while (pufferzeit < 3f)
         {
             Vector3 startPosition = camera.localPosition;
             pufferzeit += Time.deltaTime;
-            camera.localPosition = startPosition + Random.insideUnitSphere* pufferzeit / 25f;
+            camera.localPosition = startPosition + Random.insideUnitSphere* pufferzeit / 40f;
             yield return null;
         }
-        while(pufferzeit < 4.005)
-        {
-            animation.enabled = true;
-        }
-        
-        while (pufferzeit < 6f)
+        while (pufferzeit > 0f)
         {
             Vector3 startPosition = camera.localPosition;
+            pufferzeit -= 2 * Time.deltaTime;
+            camera.localPosition = startPosition + Random.insideUnitSphere * pufferzeit / 40f;
+            yield return null;
+        }
+        animation.enabled = !animation.enabled;
+        while (pufferzeit < 2f)
+        {
+            Vector3 startPosition = camera.localPosition;
+            camera.localPosition = startPosition + Random.insideUnitSphere * pufferzeit / 40f;
+            PPColorGradingGameOver(pPB, profile, 2f);
             pufferzeit += Time.deltaTime;
-            camera.localPosition = startPosition + Random.insideUnitSphere * pufferzeit / 25f;
             yield return null;
         }
         instance.todController.setTod();
     }
-    
+
+    static IEnumerator GameOverMitPP(float time, PostProcessingBehaviour pPB)
+    {
+        PostProcessingProfile profile = pPB.profile;
+        float pufferzeit = 0f;
+        
+        animation.enabled = !animation.enabled;
+        while (pufferzeit < time)
+        {
+            Vector3 startPosition = camera.localPosition;
+            camera.localPosition = startPosition + Random.insideUnitSphere * pufferzeit / 40f;
+            PPColorGradingGameOver(pPB, profile, 2f);
+            pufferzeit += Time.deltaTime;
+            yield return null;
+        }
+        instance.todController.setTod();
+    }
+
     static IEnumerator fadeSoundsMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
     {
         if (startNew || !toFadeIn.isPlaying) toFadeIn.Play();
@@ -492,6 +518,22 @@ public class AudioManager : MonoBehaviour
         }
 
     }
+    public static void PPColorGradingGameOver(PostProcessingBehaviour pPB, PostProcessingProfile profile, float time)
+    {
+        ColorGradingModel.Settings colorGradingSettings = profile.colorGrading.settings;
+        float blackInStartwert = colorGradingSettings.tonemapping.neutralBlackIn;
+        float blackOutStartwert = colorGradingSettings.tonemapping.neutralBlackOut;
+
+        if (colorGradingSettings.tonemapping.neutralBlackIn < 0.07f)
+        {
+            colorGradingSettings.tonemapping.neutralBlackIn += Time.deltaTime / 5 * time;
+        }
+        if (colorGradingSettings.tonemapping.neutralBlackOut > -0.06f)
+        {
+            colorGradingSettings.tonemapping.neutralBlackOut -= blackOutStartwert * Time.deltaTime / 5 * time;
+        }
+        profile.colorGrading.settings = colorGradingSettings;
+    }
     public static void PPVignette(PostProcessingBehaviour pPB, PostProcessingProfile profile, float time, Boolean forward)
     {
         VignetteModel.Settings vignetteSettings = profile.vignette.settings;
@@ -554,4 +596,11 @@ public class AudioManager : MonoBehaviour
     {
         return hintergrundAktiv;
     }
+
+    public PostProcessingBehaviour getPPB()
+    {
+        return pPB;
+    }
+
+    
 }

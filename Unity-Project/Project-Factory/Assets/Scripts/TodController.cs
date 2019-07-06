@@ -11,18 +11,27 @@ public class TodController : MonoBehaviour
     public bool isTod = false;
     private Scene scene;
     private AudioListener audioListener;
+    private static AudioManager audio;
     public Image background;
 
     void Start()
     {
-        gameObject.SetActive(false);
         audioListener = FindObjectOfType<AudioListener>();
         scene = SceneManager.GetActiveScene();
+        todUI.SetActive(false);
+        audio = FindObjectOfType<AudioManager>();
 
     }
 
     private void Update()
     {
+        if (isTod)
+        {
+            ActivateTod();
+            audio.getSound("GameOver").source.ignoreListenerPause = true;
+            audio.Play("GameOver", 0.5f);
+            
+        }
     }
     
     public void ActivateTod()
@@ -34,7 +43,7 @@ public class TodController : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.lockState = CursorLockMode.Confined;
-        isTod = true;
+        isTod = false;
     }
 
     public void Respawn()
@@ -48,7 +57,7 @@ public class TodController : MonoBehaviour
 
     public void Hauptmenue()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 1;
         AudioListener.pause = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;

@@ -27,6 +27,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] GameObject Oillamp;
     Light oilLight;
     [SerializeField] Material lampGlassMaterial;
+    private bool InExpZone;
+    private ExplosiveArea ExpArea;
 
     // private bool mLockPickUp;
 
@@ -163,18 +165,25 @@ public class PlayerControl : MonoBehaviour
 
     private void HandleInput()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            if (LightOn)
+            {
+                SwitchOillampOf();
+                if (isInRiddle)
+                    GeneratorManager.DisableFakeLight();
+            }
+            else
+            {
+                SwitchOillampOn();
+                if (isInRiddle&&Oil>0)
+                    GeneratorManager.EnableFakeLight();
+            }
+        }
         if (!isInRiddle)
         {
             if (Input.GetKeyDown(KeyCode.E))
                 inventarVerwalten();
-
-            if (Input.GetKeyDown(KeyCode.Mouse1))
-            {
-                if (LightOn)
-                    SwitchOillampOf();
-                else
-                    SwitchOillampOn();
-            }
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
@@ -187,6 +196,21 @@ public class PlayerControl : MonoBehaviour
                         itemPickUp = null;
                         lookedAtObject = null;
                         hud.CloseMsgPanel();
+                    }
+                    else if (lookedAtObject is PickUpOil) {
+                        PickUpOil oilpot = (PickUpOil)lookedAtObject;
+                        if (oilpot.getFuellstand() + Oil > 100)
+                        {
+                            oilpot.Restfuellstand(oilpot.getFuellstand()+Oil-100);
+                            Oil = 100;
+                        }
+                        else
+                        {
+                            Oil += oilpot.getFuellstand();
+                            oilpot.Restfuellstand(0);
+                            lookedAtObject.Interact();
+                        }
+                        
                     }
                     else
                     {
@@ -239,6 +263,14 @@ public class PlayerControl : MonoBehaviour
         //Debug.Log("LooseOil Gestartet");
         while (LightOn && Oil > 0)
         {
+            if (InExpZone) {
+                ExpArea.Explode();
+                audio.Play("Explosion", 0.8f);
+                //Position konnte bisher noch nicht gesetzt werden
+                //audio.Play("Explosion", 0.8f, ExpArea.getExplosiveLights().transform.position);
+                AudioManager.GameOverCallerMitPP(2f, audio.getPPB());
+                // @Dennis Direkten Tod + Audio Explosion einfügen
+            }
             yield return new WaitForSeconds(1);
             --Oil;
             //Debug.Log("Oelstand:  " + Oil);
@@ -267,8 +299,7 @@ public class PlayerControl : MonoBehaviour
         }
         
         Time.timeScale = 1;
-
-
+        
         // fuer Audio
         audio.Play("LampeAnschalten", 0.7f);
         if (Oil > 0)
@@ -320,7 +351,19 @@ public class PlayerControl : MonoBehaviour
         {
             audio.SaferoomAktivieren();
         }
+        if (collider.tag == "Faesser")
+        {
+            InExpZone = true;
+            ExpArea = collider.GetComponent<ExplosiveArea>();
+            Debug.Log("ExpArea");
+             if(LightOn)
+             {
+                ExpArea.Explode();
+                // @Dennis Direkten Tod Einleiten, Audio Explosion
+            }
+        }
     }
+
     private void OnTriggerExit(Collider collider)
     {
         // Leite Tod ein wenn Oellampe nicht aktiv
@@ -331,6 +374,7 @@ public class PlayerControl : MonoBehaviour
                 audio.DunkelheitAktivieren();
             }
         }
+        
         // Saferoom verlassen
         if (collider.tag == "Saferoom")
         {
@@ -350,8 +394,13 @@ public class PlayerControl : MonoBehaviour
             }
             Debug.Log("Außerhalb von Saferoom");
         }
+        if (collider.tag == "Faesser") {
+            InExpZone = false;
+            ExpArea = null;
+        }
 
     }
+
     public bool GetIsInRiddle()
     {
         return isInRiddle;
