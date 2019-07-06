@@ -15,12 +15,12 @@ public class Zahnrad_Manager : InteractableObject
     public bool running = true;
     public bool solved = false;
     public bool instantiateGears = false;
-
-    public Camera riddleCam;
+    
 
     private Vector3 size;
     private bool playingAudio = false;
     private List<ZahnradAufsatz> aufsaetze = new List<ZahnradAufsatz>();
+    [SerializeField]
 
     // Start is called before the first frame update
     new public void Start()
@@ -93,12 +93,15 @@ public class Zahnrad_Manager : InteractableObject
     new public void Update()
     {
         base.Update();
+
+
         if(solved) {
             if (!playingAudio)
             {
                 audioManager.generatorStarted = true;
                 audioManager.Play("Zahnraeder", 0.1f, boxCollider.center + transform.position);
                 audioManager.Play("GeneratorStartend", 1.0f, boxCollider.center + transform.position - new Vector3(2f, 2f, 2f));
+                Debug.Log("im ZahnradManager");
                 AudioManager.FadeCaller(audioManager.getSound("Saferoom").source, audioManager.getSound("Hintergrund").source, 0.7f, 1.5f, true);
                 audioManager.setSaferoom(true);
                 audioManager.setDunkelheit(false);
@@ -139,9 +142,10 @@ public class Zahnrad_Manager : InteractableObject
         running = false;
     }
 
+
     public override void Interact()
     {
-        GameObject.Find("FPSController").GetComponent<PlayerControl>().SwapToCamera(riddleCam,this);
+        RiddleInteract();
     }
 
     public List<ZahnradAufsatz> GetAdjacentAufsatz(ZahnradAufsatz za)
