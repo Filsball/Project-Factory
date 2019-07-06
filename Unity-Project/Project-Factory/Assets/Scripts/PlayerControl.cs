@@ -382,6 +382,7 @@ public class PlayerControl : MonoBehaviour
         // in Saferoom
         if (collider.tag == "Saferoom")
         {
+            Debug.Log("InSaferoom");
             audio.SaferoomAktivieren();
         }
         if (collider.tag == "Faesser")

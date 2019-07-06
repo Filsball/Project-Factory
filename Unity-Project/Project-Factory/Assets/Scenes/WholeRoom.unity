@@ -1162,8 +1162,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 506077876}
-  - {fileID: 522503052}
   - {fileID: 1351009728}
+  - {fileID: 522503052}
   m_Father: {fileID: 975069534}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2253,7 +2253,7 @@ Transform:
   - {fileID: 769936092}
   - {fileID: 492785267}
   m_Father: {fileID: 1528040379}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &158762451 stripped
 GameObject:
@@ -7198,7 +7198,7 @@ Transform:
   m_Children:
   - {fileID: 1428095112}
   m_Father: {fileID: 1528040379}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -88.716, y: 112.149, z: -6.9400005}
 --- !u!4 &529598350
 Transform:
@@ -9154,6 +9154,7 @@ MonoBehaviour:
   col: {fileID: 0}
   Gluehbirne: {fileID: 1648761790}
   inventory: {fileID: 85475781}
+  Raetsel: {fileID: 0}
 --- !u!136 &622265640
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10607,6 +10608,7 @@ Transform:
   - {fileID: 968377765}
   - {fileID: 1921301445}
   - {fileID: 1859363866}
+  - {fileID: 1364715044}
   m_Father: {fileID: 1517754905}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13357,7 +13359,7 @@ Transform:
   - {fileID: 769906780}
   - {fileID: 1453985929}
   m_Father: {fileID: 1528040379}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1046459305
 GameObject:
@@ -14784,50 +14786,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176919495}
   m_CullTransparentMesh: 0
---- !u!1 &1194008031
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1194008033}
-  - component: {fileID: 1194008032}
-  m_Layer: 0
-  m_Name: BeispielColliderSaferoom
-  m_TagString: Saferoom
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!65 &1194008032
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194008031}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 7.8650036, y: 3.3915699, z: 2.2083306}
-  m_Center: {x: -3.4325018, y: 1.1957849, z: 0.60416543}
---- !u!4 &1194008033
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194008031}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.113, y: 0.5, z: 1.15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1528040379}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1199213424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9170878395019744362, guid: 7f9ec82ab31c94240b58b47f96bbae50,
@@ -16957,7 +16915,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5e3ecbebe3e59d24e821af2338cbbda3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbfbe20243637d24bbf6a8a4c9ac5e1a, type: 3}
-
 --- !u!1001 &1364715043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17053,7 +17010,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9200019, y: 1.4023874, z: 0.9194553}
   m_Center: {x: 0.0000009155272, y: 0.603181, z: 0.00000003814696}
-
 --- !u!1 &1365778716
 GameObject:
   m_ObjectHideFlags: 0
@@ -17704,7 +17660,7 @@ PrefabInstance:
     - target: {fileID: 944871625763793952, guid: 7f9ec82ab31c94240b58b47f96bbae50,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 944871625763793952, guid: 7f9ec82ab31c94240b58b47f96bbae50,
         type: 3}
@@ -21456,7 +21412,6 @@ Transform:
   - {fileID: 1517754917}
   - {fileID: 1517754919}
   - {fileID: 1517754937}
-  - {fileID: 1194008033}
   - {fileID: 1045112015}
   - {fileID: 158066045}
   - {fileID: 529598348}
@@ -24479,7 +24434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1767205282
 Transform:
   m_ObjectHideFlags: 0
@@ -29546,7 +29501,7 @@ PrefabInstance:
     - target: {fileID: 3830674112806285372, guid: 0730131fdecf9264da4f6322eea7c09c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3830674112806285372, guid: 0730131fdecf9264da4f6322eea7c09c,
         type: 3}
@@ -29869,10 +29824,7 @@ MonoBehaviour:
   hud: {fileID: 1883048581}
   inventory: {fileID: 85475781}
   Oillamp: {fileID: 649941345}
-
   FakeLight: {fileID: 1974438763}
-
-
   lampGlassMaterial: {fileID: 2100000, guid: 8a64946343458e046b9da09c319667cc, type: 2}
 --- !u!20 &6866606421769659527
 Camera:
