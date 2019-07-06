@@ -22,11 +22,10 @@ public class PlayerControl : MonoBehaviour
     FirstPersonController fpc;
     private bool isInRiddle = false;
     public bool LightOn;
-    private static int Oil { get; set; }
+    public int Oil { get; set; }
     private AudioManager audio;
     [SerializeField] GameObject Oillamp;
     Light oilLight;
-    [SerializeField] Light FakeLight;
     [SerializeField] Material lampGlassMaterial;
     private bool InExpZone;
     private ExplosiveArea ExpArea;
@@ -51,19 +50,19 @@ public class PlayerControl : MonoBehaviour
         LightOn = false;
         oilLight = Oillamp.GetComponentInChildren<Light>();
         oilLight.enabled = false;
-        FakeLight.enabled = false;
-        RefactorFakeLight();
+        //FakeLight.enabled = false;
+        //RefactorFakeLight();
         lampGlassMaterial.DisableKeyword("_EMISSION");
         
     }
 
-    private void RefactorFakeLight()
-    {
-        FakeLight.transform.position = transform.position;
-        Vector3 vTemp = FakeLight.transform.position;
-        vTemp.y += 2;
-        FakeLight.transform.position = vTemp;
-    }
+    //private void RefactorFakeLight()
+    //{
+    //    FakeLight.transform.position = transform.position;
+    //    Vector3 vTemp = FakeLight.transform.position;
+    //    vTemp.y += 2;
+    //    FakeLight.transform.position = vTemp;
+    //}
 
     public void ResetLookedAtObject()
     {
@@ -103,6 +102,7 @@ public class PlayerControl : MonoBehaviour
     {
         cameraFocusedOn.col.enabled = true;
         cameraFocusedOn.isFocused = false;
+        cameraFocusedOn.SwapBack();
         Collider parentCol = cameraFocusedOn.gameObject.transform.parent.GetComponent<Collider>();
         if (parentCol != null)
         {
@@ -284,11 +284,7 @@ public class PlayerControl : MonoBehaviour
         }
         if (Oil <= 0)
         {
-            //Debug.Log("Lampe Leer");
             SwitchOillampOf();
-            //GeneratorManager.DisableFakeLight();
-            //Notiz.DisableFakeLight();
-            FakeLight.enabled = false; ;
         }
     }
 

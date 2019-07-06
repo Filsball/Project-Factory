@@ -51,21 +51,20 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
         if (OilLightFaker == null)
         {
             OilLightFaker = GetComponentInChildren<Light>();
-            if (OilLightFaker != null)
-            {
-                OilLightFaker.enabled = false;
-            }
+        }
+        if (OilLightFaker != null)
+        {
+            OilLightFaker.enabled = false;
         }
 
         if (riddleCam == null)
         {
             riddleCam = GetComponentInChildren<Camera>();
-            if (riddleCam != null)
-            {
-                riddleCam.enabled = false;
-            }
         }
-
+        if (riddleCam != null)
+        {
+            riddleCam.gameObject.SetActive(false);
+        }
 
         if (renderer == null)
         {
@@ -111,13 +110,26 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
         }
     }
 
+    public void SwapBack()
+    {
+        DisableFakeLight();
+    }
+
     public void Update()
     {
         if (isFocused)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            PlayerControl pc = GameObject.Find("FPSController").GetComponent<PlayerControl>();
+            if (pc.Oil <= 0)
             {
-                SwapEnableFakeLight();
+                DisableFakeLight();
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    SwapEnableFakeLight();
+                }
             }
         }
         if (_selected)

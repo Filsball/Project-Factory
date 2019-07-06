@@ -94,10 +94,6 @@ public class Zahnrad_Manager : InteractableObject
     {
         base.Update();
 
-        if (isFocused)
-        {
-
-        }
 
         if(solved) {
             if (!playingAudio)
