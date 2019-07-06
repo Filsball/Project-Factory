@@ -22,12 +22,51 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
     public float glowPower = 0.75f;
     private int fadeDirection = 1;
 
+    public bool isFocused = false;
+    public Light OilLightFaker;
+
     public Collider col;
+    public Camera riddleCam;
 
     public abstract void Interact();
 
+    // unschön, sollte eigentlich in eigener Klasse Riddle extends InteractableObject ausgelagert werden. Aber egal Zeit ist knapp
+    public void RiddleInteract()
+    {
+        PlayerControl pc = GameObject.Find("FPSController").GetComponent<PlayerControl>();
+        pc.SwapToCamera(riddleCam, this);
+        if (pc.LightOn)
+        {
+            EnableFakeLight();
+        }
+        else
+        {
+            DisableFakeLight();
+        }
+    }
+
     public void Start()
     {
+        
+        if (OilLightFaker == null)
+        {
+            OilLightFaker = GetComponentInChildren<Light>();
+            if (OilLightFaker != null)
+            {
+                OilLightFaker.enabled = false;
+            }
+        }
+
+        if (riddleCam == null)
+        {
+            riddleCam = GetComponentInChildren<Camera>();
+            if (riddleCam != null)
+            {
+                riddleCam.enabled = false;
+            }
+        }
+
+
         if (renderer == null)
         {
             renderer = GetComponent<Renderer>();
@@ -74,6 +113,13 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
 
     public void Update()
     {
+        if (isFocused)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                SwapEnableFakeLight();
+            }
+        }
         if (_selected)
         {
             CycleHighlighting();
@@ -83,5 +129,19 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
             StopHighlighting();
         }
     }
+    
+    public void SwapEnableFakeLight()
+    {
+        OilLightFaker.enabled = !OilLightFaker.enabled;
+    }
 
+    public void EnableFakeLight()
+    {
+        OilLightFaker.enabled = true;
+    }
+
+    public void DisableFakeLight()
+    {
+        OilLightFaker.enabled = false;
+    }
 }

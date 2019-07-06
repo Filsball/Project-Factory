@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour
     private Camera activeCamera;
     FirstPersonController fpc;
     private bool isInRiddle = false;
-    private static bool LightOn;
+    public bool LightOn;
     private static int Oil { get; set; }
     private AudioManager audio;
     [SerializeField] GameObject Oillamp;
@@ -102,6 +102,7 @@ public class PlayerControl : MonoBehaviour
     public void SwapBackToPlayer()
     {
         cameraFocusedOn.col.enabled = true;
+        cameraFocusedOn.isFocused = false;
         Collider parentCol = cameraFocusedOn.gameObject.transform.parent.GetComponent<Collider>();
         if (parentCol != null)
         {
@@ -113,12 +114,6 @@ public class PlayerControl : MonoBehaviour
         Cursor.visible = true;
 
         headCamera.gameObject.SetActive(true);
-        if (LightOn)
-        {
-            //GeneratorManager.DisableFakeLight();
-            //Notiz.DisableFakeLight();
-            FakeLight.enabled = false;
-        }
         fpc.enabled = true;
         if (activeCamera != null)
         {
@@ -133,6 +128,7 @@ public class PlayerControl : MonoBehaviour
     {
         cameraFocusedOn = swapTo;
         cameraFocusedOn.col.enabled = false;
+        cameraFocusedOn.isFocused = true;
         Collider parentCol = cameraFocusedOn.gameObject.transform.parent.GetComponent<Collider>();
         if (parentCol != null)
         {
@@ -141,13 +137,6 @@ public class PlayerControl : MonoBehaviour
         isInRiddle = true;
         headCamera.gameObject.SetActive(false);
         fpc.enabled = false;
-        if (LightOn)
-        {
-            //GeneratorManager.EnableFakeLight();
-            //Notiz.EnableFakeLight();
-            RefactorFakeLight();
-            FakeLight.enabled = true;
-        }
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         if (c != null)
@@ -191,22 +180,10 @@ public class PlayerControl : MonoBehaviour
             if (LightOn)
             {
                 SwitchOillampOf();
-                if (isInRiddle)
-                {
-                    //GeneratorManager.DisableFakeLight();
-                    //Notiz.DisableFakeLight();
-                    FakeLight.enabled = false;
-                }
             }
             else
             {
                 SwitchOillampOn();
-                if (isInRiddle && Oil > 0)
-                {
-                    //GeneratorManager.EnableFakeLight();
-                    //Notiz.EnableFakeLight();
-                    FakeLight.enabled = true;
-                }
             }
         }
         if (!isInRiddle)

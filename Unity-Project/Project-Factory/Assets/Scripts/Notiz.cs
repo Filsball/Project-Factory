@@ -5,13 +5,14 @@ using UnityEngine;
 public class Notiz : InteractableObject
 {
     //public static Light OilLightFaker;
-    public Camera riddleCam;
+    //public Camera riddleCam;
     public BoxCollider boxCollider;
 
 
     public override void Interact()
     {
-        GameObject.Find("FPSController").GetComponent<PlayerControl>().SwapToCamera(riddleCam, this);
+        RiddleInteract();
+        //GameObject.Find("FPSController").GetComponent<PlayerControl>().SwapToCamera(riddleCam, this);
     }
 
     // Start is called before the first frame update

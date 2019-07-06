@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 1, g: 0, b: 0.019385815, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.18
+  m_AmbientIntensity: 0.09
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -34,11 +34,11 @@ RenderSettings:
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 256
-  m_ReflectionBounces: 3
-  m_ReflectionIntensity: 0.108
+  m_ReflectionBounces: 5
+  m_ReflectionIntensity: 0.275
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1440855, g: 0.16387627, b: 0.19446021, a: 0.108}
+  m_IndirectSpecularColor: {r: 0.23887885, g: 0.26809287, b: 0.3132392, a: 0.275}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -381,7 +381,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 1318826318}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 29471871}
+  riddleCam: {fileID: 0}
   _Image: {fileID: 21300000, guid: 979a47bb70a924243be7d9385b4a67ea, type: 3}
   colOuter: {fileID: 29471871}
   colInner: {fileID: 29471870}
@@ -1487,7 +1490,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 121785371}
+  riddleCam: {fileID: 0}
   pressed: 0
   boxCollider: {fileID: 121785371}
   translationSpeed: 5
@@ -2241,7 +2247,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   Gluehbirne: {fileID: 160461083}
   Lichtzone: {fileID: 1314570301}
   inventory: {fileID: 85475781}
@@ -3314,12 +3323,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257651937}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -2.93, y: 1.392, z: -0.22}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.21221256, y: 1.6140006, z: 0.070934296}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 729437411}
-  m_RootOrder: 2
+  m_Father: {fileID: 1398758230}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!108 &257651939
 Light:
@@ -3560,7 +3569,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 273619088}
+  riddleCam: {fileID: 0}
   pressed: 0
   boxCollider: {fileID: 273619088}
   translationSpeed: 5
@@ -4996,8 +5008,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.5636563, b: 0.3600481, a: 1}
-  m_Intensity: 1.87
-  m_Range: 6
+  m_Intensity: 3
+  m_Range: 8
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -5018,7 +5030,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1.3
+  m_BounceIntensity: 1.75
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -5255,7 +5267,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 424148864}
+  riddleCam: {fileID: 0}
   pressed: 0
   boxCollider: {fileID: 424148864}
   translationSpeed: 5
@@ -5864,7 +5879,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 483432095}
+  riddleCam: {fileID: 0}
   pressed: 0
   boxCollider: {fileID: 483432095}
   translationSpeed: 5
@@ -5982,7 +6000,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 494254961}
+  riddleCam: {fileID: 0}
   pressed: 0
   boxCollider: {fileID: 494254961}
   translationSpeed: 5
@@ -6464,8 +6485,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.2696366, y: 1.0898786, z: 2.0652323}
+  m_Center: {x: 0.051597178, y: 0.5409386, z: -0.013315916}
 --- !u!1001 &526898186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6626,7 +6647,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529963948}
   m_LocalRotation: {x: -0.42539185, y: 0.56856537, z: 0.55490386, w: 0.43342465}
-  m_LocalPosition: {x: 9.619914, y: 1.449, z: 3.9397445}
+  m_LocalPosition: {x: 9.67, y: 1.45, z: 3.9397445}
   m_LocalScale: {x: 100.00002, y: 100.000015, z: 100}
   m_Children:
   - {fileID: 1428095112}
@@ -6772,7 +6793,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   fpc_Lantern: {fileID: 649941345}
 --- !u!1 &529963950
 GameObject:
@@ -7023,7 +7047,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8a64946343458e046b9da09c319667cc, type: 2}
+  - {fileID: 2100000, guid: 8a99733699e92ab4c9dc4c1d53077c52, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7654,7 +7678,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 548602354}
+  riddleCam: {fileID: 0}
   pressed: 0
   boxCollider: {fileID: 548602354}
   translationSpeed: 5
@@ -9717,7 +9744,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   Gluehbirne: {fileID: 1712402930}
   Lichtzone: {fileID: 1846311228}
   inventory: {fileID: 85475781}
@@ -10211,7 +10241,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 1207025511}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 769906778}
+  riddleCam: {fileID: 0}
   _Image: {fileID: 21300000, guid: 8e29443e0ad9b964b985820ac8b2e1f9, type: 3}
   colOuter: {fileID: 769906778}
   colInner: {fileID: 769906777}
@@ -10567,7 +10600,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   Gluehbirne: {fileID: 425251150}
   Lichtzone: {fileID: 2068206711}
   inventory: {fileID: 85475781}
@@ -10887,7 +10923,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825638763}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.8679245, g: 0.70672673, b: 0.33161268, a: 1}
@@ -11838,7 +11874,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 942192954}
+  riddleCam: {fileID: 0}
   pressed: 0
   boxCollider: {fileID: 942192954}
   translationSpeed: 5
@@ -12265,7 +12304,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 974831898}
+  riddleCam: {fileID: 0}
   pressed: 0
   boxCollider: {fileID: 974831898}
   translationSpeed: 5
@@ -13233,7 +13275,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   Fuellstand: 50
 --- !u!136 &1094414695
 CapsuleCollider:
@@ -13470,7 +13515,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   Gluehbirne: {fileID: 1346133936}
   Lichtzone: {fileID: 1956924864}
   inventory: {fileID: 85475781}
@@ -14490,7 +14538,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   _Image: {fileID: 21300000, guid: 74900a00b48b11840bc1ffba955ed49d, type: 3}
 --- !u!1 &1213201099
 GameObject:
@@ -16382,6 +16433,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tray_neglected
       objectReference: {fileID: 0}
+    - target: {fileID: 1043929237739562, guid: cd149e82bc843b6489b2d8f8e7eb51b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4490302534194206, guid: cd149e82bc843b6489b2d8f8e7eb51b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.498225
@@ -16461,11 +16516,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364715045}
   m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9200019, y: 2.0002022, z: 0.9194553}
+  m_Center: {x: 0.0000009155272, y: 0.3042725, z: 0.00000003814696}
+--- !u!65 &1364715047
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364715045}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9200019, y: 1.4023874, z: 0.9194553}
-  m_Center: {x: 0.0000009155272, y: 0.603181, z: 0.00000003814696}
+  m_Size: {x: 0.02, y: 0.015, z: 0.0021519812}
+  m_Center: {x: 6.413401e-11, y: 0, z: 0.0010759903}
 --- !u!1 &1365778716
 GameObject:
   m_ObjectHideFlags: 0
@@ -16887,7 +16955,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 1396132001}
+  riddleCam: {fileID: 0}
   pressed: 0
   boxCollider: {fileID: 1396132001}
   translationSpeed: 5
@@ -17378,8 +17449,19 @@ PrefabInstance:
       propertyPath: m_AllowMSAA
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7684603503643959280, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: OilLightFaker
+      value: 
+      objectReference: {fileID: 257651939}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9ec82ab31c94240b58b47f96bbae50, type: 3}
+--- !u!4 &1398758230 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7684603503643958799, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1398758229}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1402488709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17895,7 +17977,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 1246082793}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 1453985927}
+  riddleCam: {fileID: 0}
   _Image: {fileID: 21300000, guid: b42dc863f60ee1b4fa6b0ce80e810182, type: 3}
   colOuter: {fileID: 1453985927}
   colInner: {fileID: 1453985926}
@@ -19844,7 +19929,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 1515329733}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 701181997}
+  riddleCam: {fileID: 0}
   animating: 0
   open: 0
   openingAngle: 260
@@ -20109,7 +20197,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   animating: 0
   open: 0
   openingAngle: -15
@@ -20203,7 +20294,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   animating: 0
   open: 0
   openingAngle: 75
@@ -20297,7 +20391,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   animating: 0
   open: 0
   openingAngle: 190
@@ -20773,7 +20870,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   Gluehbirne: {fileID: 1858854235}
   Lichtzone: {fileID: 857309692}
   inventory: {fileID: 85475781}
@@ -21244,7 +21344,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 1501974547}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 1559750854}
+  riddleCam: {fileID: 0}
   _Image: {fileID: 21300000, guid: a1cd558564ba0e84c85745f777ba549c, type: 3}
   colOuter: {fileID: 1559750854}
   colInner: {fileID: 1559750853}
@@ -21382,7 +21485,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   Gluehbirne: {fileID: 1340168008}
   Lichtzone: {fileID: 1767205281}
   inventory: {fileID: 85475781}
@@ -21629,7 +21735,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   Gluehbirne: {fileID: 1095478490}
   Lichtzone: {fileID: 880884732}
   inventory: {fileID: 85475781}
@@ -21819,7 +21928,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   Gluehbirne: {fileID: 158762451}
   Lichtzone: {fileID: 1095264483}
   inventory: {fileID: 85475781}
@@ -24322,7 +24434,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   Gluehbirne: {fileID: 724695286}
   Lichtzone: {fileID: 1213201099}
   inventory: {fileID: 85475781}
@@ -25172,7 +25287,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 565593969}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 1871913510}
+  riddleCam: {fileID: 0}
   _Image: {fileID: 21300000, guid: 9f085d6332274384e97084a3f75999fc, type: 3}
   colOuter: {fileID: 1871913510}
   colInner: {fileID: 1871913509}
@@ -25785,7 +25903,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   _Image: {fileID: 21300000, guid: 74900a00b48b11840bc1ffba955ed49d, type: 3}
 --- !u!1 &1915723158
 GameObject:
@@ -26230,7 +26351,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   _Image: {fileID: 21300000, guid: 74900a00b48b11840bc1ffba955ed49d, type: 3}
 --- !u!136 &1943889439
 CapsuleCollider:
@@ -26380,7 +26504,10 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
+  riddleCam: {fileID: 0}
   Gluehbirne: {fileID: 1954112736}
   Lichtzone: {fileID: 7860194}
   inventory: {fileID: 85475781}
@@ -27285,6 +27412,8 @@ MonoBehaviour:
   _selected: 0
   renderer: {fileID: 0}
   glowPower: 0.75
+  isFocused: 0
+  OilLightFaker: {fileID: 0}
   col: {fileID: 0}
   riddleCam: {fileID: 1232960431}
   boxCollider: {fileID: 0}
@@ -29134,6 +29263,7 @@ MonoBehaviour:
   maxInteractingDistance: 2.5
   hud: {fileID: 1883048581}
   inventory: {fileID: 85475781}
+  LightOn: 0
   Oillamp: {fileID: 649941345}
   FakeLight: {fileID: 0}
   lampGlassMaterial: {fileID: 2100000, guid: 8a64946343458e046b9da09c319667cc, type: 2}

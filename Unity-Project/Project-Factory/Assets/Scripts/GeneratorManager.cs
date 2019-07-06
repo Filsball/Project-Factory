@@ -29,7 +29,6 @@ public class GeneratorManager : MonoBehaviour
 
     private bool buttonsSolved = false;
 
-    public static Light OilLightFaker;
 
     public bool SOLVED_ONLY_FOR_DEBUGGING = false;
 
@@ -45,8 +44,6 @@ public class GeneratorManager : MonoBehaviour
     {
         zrManager = GetComponentInChildren<Zahnrad_Manager>();
         audio = FindObjectOfType<AudioManager>();
-        OilLightFaker = GetComponentInChildren<Light>();
-        OilLightFaker.enabled = false;
         LightBulbWireMaterial.DisableKeyword("_EMISSION");
         LightBulbGlassMaterial.DisableKeyword("_EMISSION");
     }
@@ -160,12 +157,4 @@ public class GeneratorManager : MonoBehaviour
         }
     }
 
-    public static void EnableFakeLight() {
-        OilLightFaker.enabled = true;
-    }
-
-    public static void DisableFakeLight()
-    {
-        OilLightFaker.enabled = false;
-    }
 }
