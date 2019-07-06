@@ -15,6 +15,7 @@ public class SockelAbstract : InteractableObject
         allSockets.Add(this);
         Gluehbirne.SetActive(false);
         StromAktiviert = false;
+        
     }
     public new void Update()
     {
