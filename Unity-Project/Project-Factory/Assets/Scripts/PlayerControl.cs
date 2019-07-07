@@ -177,14 +177,18 @@ public class PlayerControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            if (LightOn)
+            if (!audio.wirdSterben)
             {
-                SwitchOillampOf();
+                if (LightOn)
+                {
+                    SwitchOillampOf();
+                }
+                else
+                {
+                    SwitchOillampOn();
+                }
             }
-            else
-            {
-                SwitchOillampOn();
-            }
+            
         }
         if (!isInRiddle)
         {

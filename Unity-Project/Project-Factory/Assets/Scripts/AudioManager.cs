@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private bool dunkelheitAktiv = false;
     [SerializeField] private bool hintergrundAktiv = false;
     [SerializeField] public GameObject fpController;
+    public bool wirdSterben = false;
     private PostProcessingBehaviour pPB;
     private static IEnumerator lastCalled;
     public static Transform camera;
@@ -56,7 +57,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        camera = Camera.main.transform;
+        camera = fpController.GetComponent<Camera>().transform;
         firstPersonController = GameObject.Find("FPSController").GetComponent<FirstPersonController>();
         pPB = FindObjectOfType<PostProcessingBehaviour>();
         MotionBlurModel.Settings MBS = pPB.profile.motionBlur.settings;
@@ -330,7 +331,8 @@ public class AudioManager : MonoBehaviour
             camera.localPosition = startPosition + Random.insideUnitSphere * pufferzeit / 40f;
             yield return null;
         }
-        animation.enabled = !animation.enabled;
+        animation.enabled = true;
+        instance.wirdSterben = true;
         while (pufferzeit < 2f)
         {
             Vector3 startPosition = camera.localPosition;
@@ -340,14 +342,16 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
         instance.todController.setTod();
+
     }
 
     static IEnumerator GameOverMitPP(float time, PostProcessingBehaviour pPB)
     {
         PostProcessingProfile profile = pPB.profile;
         float pufferzeit = 0f;
-        
-        animation.enabled = !animation.enabled;
+
+        animation.enabled = true;
+        instance.wirdSterben = true;
         while (pufferzeit < time)
         {
             Vector3 startPosition = camera.localPosition;
@@ -357,6 +361,7 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
         instance.todController.setTod();
+        animation.enabled = false;
     }
 
     static IEnumerator fadeSoundsMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
