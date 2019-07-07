@@ -5,17 +5,21 @@ using UnityEngine;
 public class PickUpOil : InteractableObject
 {
     public int Fuellstand;
+
+    public new void Start()
+    {
+        _name = "Öl-Ampulle";
+        _interactionName = "Öllampe auffüllen";
+    }
     public override void Interact()
     {   
-            gameObject.SetActive(false);
+       gameObject.SetActive(false);
     }
     public void Restfuellstand(int rest) {
         Fuellstand = rest;
-        Debug.Log("Oilpot fuellstand: "+Fuellstand);
     }
     public int getFuellstand()
     {
-        Debug.Log("get Oilpot fuellstand: " + Fuellstand);
         return Fuellstand;
     }
 
