@@ -803,13 +803,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37161636}
-  m_LocalRotation: {x: -0.66624415, y: 0.5515353, z: 0.44250292, w: 0.23689383}
-  m_LocalPosition: {x: -0.033999953, y: -0.26900008, z: 1.9429998}
+  m_LocalRotation: {x: -0.5159541, y: 0.3085705, z: 0.66742045, w: 0.43946055}
+  m_LocalPosition: {x: 1.3200005, y: -2.19, z: -1.128}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 368824864}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: -126.507996, y: 33.493988, z: 61.991997}
+  m_LocalEulerAnglesHint: {x: -120.074, y: 123.576996, z: -32.355988}
 --- !u!108 &37161638
 Light:
   m_ObjectHideFlags: 0
@@ -821,18 +821,18 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.5
-  m_Range: 10
-  m_SpotAngle: 64
+  m_Intensity: 2.72
+  m_Range: 12.73
+  m_SpotAngle: 49.17
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_Strength: 0.944
+    m_Bias: 0.21
+    m_NormalBias: 0.38
+    m_NearPlane: 0.28
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -843,7 +843,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0.1
+  m_BounceIntensity: -0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -5531,6 +5531,7 @@ MonoBehaviour:
   dunkelheitAktiv: 0
   hintergrundAktiv: 0
   fpController: {fileID: 7520660436024807463}
+  wirdSterben: 0
 --- !u!4 &351552335
 Transform:
   m_ObjectHideFlags: 0
