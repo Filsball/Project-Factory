@@ -13,4 +13,14 @@ public abstract class Birne : InventoryItem
     {
         gameObject.SetActive(false);
     }
+
+    public new void Start()
+    {
+        base.Start();
+    }
+
+    public new void Update()
+    {
+        base.Update();
+    }
 }
