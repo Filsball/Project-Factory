@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SockelSchwarzlicht : MonoBehaviour
+public class SockelSchwarzlicht : SockelAbstract
 {
-    // Start is called before the first frame update
-    void Start()
+    public BRSchwarzlicht Raetsel;
+
+    public override void Interact()
     {
-        
+        In(typeof(GluehbirneSchwarzlicht));
     }
 
-    // Update is called once per frame
-    void Update()
+    public new void Update()
     {
-        
+        if (Gluehbirne.activeSelf)
+        {
+            Gluehbirne.GetComponentInChildren<Light>().enabled = StromAktiviert;
+            Raetsel.SichtbarMachen();
+        }
     }
 }
