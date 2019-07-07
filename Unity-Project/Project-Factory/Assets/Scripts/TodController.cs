@@ -27,6 +27,7 @@ public class TodController : MonoBehaviour
     {
         if (isTod)
         {
+            Debug.Log("ist tod");
             ActivateTod();
             audio.getSound("GameOver").source.ignoreListenerPause = true;
             audio.Play("GameOver", 0.5f);

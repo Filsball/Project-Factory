@@ -281,9 +281,8 @@ public class PlayerControl : MonoBehaviour
         //Debug.Log("LooseOil Gestartet");
         while (LightOn && Oil > 0)
         {
-            if (InExpZone) {
+            if (InExpZone && !audio.wirdSterben) {
                 hud.CloseOilTankPanel();
-                LightOn = false;
                 audio.Play("Explosion", 1.3f);
                 ExpArea.Explode();
                 AudioManager.GameOverCallerMitPP(2f, audio.getPPB());

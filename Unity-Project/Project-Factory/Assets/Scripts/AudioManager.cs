@@ -361,7 +361,6 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
         instance.todController.setTod();
-        animation.enabled = false;
     }
 
     static IEnumerator fadeSoundsMitPPBackwards(AudioSource toFadeIn, AudioSource toFadeOut, AudioSource toFadeOut2, float maxVolume, float time, Boolean startNew, PostProcessingBehaviour pPB)
