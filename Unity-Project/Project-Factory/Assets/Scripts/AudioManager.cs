@@ -99,7 +99,7 @@ public class AudioManager : MonoBehaviour
         if (generatorStarted && !generatorStartend.isPlaying)
         {
             generatorStarted = false;
-            Play("GeneratorLaufend", 0.7f, generatorStartend.transform.position, false);
+            Play("GeneratorLaufend", 0.7f, generatorStartend.transform.position);
         }
 
     }
@@ -396,26 +396,35 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
     }
-    public void Play(string name, float volume, Vector3 position, Boolean clipAtPoint)
+    public void ClipCaller(String startend, String laufend, float volume, Vector3 position)
     {
-        
+        instance.StartCoroutine(ClipMitUebergang(startend, laufend, volume, position));
+    }
+    public IEnumerator ClipMitUebergang(String startend, String laufend, float volume, Vector3 position)
+    {
+        float time = getTime(startend);
+        float counter = 10.0f;
+
+        Play(startend, volume, position);
+
+        while (time > 0)
+        {
+            counter -= 10.0f * Time.deltaTime / time;
+            yield return null;
+        }
+        Play(laufend, volume, position);
+    }
+    public void Play(string name, float volume, Vector3 position)
+    {
         AudioSource s = Array.Find(sounds, sound => sound.name == name).source;
         if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
+        s.transform.position = position;
         s.volume = volume;
-        if (clipAtPoint)
-        {
-            AudioSource.PlayClipAtPoint(s.clip, position, volume);
-        }
-        else
-        {
-            s.transform.position = position;
-            s.Play();
-        }
-        
+        s.Play();
     }
     public void Play(string name, float volume)
     {

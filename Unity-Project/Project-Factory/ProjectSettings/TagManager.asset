@@ -8,7 +8,6 @@ TagManager:
   - Licht
   - Saferoom
   - Faesser
-  - Notiz
   layers:
   - Default
   - TransparentFX

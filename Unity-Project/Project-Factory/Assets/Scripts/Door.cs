@@ -10,7 +10,6 @@ public class Door : InteractableObject
     public float closingAngle = 50f;
     public float openingSpeed = 100f;
     public float curRot = 0f;
-    private AudioManager audio;
 
     public override void Interact()
     {
@@ -20,7 +19,6 @@ public class Door : InteractableObject
         }
         open = !open;
         animating = true;
-        audio.Play("Metalltuer", 0.5f, transform.position, true);
     }
 
     public new void Start()
@@ -29,7 +27,6 @@ public class Door : InteractableObject
         Name = "Tür";
         _interactionName = "öffnen";
         base.Start();
-        audio = FindObjectOfType<AudioManager>();
 
         if (openingAngle < 0)
         {

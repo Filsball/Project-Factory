@@ -9,7 +9,7 @@ public class PickUpLaterne : InteractableObject
     public override void Interact()
     {
         audio = FindObjectOfType<AudioManager>();
-        audio.Play("ItemPickup", 0.15f, fpc_Lantern.transform.position, true);
+        audio.Play("ItemPickup", 0.15f, fpc_Lantern.transform.position);
         gameObject.SetActive(false);
         if(fpc_Lantern != null)
         {
