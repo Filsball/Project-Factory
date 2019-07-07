@@ -129,6 +129,7 @@ public class AudioManager : MonoBehaviour
 
     public void SaferoomAktivieren()
     {
+        setSaferoom(true);
         //Event: in Saferoom Hitbox
         if (dunkelheitAktiv) {
             if (lastCalled != null)
@@ -138,8 +139,6 @@ public class AudioManager : MonoBehaviour
             FadeCallerMitPPBackwards(saferoom, hintergrund, dunkelheit, 0.7f, 1.5f, false, pPB);
             Play("Atmung", 0.2f);
             setDunkelheit(false);
-            setSaferoom(true);
-            
         }
         else if(hintergrundAktiv)
         {
@@ -149,8 +148,6 @@ public class AudioManager : MonoBehaviour
             }
             FadeCaller(saferoom, dunkelheit, hintergrund, 0.7f, 1.5f, false);
             setHintergrund(false);
-            setSaferoom(true);
-            
         }
         else
         {
@@ -159,7 +156,6 @@ public class AudioManager : MonoBehaviour
                 instance.StopCoroutine(lastCalled);
             }
             FadeInCaller(saferoom, 0.7f, 1f, false);
-            setSaferoom(true);
         }
 
     }

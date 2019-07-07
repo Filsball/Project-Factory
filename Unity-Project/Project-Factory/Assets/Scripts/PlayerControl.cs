@@ -30,6 +30,8 @@ public class PlayerControl : MonoBehaviour
     private bool InExpZone;
     private ExplosiveArea ExpArea;
 
+    private List<Collider> lichtColliderList;
+
     // private bool mLockPickUp;
 
     private bool InvOpen;
@@ -41,6 +43,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lichtColliderList = new List<Collider>();
         audio = FindObjectOfType<AudioManager>();
         characterController = GetComponent<CharacterController>();
         head = transform.GetComponentInChildren<Camera>().transform;
@@ -335,14 +338,13 @@ public class PlayerControl : MonoBehaviour
             hud.CloseOilTankPanel();
         }
         lampGlassMaterial.DisableKeyword("_EMISSION");
-        Debug.Log("Oellampe Deaktiviert");
         LightOn = false;
         oilLight.enabled = false;
         audio.Stop("LampeIstAn");
         // fuer Audio
-        if (audio.getDunkelheit())
+        if (lichtColliderList.Count == 0)
         {
-            audio.DunkelheitAktivierenMitLampe();
+            audio.DunkelheitAktivieren();
         }
     }
 
@@ -351,28 +353,19 @@ public class PlayerControl : MonoBehaviour
         // in Lichtzone, Kein Schaden
         if (collider.tag == "Licht")
         {
-            Debug.Log("InLichtzone");
-            if (audio.getSaferoom())
-            {
-                audio.setHintergrund(true);
-            }
-            else
-            {
-                audio.HintergrundAktivieren();
-            }
-            
+            lichtColliderList.Add(collider);
+            audio.HintergrundAktivieren();
         }
         // in Saferoom
         if (collider.tag == "Saferoom")
         {
-            Debug.Log("InSaferoom");
+            lichtColliderList.Add(collider);
             audio.SaferoomAktivieren();
         }
         if (collider.tag == "Faesser")
         {
             InExpZone = true;
             ExpArea = collider.GetComponent<ExplosiveArea>();
-            Debug.Log("ExpArea");
              if(LightOn)
              {
                 ExpArea.Explode();
@@ -384,28 +377,23 @@ public class PlayerControl : MonoBehaviour
     private void OnTriggerExit(Collider collider)
     {
         // Leite Tod ein wenn Oellampe nicht aktiv
-        if(collider.tag == "Licht")
+        if (collider.tag == "Licht")
         {
-            if(!LightOn && !audio.getSaferoom())
+            lichtColliderList.Remove(collider);
+            if (!LightOn && lichtColliderList.Count == 0)
             {
                 audio.DunkelheitAktivieren();
             }
         }
-        
         // Saferoom verlassen
-        if (collider.tag == "Saferoom")
+        else if (collider.tag == "Saferoom")
         {
-            audio.setSaferoom(false);
-            audio.setDunkelheit(true);
-            if (audio.getHintergrund())
+            lichtColliderList.Remove(collider);
+            if (LightOn || lichtColliderList.Count > 0)
             {
                 audio.HintergrundAktivieren();
             }
-            else if(LightOn)
-            {
-                audio.HintergrundAktivierenMitLampe();
-            }
-            else if(!audio.getHintergrund())
+            else
             {
                 audio.DunkelheitAktivieren();
             }
