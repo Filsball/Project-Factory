@@ -207,14 +207,17 @@ public class PlayerControl : MonoBehaviour
                         PickUpOil oilpot = (PickUpOil)lookedAtObject;
                         if (oilpot.getFuellstand() + Oil > 100)
                         {
+                            audio.Play("Oil", 0.6f, lookedAtObject.transform.position, true);
                             oilpot.Restfuellstand(oilpot.getFuellstand()+Oil-100);
                             Oil = 100;
                         }
                         else
                         {
+                            audio.Play("Oil", 0.6f, lookedAtObject.transform.position, true);
                             Oil += oilpot.getFuellstand();
                             oilpot.Restfuellstand(0);
                             lookedAtObject.Interact();
+                            
                         }
                         
                     }
@@ -275,10 +278,10 @@ public class PlayerControl : MonoBehaviour
         while (LightOn && Oil > 0)
         {
             if (InExpZone) {
+                hud.CloseOilTankPanel();
+                LightOn = false;
+                audio.Play("Explosion", 1.3f);
                 ExpArea.Explode();
-                audio.Play("Explosion", 0.8f);
-                //Position konnte bisher noch nicht gesetzt werden
-                //audio.Play("Explosion", 0.8f, ExpArea.getExplosiveLights().transform.position);
                 AudioManager.GameOverCallerMitPP(2f, audio.getPPB());
                 // @Dennis Direkten Tod + Audio Explosion einfügen
             }

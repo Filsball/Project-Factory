@@ -1588,6 +1588,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 476751351aa1e6a46957658f07f55807, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 476751351aa1e6a46957658f07f55807, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5407,12 +5411,19 @@ MonoBehaviour:
   - name: Explosion
     clip: {fileID: 8300000, guid: 65021f1ef869be34496f929d93976b7c, type: 3}
     volume: 0
-    pitch: 1
-    spatialBlend: 1
+    pitch: 0.9
+    spatialBlend: 0.5
     loop: 1
     source: {fileID: 0}
   - name: Metalltuer
     clip: {fileID: 8300000, guid: 404100b9867fa7f49bacbad1424441f2, type: 3}
+    volume: 0
+    pitch: 1
+    spatialBlend: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Oil
+    clip: {fileID: 8300000, guid: 09d17cf4cd89a4e4f80c953e48385a00, type: 3}
     volume: 0
     pitch: 1
     spatialBlend: 1
