@@ -10,6 +10,8 @@ public class Sockel : SockelAbstract
     {
         allSockets.Add(this);
         Gluehbirne.SetActive(hasLightBulbFromBeginning);
+        currentlyInteractable = !hasLightBulbFromBeginning;
+        Lichtzone.SetActive(Gluehbirne.activeSelf && StromAktiviert);
     }
 
     public new void Update()
@@ -18,8 +20,8 @@ public class Sockel : SockelAbstract
         if (Gluehbirne.activeSelf)
         {
             Gluehbirne.GetComponentInChildren<Light>().enabled = StromAktiviert;
+            Lichtzone.SetActive(StromAktiviert);
         }
-        Lichtzone.SetActive(Gluehbirne.activeSelf && StromAktiviert);
     }
 
     public override void Interact()

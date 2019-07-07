@@ -47,7 +47,12 @@ public abstract class InteractableObject : MonoBehaviour, Interactable
 
     public void Start()
     {
-        
+        gameObject.isStatic = false;
+        foreach (Transform t in transform)
+        {
+            t.gameObject.isStatic = false;
+        }
+
         if (OilLightFaker == null)
         {
             OilLightFaker = GetComponentInChildren<Light>();

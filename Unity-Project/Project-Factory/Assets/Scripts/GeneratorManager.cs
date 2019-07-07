@@ -31,8 +31,9 @@ public class GeneratorManager : MonoBehaviour
 
 
     public bool SOLVED_ONLY_FOR_DEBUGGING = false;
+    private bool generatorStarted = false;
 
-    [SerializeField]
+     [SerializeField]
     Material LightBulbGlassMaterial;
     [SerializeField]
     Material LightBulbWireMaterial;
@@ -122,6 +123,7 @@ public class GeneratorManager : MonoBehaviour
                 {
                     doorsOpening = true;
                     audio.Play("ButtonMitEinrasten", 0.8f, buttonOrder[0].transform.position, true);
+                    audio.Play("MetalltuerGenerator", 0.7f, rightDoor.transform.position, true);
                 }
                 else
                 {
@@ -138,16 +140,23 @@ public class GeneratorManager : MonoBehaviour
         if (!doorsHaveOpened && doorsOpening)
         {
             OpenDoors();
-            audio.Play("MetalltuerGenerator", 0.7f, rightDoor.transform.position, true);
         }
 
         zrManager.running = running;
         door.currentlyInteractable = zrManager.solved || SOLVED_ONLY_FOR_DEBUGGING;
-        if (zrManager.solved || SOLVED_ONLY_FOR_DEBUGGING )
+        if ((zrManager.solved || SOLVED_ONLY_FOR_DEBUGGING ) && !generatorStarted)
         {
+            // nur einmal starten, nicht in jedem Update-Call
+            generatorStarted = true;
+            audio.Play("GeneratorStartend", 1.0f, transform.position, false);
+            audio.generatorStarted = true;
             LightBulbGlassMaterial.EnableKeyword("_EMISSION");
             LightBulbWireMaterial.EnableKeyword("_EMISSION");
             SockelAbstract.StromAn();
+        }
+        if (generatorStarted)
+        {
+            // Turbine drehen
             turbine.transform.Rotate(new Vector3(0, 0, motorSpeed * Time.deltaTime));
             if (motorSpeed < motorMaxSpeed)
             {
