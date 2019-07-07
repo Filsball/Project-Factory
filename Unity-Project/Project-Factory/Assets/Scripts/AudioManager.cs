@@ -205,7 +205,8 @@ public class AudioManager : MonoBehaviour
                 instance.StopCoroutine(lastCalled);
             }
             FadeCallerMitPPBackwards(hintergrund, dunkelheit, saferoom, 0.7f, 3f, false, pPB);
-       
+            setHintergrund(true);
+
     }
 
     public static void FadeInCaller(AudioSource toFadeIn, float maxVolume, float time, Boolean startNew)

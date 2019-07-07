@@ -389,6 +389,8 @@ public class PlayerControl : MonoBehaviour
         // Saferoom verlassen
         if (collider.tag == "Saferoom")
         {
+            audio.setSaferoom(false);
+            audio.setDunkelheit(true);
             if (audio.getHintergrund())
             {
                 audio.HintergrundAktivieren();
@@ -396,8 +398,6 @@ public class PlayerControl : MonoBehaviour
             else if(LightOn)
             {
                 audio.HintergrundAktivierenMitLampe();
-                audio.setDunkelheit(true);
-                audio.setSaferoom(false);
             }
             else if(!audio.getHintergrund())
             {
