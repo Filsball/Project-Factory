@@ -10,7 +10,7 @@ public class CodeBlock : MonoBehaviour
     private bool buttonsSolved = false;
     private AudioManager audio;
 
-    public GameObject door;
+    public Door door;
 
     public bool doorsOpening = false;
 
@@ -27,7 +27,11 @@ public class CodeBlock : MonoBehaviour
         audio = FindObjectOfType<AudioManager>();
         audio.setPosition("Button", position: buttonOrder[2].transform.position);
         audio.setPosition("ButtonMitEinrasten", position: buttonOrder[0].transform.position);
-
+        
+        if(door != null)
+        {
+            door.currentlyInteractable = false;
+        }
     }
     private bool CheckButtons()
     {
@@ -61,10 +65,9 @@ public class CodeBlock : MonoBehaviour
                 buttonsSolved = CheckButtons();
                 if (buttonsSolved)
                 {
-                    Debug.Log("Code richtig");
                     doorsOpening = true;
-                    audio.Play("ButtonMitEinrasten", 0.7f);
-                    door.GetComponent<Rigidbody>().AddForce(Vector3.forward * 20);
+                    door.currentlyInteractable = true;
+                    audio.Play("ButtonMitEinrasten", 1f, gameObject.transform.position, true);
                     foreach (Button b in allButtons)
                     {
                         b.currentlyInteractable = false;
