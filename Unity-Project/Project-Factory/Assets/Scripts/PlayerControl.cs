@@ -30,6 +30,8 @@ public class PlayerControl : MonoBehaviour
     private bool InExpZone;
     private ExplosiveArea ExpArea;
 
+    public float TIME_NEEDED = 0;
+
     private List<Collider> lichtColliderList;
 
     // private bool mLockPickUp;
@@ -79,6 +81,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TIME_NEEDED = Time.timeSinceLevelLoad;
         ResetLookedAtObject();
         if (!isInRiddle)
         {
