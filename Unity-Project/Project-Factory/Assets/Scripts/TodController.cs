@@ -30,7 +30,6 @@ public class TodController : MonoBehaviour
             ActivateTod();
             audio.getSound("GameOver").source.ignoreListenerPause = true;
             audio.Play("GameOver", 0.5f);
-            
         }
     }
     
@@ -40,8 +39,9 @@ public class TodController : MonoBehaviour
         AudioListener.pause = true;
         todUI.SetActive(true);
         GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = false;
+        GameObject.Find("FPSController").GetComponent<PlayerControl>().enabled = false;
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.lockState = CursorLockMode.None;
         Cursor.lockState = CursorLockMode.Confined;
         isTod = false;
     }
