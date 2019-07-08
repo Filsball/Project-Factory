@@ -111,7 +111,6 @@ public class HauptMenue : MonoBehaviour
             if (c.a < 0f) c.a = 0f;
             bild3.color = c;
             pufferzeit += Time.deltaTime / fadetime;
-            Debug.Log("aktiv3");
         }
         else if (fade3 && bild3.color.a >= 0.4f)
         {
