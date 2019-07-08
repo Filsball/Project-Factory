@@ -8,6 +8,7 @@ public class PickUpOil : InteractableObject
 
     public new void Start()
     {
+        base.Start();
         _name = "Öl-Ampulle";
         _interactionName = "Öllampe auffüllen";
     }
