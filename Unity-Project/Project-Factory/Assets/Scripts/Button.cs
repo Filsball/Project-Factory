@@ -59,11 +59,11 @@ public class Button : InteractableObject
     // Start is called before the first frame update
     new public void Start()
     {
+        base.Start();
         boxCollider = GetComponent<BoxCollider>();
         audio = FindObjectOfType<AudioManager>();
         audio.setPosition("Button", position: boxCollider.center + transform.position);
-        Name = "Knopf";
-        base.Start();
+        _name = "Knopf";
         //translationSpeed = 0.5f;
         translating = false;
     }

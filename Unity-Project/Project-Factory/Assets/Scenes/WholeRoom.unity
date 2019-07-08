@@ -413,7 +413,7 @@ MonoBehaviour:
   OilLightFaker: {fileID: 0}
   col: {fileID: 0}
   riddleCam: {fileID: 0}
-  Fuellstand: 50
+  Fuellstand: 150
 --- !u!136 &7735358
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -438,7 +438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7860195}
   - component: {fileID: 7860196}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Licht
   m_Icon: {fileID: 0}
@@ -1028,7 +1028,7 @@ MonoBehaviour:
   OilLightFaker: {fileID: 0}
   col: {fileID: 0}
   riddleCam: {fileID: 0}
-  Fuellstand: 50
+  Fuellstand: 150
 --- !u!136 &42764017
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1859,6 +1859,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348a41af1e3636345b4bc0b0d9537d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &85627120 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 6808578020697741862, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1398758229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &85627121 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9170878395017743036, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1398758229}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &91119956
 GameObject:
   m_ObjectHideFlags: 0
@@ -4821,7 +4833,7 @@ MonoBehaviour:
   OilLightFaker: {fileID: 0}
   col: {fileID: 0}
   riddleCam: {fileID: 0}
-  Fuellstand: 50
+  Fuellstand: 150
 --- !u!136 &267066787
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7147,7 +7159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 408842660}
   - component: {fileID: 408842661}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Saferoom
   m_Icon: {fileID: 0}
@@ -7446,7 +7458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 439531957}
   - component: {fileID: 439531958}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Licht
   m_Icon: {fileID: 0}
@@ -9122,11 +9134,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentlyInteractable: 1
   _selected: 0
-  renderer: {fileID: 0}
+  renderer: {fileID: 531891554}
   glowPower: 0.75
   isFocused: 0
   OilLightFaker: {fileID: 0}
-  col: {fileID: 0}
+  col: {fileID: 529963951}
   riddleCam: {fileID: 0}
   fpc_Lantern: {fileID: 649941345}
 --- !u!1 &529963950
@@ -11047,6 +11059,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b37e84ec63162474b9ce5fd3cdb4d9c1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 984fa6a0ef6cc5d4b9b41de178abec43, type: 3}
+--- !u!65 &619528356 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 5697319774900277768, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1398758229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &619528357 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9170878395017743032, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1398758229}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &621290562 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 03f1201ee9c8a7443af05c83955ee549,
@@ -11322,7 +11346,7 @@ MonoBehaviour:
   OilLightFaker: {fileID: 0}
   col: {fileID: 0}
   riddleCam: {fileID: 0}
-  Fuellstand: 50
+  Fuellstand: 150
 --- !u!136 &629947220
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13362,6 +13386,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769936091}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &791359781 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 6628630084106774213, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1398758229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &791359782 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9170878395017743034, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1398758229}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &795080850
 GameObject:
   m_ObjectHideFlags: 0
@@ -14296,7 +14332,7 @@ GameObject:
   - component: {fileID: 857309693}
   - component: {fileID: 857309694}
   - component: {fileID: 857309695}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SicherheitsraumCollider
   m_TagString: Licht
   m_Icon: {fileID: 0}
@@ -14708,7 +14744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 880884733}
   - component: {fileID: 880884734}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Licht
   m_Icon: {fileID: 0}
@@ -14875,6 +14911,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.011174368, y: 0.004668743, z: 0.0191342}
   m_Center: {x: 0.005070746, y: -0.0018506486, z: 0.009567111}
+--- !u!65 &913885356 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 9009537614464225043, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1398758229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &913885357 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9170878395017743030, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1398758229}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &941662980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15893,7 +15941,7 @@ MonoBehaviour:
   OilLightFaker: {fileID: 0}
   col: {fileID: 0}
   riddleCam: {fileID: 0}
-  Fuellstand: 50
+  Fuellstand: 150
 --- !u!136 &1008453075
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16727,7 +16775,7 @@ MonoBehaviour:
   OilLightFaker: {fileID: 0}
   col: {fileID: 0}
   riddleCam: {fileID: 0}
-  Fuellstand: 50
+  Fuellstand: 150
 --- !u!136 &1094414695
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16875,7 +16923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1095264484}
   - component: {fileID: 1095264485}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Licht
   m_Icon: {fileID: 0}
@@ -18399,7 +18447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1213201100}
   - component: {fileID: 1213201101}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Licht
   m_Icon: {fileID: 0}
@@ -18702,7 +18750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1230625771}
   - component: {fileID: 1230625772}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LichtZone-Fenster
   m_TagString: Licht
   m_Icon: {fileID: 0}
@@ -20251,7 +20299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1314570302}
   - component: {fileID: 1314570303}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Licht
   m_Icon: {fileID: 0}
@@ -21990,11 +22038,56 @@ PrefabInstance:
       propertyPath: m_Name
       value: Generator
       objectReference: {fileID: 0}
+    - target: {fileID: 6790140029632392768, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: col
+      value: 
+      objectReference: {fileID: 791359781}
+    - target: {fileID: 6790140029632392768, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 791359781}
+    - target: {fileID: 6790140029632392768, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: renderer
+      value: 
+      objectReference: {fileID: 791359782}
     - target: {fileID: 2144987418022111131, guid: 7f9ec82ab31c94240b58b47f96bbae50,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 690541010338152615, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: renderer
+      value: 
+      objectReference: {fileID: 619528357}
+    - target: {fileID: 690541010338152615, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: col
+      value: 
+      objectReference: {fileID: 619528356}
+    - target: {fileID: 690541010338152615, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 619528356}
+    - target: {fileID: 1434359065845904583, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: renderer
+      value: 
+      objectReference: {fileID: 85627121}
+    - target: {fileID: 1434359065845904583, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: col
+      value: 
+      objectReference: {fileID: 85627120}
+    - target: {fileID: 1434359065845904583, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 85627120}
     - target: {fileID: 944871625763793952, guid: 7f9ec82ab31c94240b58b47f96bbae50,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22310,6 +22403,21 @@ PrefabInstance:
       propertyPath: OilLightFaker
       value: 
       objectReference: {fileID: 257651939}
+    - target: {fileID: 7878662320756000359, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: renderer
+      value: 
+      objectReference: {fileID: 913885357}
+    - target: {fileID: 7878662320756000359, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: col
+      value: 
+      objectReference: {fileID: 913885356}
+    - target: {fileID: 7878662320756000359, guid: 7f9ec82ab31c94240b58b47f96bbae50,
+        type: 3}
+      propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 913885356}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9ec82ab31c94240b58b47f96bbae50, type: 3}
 --- !u!4 &1398758230 stripped
@@ -31376,7 +31484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1846311229}
   - component: {fileID: 1846311230}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Licht
   m_Icon: {fileID: 0}
@@ -33516,7 +33624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1956924866}
   - component: {fileID: 1956924865}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Licht
   m_Icon: {fileID: 0}
@@ -34740,7 +34848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2068206712}
   - component: {fileID: 2068206713}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Licht
   m_Icon: {fileID: 0}
@@ -36445,7 +36553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88286441cd1bd4649b38a87a8ea0dfc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxInteractingDistance: 2.5
+  maxInteractingDistance: 3
   hud: {fileID: 1883048581}
   inventory: {fileID: 85475781}
   LightOn: 0

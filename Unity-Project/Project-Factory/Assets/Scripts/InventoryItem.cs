@@ -18,7 +18,7 @@ public abstract class InventoryItem : InteractableObject, Inventoriable
     {
         base.Start();
         _name = "Basic inventory item";
-        _interactionName = "aufheben";
+        _interactionName = "aufheben\n(E zum Inventar öffnen)";
     }
 
     virtual public int CheckDroppingOver(GameObject dropOverObject) // virtual means, can be overritten by childs with "override"

@@ -6,6 +6,14 @@ public class PickUpLaterne : InteractableObject
 {
     public GameObject fpc_Lantern;
     private AudioManager audio;
+
+    public new void Start()
+    {
+        base.Start();
+        _name = "Öl-Laterne";
+        _interactionName = "ausrüsten\n(Rechte Maustaste zum verwenden)";
+    }
+
     public override void Interact()
     {
         audio = FindObjectOfType<AudioManager>();

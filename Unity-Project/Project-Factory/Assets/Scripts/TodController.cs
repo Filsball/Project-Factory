@@ -41,8 +41,8 @@ public class TodController : MonoBehaviour
         GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = false;
         GameObject.Find("FPSController").GetComponent<PlayerControl>().enabled = false;
         Cursor.visible = true;
-        //Cursor.lockState = CursorLockMode.None;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
+        //Cursor.lockState = CursorLockMode.Confined;
         isTod = false;
     }
 
