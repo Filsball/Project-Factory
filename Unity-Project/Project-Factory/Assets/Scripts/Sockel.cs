@@ -8,6 +8,9 @@ public class Sockel : SockelAbstract
     
     private new void Start()
     {
+        base.Start();
+        _name = "Sockel";
+        _interactionName = "Glühbirne einschrauben";
         allSockets.Add(this);
         Gluehbirne.SetActive(hasLightBulbFromBeginning);
         currentlyInteractable = !hasLightBulbFromBeginning;
